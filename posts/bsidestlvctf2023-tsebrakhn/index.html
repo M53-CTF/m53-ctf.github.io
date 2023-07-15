@@ -181,7 +181,7 @@ When loading the binary in IDA, IDA failed to analyze it well, so pressing F5 fo
 </li>
 <li>
 <p>The program then calculates the length of the appended string and the input string being appended. It continues appending our appended input string with itself at <code>loc_15A1</code> until a specific condition is met:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span><span style="color:#a6e22e">mov</span>  <span style="color:#66d9ef">eax</span>, [<span style="color:#66d9ef">rbp-4</span>]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span><span style="color:#a6e22e">mov</span>     <span style="color:#66d9ef">eax</span>, [<span style="color:#66d9ef">rbp-4</span>]
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">cmp</span>     <span style="color:#66d9ef">eax</span>, [<span style="color:#66d9ef">rbp-10h</span>]
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">jl</span>      <span style="color:#66d9ef">short</span> <span style="color:#66d9ef">loc_15A1</span>
 </span></span></code></pre></div><p><img src="/images/ctfs/bsidestlvctf2023-tsebrakhn/img2.png" alt="IMG"></p>
