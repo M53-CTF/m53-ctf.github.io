@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>2023 on M53</title>
-    <link>https://m53-ctf.github.io/tags/2023/</link>
-    <description>Recent content in 2023 on M53</description>
+    <title>BSIDESTLVCTF on M53</title>
+    <link>https://m53-ctf.github.io/tags/bsidestlvctf/</link>
+    <description>Recent content in BSIDESTLVCTF on M53</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Thu, 29 Jun 2023 19:13:16 +0800</lastBuildDate><atom:link href="https://m53-ctf.github.io/tags/2023/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Jun 2023 19:13:16 +0800</lastBuildDate><atom:link href="https://m53-ctf.github.io/tags/bsidestlvctf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[BSIDESTLVCTF] Tsebrakhn</title>
       <link>https://m53-ctf.github.io/posts/bsidestlvctf2023-tsebrakhn/</link>
@@ -19,17 +19,6 @@ Please note that I did not solve this challenge during the competition; instead,
 The correct passcode: AAAAAAAAAAAAAAAAAAAAAAAAAAAAA!se
 Running the binary prompts us for a passcode, making it clear that we need the correct passcode to obtain the flag.
 When loading the binary in IDA, IDA failed to analyze it well, so pressing F5 for decompilation was not possible.</description>
-    </item>
-    
-    <item>
-      <title>[VishwaCTF] Ethereal Crackme</title>
-      <link>https://m53-ctf.github.io/posts/vishwactf2023-etherealcrackme/</link>
-      <pubDate>Sun, 09 Apr 2023 21:01:30 +0800</pubDate>
-      
-      <guid>https://m53-ctf.github.io/posts/vishwactf2023-etherealcrackme/</guid>
-      <description>This challenge provided a two windows executable files called HauntedImage.exe and HauntedCursor.exe.
-Please note that I did not solve this challenge during the competition, only solved it after the competition without completely understanding the challenge.
-HauntedImage.exe Analysis Looking at the binary we noticed that it was huge and looks unlikely to be reverse within 1-2 days (atleast for me). Therefore we chose to execute the binary directly, and it will generate a corrupted image called result.</description>
     </item>
     
   </channel>

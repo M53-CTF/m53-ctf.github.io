@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Tzion">
+<meta name="description" content="This challenge provided a binary file and a netcat instance.
+Please note that I did not solve this challenge during the competition; instead, I only managed to understand the flow after the CTF by analyzing the correct passcode provided in Slack.
+The correct passcode: AAAAAAAAAAAAAAAAAAAAAAAAAAAAA!se
+Running the binary prompts us for a passcode, making it clear that we need the correct passcode to obtain the flag.
+When loading the binary in IDA, IDA failed to analyze it well, so pressing F5 for decompilation was not possible." />
+<meta name="keywords" content=", BSIDESTLVCTF, REV, 2023" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://m53-ctf.github.io/posts/bsidestlvctf2023-tsebrakhn/" />
+
+
+    <title>
+        
+            [BSIDESTLVCTF] Tsebrakhn :: M53 
+        
+    </title>
+
+
+
+
+
+<link rel="stylesheet" href="/main.b78c3be9451dc4ca61ca377f3dc2cf2e6345a44c2bae46216a322ef366daa399.css" integrity="sha256-t4w76UUdxMphyjd/PcLPLmNFpEwrrkYhajIu82bao5k=">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="[BSIDESTLVCTF] Tsebrakhn">
+<meta itemprop="description" content="This challenge provided a binary file and a netcat instance.
+Please note that I did not solve this challenge during the competition; instead, I only managed to understand the flow after the CTF by analyzing the correct passcode provided in Slack.
+The correct passcode: AAAAAAAAAAAAAAAAAAAAAAAAAAAAA!se
+Running the binary prompts us for a passcode, making it clear that we need the correct passcode to obtain the flag.
+When loading the binary in IDA, IDA failed to analyze it well, so pressing F5 for decompilation was not possible."><meta itemprop="datePublished" content="2023-06-29T19:13:16+08:00" />
+<meta itemprop="dateModified" content="2023-06-29T19:13:16+08:00" />
+<meta itemprop="wordCount" content="384"><meta itemprop="image" content="https://m53-ctf.github.io/"/>
+<meta itemprop="keywords" content="BSIDESTLVCTF,REV,2023," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://m53-ctf.github.io/"/>
+
+<meta name="twitter:title" content="[BSIDESTLVCTF] Tsebrakhn"/>
+<meta name="twitter:description" content="This challenge provided a binary file and a netcat instance.
+Please note that I did not solve this challenge during the competition; instead, I only managed to understand the flow after the CTF by analyzing the correct passcode provided in Slack.
+The correct passcode: AAAAAAAAAAAAAAAAAAAAAAAAAAAAA!se
+Running the binary prompts us for a passcode, making it clear that we need the correct passcode to obtain the flag.
+When loading the binary in IDA, IDA failed to analyze it well, so pressing F5 for decompilation was not possible."/>
+
+
+
+    <meta property="og:title" content="[BSIDESTLVCTF] Tsebrakhn" />
+<meta property="og:description" content="This challenge provided a binary file and a netcat instance.
+Please note that I did not solve this challenge during the competition; instead, I only managed to understand the flow after the CTF by analyzing the correct passcode provided in Slack.
+The correct passcode: AAAAAAAAAAAAAAAAAAAAAAAAAAAAA!se
+Running the binary prompts us for a passcode, making it clear that we need the correct passcode to obtain the flag.
+When loading the binary in IDA, IDA failed to analyze it well, so pressing F5 for decompilation was not possible." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://m53-ctf.github.io/posts/bsidestlvctf2023-tsebrakhn/" /><meta property="og:image" content="https://m53-ctf.github.io/"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-06-29T19:13:16+08:00" />
+<meta property="article:modified_time" content="2023-06-29T19:13:16+08:00" /><meta property="og:site_name" content="M53" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2023-06-29 19:13:16 &#43;0800 &#43;08" />
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text ">
+                ./M53</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/posts">Blog</a></li><li><a href="/tags">Tags</a></li><li><a href="/members">Members</a></li><li><a href="/about">About</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        2 minutes
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://m53-ctf.github.io/posts/bsidestlvctf2023-tsebrakhn/">[BSIDESTLVCTF] Tsebrakhn</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>This challenge provided a binary file and a netcat instance.</p>
+<p>Please note that I did not solve this challenge during the competition; instead, I only managed to understand the flow after the CTF by analyzing the correct passcode provided in Slack.</p>
+<p>The correct passcode: <code>AAAAAAAAAAAAAAAAAAAAAAAAAAAAA!se</code></p>
+<p>Running the binary prompts us for a passcode, making it clear that we need the correct passcode to obtain the flag.</p>
+<p>When loading the binary in IDA, IDA failed to analyze it well, so pressing F5 for decompilation was not possible.</p>
+<p><img src="/images/ctfs/bsidestlvctf2023-tsebrakhn/img1.jpg" alt="IMG"></p>
+<p>Unfortunately, I am not familiar with the proper way to fix this issue. Therefore, I took an alternative approach, performing cross-checking with dynamic analysis and static analysis to figure out the program flow.</p>
+<h3 id="program-flow">Program Flow</h3>
+<ol>
+<li>
+<p>First, the program prompts us for the passcode and checks the input length. The length must be &lt;= 32 to proceed with the execution. If the length exceeds this limit, the program prints out <code>Buffer overflow detected!...</code> and terminates.</p>
+</li>
+<li>
+<p>Next, it displays the message <code>Checking passcode! [Under construction]</code> and compares our input length with the value 0x59657321. If the check passes, it appends <code>Welldone! Your passcode is indeed:</code> to our input. Otherwise, it appends <code>You shall not pass! Your entry was:</code>. Interestingly, this behavior is intended to confuse the player, as the latter string was the intended output. It is highly unlikely for our input length to equal 0x59657321.</p>
+</li>
+<li>
+<p>The program then calculates the length of the appended string and the input string being appended. It continues appending our appended input string with itself at <code>loc_15A1</code> until a specific condition is met:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span><span style="color:#a6e22e">mov</span>  <span style="color:#66d9ef">eax</span>, [<span style="color:#66d9ef">rbp-4</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">cmp</span>     <span style="color:#66d9ef">eax</span>, [<span style="color:#66d9ef">rbp-10h</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">jl</span>      <span style="color:#66d9ef">short</span> <span style="color:#66d9ef">loc_15A1</span>
+</span></span></code></pre></div><p><img src="/images/ctfs/bsidestlvctf2023-tsebrakhn/img2.png" alt="IMG"></p>
+</li>
+<li>
+<p>However, the block of code at <code>loc_15A1</code> appears straightforward until we take a closer look at the memory. The <strong>yellow arrow</strong> points to the byte (0x43) at <code>[rbp-10h]</code>, while the <strong>red arrow</strong> points to the area that will eventually be filled. Surprisingly, it overwrites the value 0x43 with 0x20. This behavior occurs only when our passcode input length is exactly 32:</p>
+<p><img src="/images/ctfs/bsidestlvctf2023-tsebrakhn/img3.png" alt="IMG">
+<img src="/images/ctfs/bsidestlvctf2023-tsebrakhn/img4.png" alt="IMG"></p>
+</li>
+<li>
+<p>Eventually, the program reaches a point where it compares our input length again with 0x59657321. However, due to the overwritten memory and correct alignment, it obtains the DWORD PTR of <code>Yes!</code> instead, which is equivalent to 0x59657321 in hex. Once this check is passed, we will receive the flag.</p>
+<p><img src="/images/ctfs/bsidestlvctf2023-tsebrakhn/img5.png" alt="IMG"></p>
+</li>
+</ol>
+<h3 id="flag">Flag:</h3>
+<pre tabindex="0"><code>BSidesTLV2023{Iz_deyn_tsatske_tsebrakhn?}
+</code></pre>
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        Author: Tzion
+      </p>
+      
+
+      
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+        Original Source: <a href="https://tzion0.github.io/posts/bsidestlvctf2023-tsebrakhn/">https://tzion0.github.io/posts/bsidestlvctf2023-tsebrakhn/</a>
+      </p>
+      
+
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://m53-ctf.github.io/tags/bsidestlvctf/">BSIDESTLVCTF</a></span>
+        <span class="tag"><a href="https://m53-ctf.github.io/tags/rev/">REV</a></span>
+        <span class="tag"><a href="https://m53-ctf.github.io/tags/2023/">2023</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        384 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2023-06-29 19:13
+        
+
+        
+          
+        
+      </p>
+    </div>
+
+    
+    <div class="pagination">
+        
+        <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+        </div>
+        
+
+        <div class="pagination__buttons">
+            
+
+            
+            <span class="button next">
+                <a href="https://m53-ctf.github.io/posts/vishwactf2023-etherealcrackme/">
+                    <span class="button__text">[VishwaCTF] Ethereal Crackme</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="/bundle.min.205d491810c28f95aa953fae884e1c27abe13fdf93ec63b882d0036b248d4a6282eb2d134e4e7225c6ad6e86db87b08488a361ca4a7383d01fcff43f3d57b9c3.js" integrity="sha512-IF1JGBDCj5WqlT&#43;uiE4cJ6vhP9&#43;T7GO4gtADaySNSmKC6y0TTk5yJcatbobbh7CEiKNhykpzg9Afz/Q/PVe5ww=="></script>
+
+
+
+    </body>
+</html>

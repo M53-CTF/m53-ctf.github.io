@@ -6,8 +6,56 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Sun, 09 Apr 2023 21:01:30 +0800</lastBuildDate>
+        <lastBuildDate>Thu, 29 Jun 2023 19:13:16 +0800</lastBuildDate>
         <atom:link href="https://m53-ctf.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>[BSIDESTLVCTF] Tsebrakhn</title>
+            <link>https://m53-ctf.github.io/posts/bsidestlvctf2023-tsebrakhn/</link>
+            <pubDate>Thu, 29 Jun 2023 19:13:16 +0800</pubDate>
+            
+            <guid>https://m53-ctf.github.io/posts/bsidestlvctf2023-tsebrakhn/</guid>
+            <description>This challenge provided a binary file and a netcat instance.
+Please note that I did not solve this challenge during the competition; instead, I only managed to understand the flow after the CTF by analyzing the correct passcode provided in Slack.
+The correct passcode: AAAAAAAAAAAAAAAAAAAAAAAAAAAAA!se
+Running the binary prompts us for a passcode, making it clear that we need the correct passcode to obtain the flag.
+When loading the binary in IDA, IDA failed to analyze it well, so pressing F5 for decompilation was not possible.</description>
+            <content type="html"><![CDATA[<p>This challenge provided a binary file and a netcat instance.</p>
+<p>Please note that I did not solve this challenge during the competition; instead, I only managed to understand the flow after the CTF by analyzing the correct passcode provided in Slack.</p>
+<p>The correct passcode: <code>AAAAAAAAAAAAAAAAAAAAAAAAAAAAA!se</code></p>
+<p>Running the binary prompts us for a passcode, making it clear that we need the correct passcode to obtain the flag.</p>
+<p>When loading the binary in IDA, IDA failed to analyze it well, so pressing F5 for decompilation was not possible.</p>
+<p><img src="/images/ctfs/bsidestlvctf2023-tsebrakhn/img1.jpg" alt="IMG"></p>
+<p>Unfortunately, I am not familiar with the proper way to fix this issue. Therefore, I took an alternative approach, performing cross-checking with dynamic analysis and static analysis to figure out the program flow.</p>
+<h3 id="program-flow">Program Flow</h3>
+<ol>
+<li>
+<p>First, the program prompts us for the passcode and checks the input length. The length must be &lt;= 32 to proceed with the execution. If the length exceeds this limit, the program prints out <code>Buffer overflow detected!...</code> and terminates.</p>
+</li>
+<li>
+<p>Next, it displays the message <code>Checking passcode! [Under construction]</code> and compares our input length with the value 0x59657321. If the check passes, it appends <code>Welldone! Your passcode is indeed:</code> to our input. Otherwise, it appends <code>You shall not pass! Your entry was:</code>. Interestingly, this behavior is intended to confuse the player, as the latter string was the intended output. It is highly unlikely for our input length to equal 0x59657321.</p>
+</li>
+<li>
+<p>The program then calculates the length of the appended string and the input string being appended. It continues appending our appended input string with itself at <code>loc_15A1</code> until a specific condition is met:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span><span style="color:#a6e22e">mov</span>  <span style="color:#66d9ef">eax</span>, [<span style="color:#66d9ef">rbp-4</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">cmp</span>     <span style="color:#66d9ef">eax</span>, [<span style="color:#66d9ef">rbp-10h</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">jl</span>      <span style="color:#66d9ef">short</span> <span style="color:#66d9ef">loc_15A1</span>
+</span></span></code></pre></div><p><img src="/images/ctfs/bsidestlvctf2023-tsebrakhn/img2.png" alt="IMG"></p>
+</li>
+<li>
+<p>However, the block of code at <code>loc_15A1</code> appears straightforward until we take a closer look at the memory. The <strong>yellow arrow</strong> points to the byte (0x43) at <code>[rbp-10h]</code>, while the <strong>red arrow</strong> points to the area that will eventually be filled. Surprisingly, it overwrites the value 0x43 with 0x20. This behavior occurs only when our passcode input length is exactly 32:</p>
+<p><img src="/images/ctfs/bsidestlvctf2023-tsebrakhn/img3.png" alt="IMG">
+<img src="/images/ctfs/bsidestlvctf2023-tsebrakhn/img4.png" alt="IMG"></p>
+</li>
+<li>
+<p>Eventually, the program reaches a point where it compares our input length again with 0x59657321. However, due to the overwritten memory and correct alignment, it obtains the DWORD PTR of <code>Yes!</code> instead, which is equivalent to 0x59657321 in hex. Once this check is passed, we will receive the flag.</p>
+<p><img src="/images/ctfs/bsidestlvctf2023-tsebrakhn/img5.png" alt="IMG"></p>
+</li>
+</ol>
+<h3 id="flag">Flag:</h3>
+<pre tabindex="0"><code>BSidesTLV2023{Iz_deyn_tsatske_tsebrakhn?}
+</code></pre>]]></content>
+        </item>
         
         <item>
             <title>[VishwaCTF] Ethereal Crackme</title>
