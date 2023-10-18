@@ -5,11 +5,24 @@
     <link>https://m53-ctf.github.io/tags/2023/</link>
     <description>Recent content in 2023 on M53</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Mon, 18 Sep 2023 21:12:11 +0800</lastBuildDate><atom:link href="https://m53-ctf.github.io/tags/2023/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Oct 2023 17:38:17 +0800</lastBuildDate><atom:link href="https://m53-ctf.github.io/tags/2023/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>[Csawctf2023] Smug Dino</title>
+      <title>[TCP1PCTF2023] Unsecure</title>
+      <link>https://m53-ctf.github.io/posts/tcp1pctf2023-unsecure/</link>
+      <pubDate>Tue, 17 Oct 2023 17:38:17 +0800</pubDate>
+      
+      <guid>https://m53-ctf.github.io/posts/tcp1pctf2023-unsecure/</guid>
+      <description>This challenge was solved by one of our team member H0j3n. I only managed to solve half of it due to time constraints and stuck on chaining the gadgets.
+In this challenge, we were given a source code zipped in a file called dist.zip
+Unzipped we will have the following files:
+Well, what is it? What kind of web is this?
+This seems like a simple PHP website with composer package manager installed.</description>
+    </item>
+    
+    <item>
+      <title>[CSAWCTF2023] Smug Dino</title>
       <link>https://m53-ctf.github.io/posts/csawctf2023-smug-dino/</link>
       <pubDate>Mon, 18 Sep 2023 21:12:11 +0800</pubDate>
       

