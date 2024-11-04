@@ -4,42 +4,44 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const INCLUDE_PATTERN = /<include src="(.+)"\s*\/?>(?:<\/include>)?/gi;
+
 const processNestedHtml = (content, loaderContext, dir = null) =>
   !INCLUDE_PATTERN.test(content)
     ? content
     : content.replace(INCLUDE_PATTERN, (m, src) => {
-        const filePath = path.resolve(dir || loaderContext.context, src);
-        loaderContext.dependency(filePath);
-        return processNestedHtml(
-          loaderContext.fs.readFileSync(filePath, 'utf8'),
-          loaderContext,
-          path.dirname(filePath)
-        );
-      });
+      const filePath = path.resolve(dir || loaderContext.context, src);
+      loaderContext.dependency(filePath);
+      return processNestedHtml(
+        loaderContext.fs.readFileSync(filePath, 'utf8'),
+        loaderContext,
+        path.dirname(filePath)
+      );
+    });
 
 // HTML generation
 const paths = [];
-const generateHTMLPlugins = () => glob.sync('./src/*.html').map((dir) => {
-  const filename = path.basename(dir);
+const generateHTMLPlugins = () =>
+  glob.sync('./src/**/*.html').map((dir) => {
+    const filename = path.relative('./src', dir);
 
-  if (filename !== '404.html') {
-    paths.push(filename);
-  }
+    if (filename !== '404.html') {
+      paths.push(filename);
+    }
 
-  return new HtmlWebpackPlugin({
-    filename,
-    template: `./src/${filename}`,
-    favicon: `./src/images/favicon.ico`,
-    inject: 'body',
+    return new HtmlWebpackPlugin({
+      filename,
+      template: path.resolve(__dirname, dir),
+      favicon: './src/images/favicon.ico',
+      inject: 'body',
+    });
   });
-});
 
 module.exports = {
   mode: 'development',
   entry: './src/js/index.js',
   devServer: {
     static: {
-      directory: path.join(__dirname, './build'),
+      directory: path.join(__dirname, 'build'),
     },
     compress: true,
     port: 3000,

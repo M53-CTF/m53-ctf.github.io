@@ -1,0 +1,1109 @@
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[BI0SCTF] BaeBPF</title>
+  <!-- SELF-ADDED SECTION -->
+  <style>
+    pre[class*="language-"]:before,
+    pre[class*="language-"]:after {
+      display: none;
+    }
+    /** Adding !important because the style.css will be loaded below this style tag**/
+    ul {
+      list-style: circle !important;
+      list-style-type: circle !important;
+      padding-left: 30px !important;
+      list-style-position: inside;
+    }
+
+    ol {
+      list-style: decimal !important;
+      list-style-type: decimal !important;
+      padding-left: 30px !important;
+      list-style-position: inside;
+    }
+
+    code {
+      font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace !important;
+       color: rgba(251,250,245,.8);
+      font-display: auto !important;
+      font-feature-settings: normal !important;
+      padding: 1px 6px !important;
+      margin: 0 2px !important;
+      border-radius: 5px !important;
+      font-size: 0.95rem !important;
+      background: #3b3d42;
+    }
+  </style>
+  <script type="text/javascript">
+    // Remove the indentation whitespaces from <pre> tags
+      Prism.plugins.NormalizeWhitespace.setDefaults({
+        'remove-initial-line-feed': false,
+        'remove-trailing': false,
+        'remove-indent': true,
+        'left-trim': true,
+        'right-trim': true,
+      });
+  </script>
+  <!-- END OF SELF-ADDED SECTION -->
+</head>
+
+<body class="dark:bg-black">
+  <!-- ====== Navbar Section Start -->
+  <header class="header bg-transparent absolute top-0 left-0 z-40 w-full flex items-center">
+    <div class="container">
+      <div class="flex mx-[-16px] items-center justify-between relative">
+        <div class="px-4 w-60 max-w-full">
+          <a href="/index.html" class="w-full block py-8 header-logo">
+            <!-- <img src="images/logo/logo-2.svg" alt="logo" class="w-full dark:hidden" /> -->
+            <img src="../../images/logo/M53-logo-transparent-wide.png" alt="logo" class="w-full hidden dark:block" />
+          </a>
+        </div>
+        <div class="flex px-4 justify-between items-center w-full">
+          <div>
+            <button id="navbarToggler" aria-label="Mobile Menu"
+              class="block absolute right-4 top-1/2 translate-y-[-50%] lg:hidden focus:ring-2 ring-primary px-3 py-[6px] rounded-lg">
+              <span class="relative w-[30px] h-[2px] my-[6px] block bg-dark dark:bg-white"></span>
+              <span class="relative w-[30px] h-[2px] my-[6px] block bg-dark dark:bg-white"></span>
+              <span class="relative w-[30px] h-[2px] my-[6px] block bg-dark dark:bg-white"></span>
+            </button>
+            <nav id="navbarCollapse"
+              class="absolute py-5 lg:py-0 lg:px-4 xl:px-6 bg-white dark:bg-dark lg:dark:bg-transparent lg:bg-transparent shadow-lg rounded-lg max-w-[250px] w-full lg:max-w-full lg:w-full right-4 top-full hidden lg:block lg:static lg:shadow-none">
+              <ul class="block lg:flex">
+                <li class="relative group">
+                  <a href="/#home"
+                    class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0">
+                    Home
+                  </a>
+                </li>
+                <li class="relative group">
+                  <a href="/#about"
+                    class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
+                    About
+                  </a>
+                </li>
+                <li class="relative group">
+                  <a href="/#merch"
+                    class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
+                    Merch
+                  </a>
+                </li>
+                <li class="relative group">
+                  <a href="/recruitment.html"
+                  class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
+                    Recruitment
+                  </a>
+                </li>
+                <!-- <li class="relative group">
+                  <a href="/sponsors.html"
+                  class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
+                  Sponsors
+                </a>
+              </li> -->
+              <li class="relative group">
+                <a href="/achievements.html"
+                class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
+                Achievements
+              </a>
+            </li>
+            <li class="relative group">
+              <a href="/#contact"
+                class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
+                Contact
+              </a>
+            </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="flex justify-end items-center pr-16 lg:pr-0">
+            <a href="../../blog/blog-grids.html"
+              class="hidden md:block text-base font-bold text-dark dark:text-white hover:opacity-70 py-3 px-7"> Blog
+            </a>
+            <a href="/members.html"
+              class="hidden md:block text-base font-bold text-white bg-primary py-3 px-8 md:px-8 lg:px-6 xl:px-8 hover:shadow-signUp hover:bg-opacity-90 rounded-md transition ease-in-up duration-300">
+              Members
+            </a>
+            <!-- <div>
+              <label for="darkToggler"
+                class="cursor-pointer w-9 h-9 md:w-14 md:h-14 rounded-full flex items-center justify-center bg-gray-2 dark:bg-dark-bg text-black dark:text-white">
+                <input type="checkbox" name="darkToggler" id="darkToggler" class="sr-only" aria-label="darkToggler" />
+                <svg viewBox="0 0 23 23" class="stroke-current dark:hidden w-5 h-5 md:w-6 md:h-6" fill="none">
+                  <path
+                    d="M9.55078 1.5C5.80078 1.5 1.30078 5.25 1.30078 11.25C1.30078 17.25 5.80078 21.75 11.8008 21.75C17.8008 21.75 21.5508 17.25 21.5508 13.5C13.3008 18.75 4.30078 9.75 9.55078 1.5Z"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <svg viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                  class="hidden dark:block w-5 h-5 md:w-6 md:h-6">
+                  <mask id="path-1-inside-1_977:1934" fill="white">
+                    <path
+                      d="M12.0508 16.5C10.8573 16.5 9.71271 16.0259 8.8688 15.182C8.02489 14.3381 7.55078 13.1935 7.55078 12C7.55078 10.8065 8.02489 9.66193 8.8688 8.81802C9.71271 7.97411 10.8573 7.5 12.0508 7.5C13.2443 7.5 14.3888 7.97411 15.2328 8.81802C16.0767 9.66193 16.5508 10.8065 16.5508 12C16.5508 13.1935 16.0767 14.3381 15.2328 15.182C14.3888 16.0259 13.2443 16.5 12.0508 16.5ZM12.0508 18C13.6421 18 15.1682 17.3679 16.2934 16.2426C17.4186 15.1174 18.0508 13.5913 18.0508 12C18.0508 10.4087 17.4186 8.88258 16.2934 7.75736C15.1682 6.63214 13.6421 6 12.0508 6C10.4595 6 8.93336 6.63214 7.80814 7.75736C6.68292 8.88258 6.05078 10.4087 6.05078 12C6.05078 13.5913 6.68292 15.1174 7.80814 16.2426C8.93336 17.3679 10.4595 18 12.0508 18ZM12.0508 0C12.2497 0 12.4405 0.0790176 12.5811 0.21967C12.7218 0.360322 12.8008 0.551088 12.8008 0.75V3.75C12.8008 3.94891 12.7218 4.13968 12.5811 4.28033C12.4405 4.42098 12.2497 4.5 12.0508 4.5C11.8519 4.5 11.6611 4.42098 11.5205 4.28033C11.3798 4.13968 11.3008 3.94891 11.3008 3.75V0.75C11.3008 0.551088 11.3798 0.360322 11.5205 0.21967C11.6611 0.0790176 11.8519 0 12.0508 0V0ZM12.0508 19.5C12.2497 19.5 12.4405 19.579 12.5811 19.7197C12.7218 19.8603 12.8008 20.0511 12.8008 20.25V23.25C12.8008 23.4489 12.7218 23.6397 12.5811 23.7803C12.4405 23.921 12.2497 24 12.0508 24C11.8519 24 11.6611 23.921 11.5205 23.7803C11.3798 23.6397 11.3008 23.4489 11.3008 23.25V20.25C11.3008 20.0511 11.3798 19.8603 11.5205 19.7197C11.6611 19.579 11.8519 19.5 12.0508 19.5ZM24.0508 12C24.0508 12.1989 23.9718 12.3897 23.8311 12.5303C23.6905 12.671 23.4997 12.75 23.3008 12.75H20.3008C20.1019 12.75 19.9111 12.671 19.7705 12.5303C19.6298 12.3897 19.5508 12.1989 19.5508 12C19.5508 11.8011 19.6298 11.6103 19.7705 11.4697C19.9111 11.329 20.1019 11.25 20.3008 11.25H23.3008C23.4997 11.25 23.6905 11.329 23.8311 11.4697C23.9718 11.6103 24.0508 11.8011 24.0508 12ZM4.55078 12C4.55078 12.1989 4.47176 12.3897 4.33111 12.5303C4.19046 12.671 3.99969 12.75 3.80078 12.75H0.800781C0.601869 12.75 0.411103 12.671 0.270451 12.5303C0.129799 12.3897 0.0507813 12.1989 0.0507812 12C0.0507813 11.8011 0.129799 11.6103 0.270451 11.4697C0.411103 11.329 0.601869 11.25 0.800781 11.25H3.80078C3.99969 11.25 4.19046 11.329 4.33111 11.4697C4.47176 11.6103 4.55078 11.8011 4.55078 12ZM20.5363 3.5145C20.6769 3.65515 20.7559 3.84588 20.7559 4.04475C20.7559 4.24362 20.6769 4.43435 20.5363 4.575L18.4153 6.6975C18.3455 6.76713 18.2628 6.82235 18.1717 6.86C18.0806 6.89765 17.983 6.91699 17.8845 6.91692C17.6855 6.91678 17.4947 6.83758 17.354 6.69675C17.2844 6.62702 17.2292 6.54425 17.1915 6.45318C17.1539 6.36211 17.1345 6.26452 17.1346 6.16597C17.1348 5.96695 17.214 5.77613 17.3548 5.6355L19.4758 3.5145C19.6164 3.3739 19.8072 3.29491 20.006 3.29491C20.2049 3.29491 20.3956 3.3739 20.5363 3.5145ZM6.74678 17.304C6.88738 17.4446 6.96637 17.6354 6.96637 17.8342C6.96637 18.0331 6.88738 18.2239 6.74678 18.3645L4.62578 20.4855C4.48433 20.6221 4.29488 20.6977 4.09823 20.696C3.90158 20.6943 3.71347 20.6154 3.57442 20.4764C3.43536 20.3373 3.35648 20.1492 3.35478 19.9526C3.35307 19.7559 3.42866 19.5665 3.56528 19.425L5.68628 17.304C5.82693 17.1634 6.01766 17.0844 6.21653 17.0844C6.4154 17.0844 6.60614 17.1634 6.74678 17.304ZM20.5363 20.4855C20.3956 20.6261 20.2049 20.7051 20.006 20.7051C19.8072 20.7051 19.6164 20.6261 19.4758 20.4855L17.3548 18.3645C17.2182 18.223 17.1426 18.0336 17.1443 17.8369C17.146 17.6403 17.2249 17.4522 17.3639 17.3131C17.503 17.1741 17.6911 17.0952 17.8877 17.0935C18.0844 17.0918 18.2738 17.1674 18.4153 17.304L20.5363 19.425C20.6769 19.5656 20.7559 19.7564 20.7559 19.9552C20.7559 20.1541 20.6769 20.3449 20.5363 20.4855ZM6.74678 6.6975C6.60614 6.8381 6.4154 6.91709 6.21653 6.91709C6.01766 6.91709 5.82693 6.8381 5.68628 6.6975L3.56528 4.575C3.49365 4.50582 3.43651 4.42306 3.39721 4.33155C3.3579 4.24005 3.33721 4.14164 3.33634 4.04205C3.33548 3.94247 3.35445 3.84371 3.39216 3.75153C3.42988 3.65936 3.48557 3.57562 3.55598 3.5052C3.6264 3.43478 3.71014 3.37909 3.80232 3.34138C3.89449 3.30367 3.99325 3.2847 4.09283 3.28556C4.19242 3.28643 4.29083 3.30712 4.38233 3.34642C4.47384 3.38573 4.5566 3.44287 4.62578 3.5145L6.74678 5.6355C6.81663 5.70517 6.87204 5.78793 6.90985 5.87905C6.94766 5.97017 6.96712 6.06785 6.96712 6.1665C6.96712 6.26515 6.94766 6.36283 6.90985 6.45395C6.87204 6.54507 6.81663 6.62783 6.74678 6.6975Z" />
+                  </mask>
+                  <path
+                    d="M12.0508 16.5C10.8573 16.5 9.71271 16.0259 8.8688 15.182C8.02489 14.3381 7.55078 13.1935 7.55078 12C7.55078 10.8065 8.02489 9.66193 8.8688 8.81802C9.71271 7.97411 10.8573 7.5 12.0508 7.5C13.2443 7.5 14.3888 7.97411 15.2328 8.81802C16.0767 9.66193 16.5508 10.8065 16.5508 12C16.5508 13.1935 16.0767 14.3381 15.2328 15.182C14.3888 16.0259 13.2443 16.5 12.0508 16.5ZM12.0508 18C13.6421 18 15.1682 17.3679 16.2934 16.2426C17.4186 15.1174 18.0508 13.5913 18.0508 12C18.0508 10.4087 17.4186 8.88258 16.2934 7.75736C15.1682 6.63214 13.6421 6 12.0508 6C10.4595 6 8.93336 6.63214 7.80814 7.75736C6.68292 8.88258 6.05078 10.4087 6.05078 12C6.05078 13.5913 6.68292 15.1174 7.80814 16.2426C8.93336 17.3679 10.4595 18 12.0508 18ZM12.0508 0C12.2497 0 12.4405 0.0790176 12.5811 0.21967C12.7218 0.360322 12.8008 0.551088 12.8008 0.75V3.75C12.8008 3.94891 12.7218 4.13968 12.5811 4.28033C12.4405 4.42098 12.2497 4.5 12.0508 4.5C11.8519 4.5 11.6611 4.42098 11.5205 4.28033C11.3798 4.13968 11.3008 3.94891 11.3008 3.75V0.75C11.3008 0.551088 11.3798 0.360322 11.5205 0.21967C11.6611 0.0790176 11.8519 0 12.0508 0V0ZM12.0508 19.5C12.2497 19.5 12.4405 19.579 12.5811 19.7197C12.7218 19.8603 12.8008 20.0511 12.8008 20.25V23.25C12.8008 23.4489 12.7218 23.6397 12.5811 23.7803C12.4405 23.921 12.2497 24 12.0508 24C11.8519 24 11.6611 23.921 11.5205 23.7803C11.3798 23.6397 11.3008 23.4489 11.3008 23.25V20.25C11.3008 20.0511 11.3798 19.8603 11.5205 19.7197C11.6611 19.579 11.8519 19.5 12.0508 19.5ZM24.0508 12C24.0508 12.1989 23.9718 12.3897 23.8311 12.5303C23.6905 12.671 23.4997 12.75 23.3008 12.75H20.3008C20.1019 12.75 19.9111 12.671 19.7705 12.5303C19.6298 12.3897 19.5508 12.1989 19.5508 12C19.5508 11.8011 19.6298 11.6103 19.7705 11.4697C19.9111 11.329 20.1019 11.25 20.3008 11.25H23.3008C23.4997 11.25 23.6905 11.329 23.8311 11.4697C23.9718 11.6103 24.0508 11.8011 24.0508 12ZM4.55078 12C4.55078 12.1989 4.47176 12.3897 4.33111 12.5303C4.19046 12.671 3.99969 12.75 3.80078 12.75H0.800781C0.601869 12.75 0.411103 12.671 0.270451 12.5303C0.129799 12.3897 0.0507813 12.1989 0.0507812 12C0.0507813 11.8011 0.129799 11.6103 0.270451 11.4697C0.411103 11.329 0.601869 11.25 0.800781 11.25H3.80078C3.99969 11.25 4.19046 11.329 4.33111 11.4697C4.47176 11.6103 4.55078 11.8011 4.55078 12ZM20.5363 3.5145C20.6769 3.65515 20.7559 3.84588 20.7559 4.04475C20.7559 4.24362 20.6769 4.43435 20.5363 4.575L18.4153 6.6975C18.3455 6.76713 18.2628 6.82235 18.1717 6.86C18.0806 6.89765 17.983 6.91699 17.8845 6.91692C17.6855 6.91678 17.4947 6.83758 17.354 6.69675C17.2844 6.62702 17.2292 6.54425 17.1915 6.45318C17.1539 6.36211 17.1345 6.26452 17.1346 6.16597C17.1348 5.96695 17.214 5.77613 17.3548 5.6355L19.4758 3.5145C19.6164 3.3739 19.8072 3.29491 20.006 3.29491C20.2049 3.29491 20.3956 3.3739 20.5363 3.5145ZM6.74678 17.304C6.88738 17.4446 6.96637 17.6354 6.96637 17.8342C6.96637 18.0331 6.88738 18.2239 6.74678 18.3645L4.62578 20.4855C4.48433 20.6221 4.29488 20.6977 4.09823 20.696C3.90158 20.6943 3.71347 20.6154 3.57442 20.4764C3.43536 20.3373 3.35648 20.1492 3.35478 19.9526C3.35307 19.7559 3.42866 19.5665 3.56528 19.425L5.68628 17.304C5.82693 17.1634 6.01766 17.0844 6.21653 17.0844C6.4154 17.0844 6.60614 17.1634 6.74678 17.304ZM20.5363 20.4855C20.3956 20.6261 20.2049 20.7051 20.006 20.7051C19.8072 20.7051 19.6164 20.6261 19.4758 20.4855L17.3548 18.3645C17.2182 18.223 17.1426 18.0336 17.1443 17.8369C17.146 17.6403 17.2249 17.4522 17.3639 17.3131C17.503 17.1741 17.6911 17.0952 17.8877 17.0935C18.0844 17.0918 18.2738 17.1674 18.4153 17.304L20.5363 19.425C20.6769 19.5656 20.7559 19.7564 20.7559 19.9552C20.7559 20.1541 20.6769 20.3449 20.5363 20.4855ZM6.74678 6.6975C6.60614 6.8381 6.4154 6.91709 6.21653 6.91709C6.01766 6.91709 5.82693 6.8381 5.68628 6.6975L3.56528 4.575C3.49365 4.50582 3.43651 4.42306 3.39721 4.33155C3.3579 4.24005 3.33721 4.14164 3.33634 4.04205C3.33548 3.94247 3.35445 3.84371 3.39216 3.75153C3.42988 3.65936 3.48557 3.57562 3.55598 3.5052C3.6264 3.43478 3.71014 3.37909 3.80232 3.34138C3.89449 3.30367 3.99325 3.2847 4.09283 3.28556C4.19242 3.28643 4.29083 3.30712 4.38233 3.34642C4.47384 3.38573 4.5566 3.44287 4.62578 3.5145L6.74678 5.6355C6.81663 5.70517 6.87204 5.78793 6.90985 5.87905C6.94766 5.97017 6.96712 6.06785 6.96712 6.1665C6.96712 6.26515 6.94766 6.36283 6.90985 6.45395C6.87204 6.54507 6.81663 6.62783 6.74678 6.6975Z"
+                    fill="black" stroke="white" stroke-width="2" mask="url(#path-1-inside-1_977:1934)" />
+                </svg>
+              </label>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ====== Navbar Section End -->
+
+<!-- ====== Blog Section Start -->
+  <section class="pt-[150px] pb-[120px]">
+    <div class="container">
+      <div class="flex flex-wrap justify-center mx-[-16px]">
+        <div class="w-full lg:w-8/12 px-4">
+          <div>
+            <h2 class="font-bold text-black dark:text-white text-3xl sm:text-4xl leading-tight sm:leading-tight mb-8">
+              [BI0SCTF] BaeBPF
+            </h2>
+            <div
+              class="flex flex-wrap items-center justify-between pb-4 mb-10 border-b border-body-color border-opacity-10 dark:border-white dark:border-opacity-10">
+              <div class="flex flex-wrap items-center">
+                <div class="flex items-center mr-10 mb-5">
+                  <div class="max-w-[40px] w-full h-[40px] rounded-full overflow-hidden mr-4">
+                    <img src="../../images/blog/anon.png" alt="author" class="w-full" />
+                  </div>
+                  <div class="w-full">
+                    <h4 class="text-base font-medium text-body-color mb-1">
+                      By
+                      <a href="/members.html" class="text-body-color hover:text-primary"> Tzion </a>
+                    </h4>
+                  </div>
+                </div>
+                <div class="flex items-center mb-5">
+                  <p class="flex items-center text-base text-body-color font-medium mr-5">
+                    <span class="mr-3">
+                      <svg width="15" height="15" viewBox="0 0 15 15" class="fill-current">
+                        <path
+                          d="M3.89531 8.67529H3.10666C2.96327 8.67529 2.86768 8.77089 2.86768 8.91428V9.67904C2.86768 9.82243 2.96327 9.91802 3.10666 9.91802H3.89531C4.03871 9.91802 4.1343 9.82243 4.1343 9.67904V8.91428C4.1343 8.77089 4.03871 8.67529 3.89531 8.67529Z" />
+                        <path
+                          d="M6.429 8.67529H5.64035C5.49696 8.67529 5.40137 8.77089 5.40137 8.91428V9.67904C5.40137 9.82243 5.49696 9.91802 5.64035 9.91802H6.429C6.57239 9.91802 6.66799 9.82243 6.66799 9.67904V8.91428C6.66799 8.77089 6.5485 8.67529 6.429 8.67529Z" />
+                        <path
+                          d="M8.93828 8.67529H8.14963C8.00624 8.67529 7.91064 8.77089 7.91064 8.91428V9.67904C7.91064 9.82243 8.00624 9.91802 8.14963 9.91802H8.93828C9.08167 9.91802 9.17727 9.82243 9.17727 9.67904V8.91428C9.17727 8.77089 9.08167 8.67529 8.93828 8.67529Z" />
+                        <path
+                          d="M11.4715 8.67529H10.6828C10.5394 8.67529 10.4438 8.77089 10.4438 8.91428V9.67904C10.4438 9.82243 10.5394 9.91802 10.6828 9.91802H11.4715C11.6149 9.91802 11.7105 9.82243 11.7105 9.67904V8.91428C11.7105 8.77089 11.591 8.67529 11.4715 8.67529Z" />
+                        <path
+                          d="M3.89531 11.1606H3.10666C2.96327 11.1606 2.86768 11.2562 2.86768 11.3996V12.1644C2.86768 12.3078 2.96327 12.4034 3.10666 12.4034H3.89531C4.03871 12.4034 4.1343 12.3078 4.1343 12.1644V11.3996C4.1343 11.2562 4.03871 11.1606 3.89531 11.1606Z" />
+                        <path
+                          d="M6.429 11.1606H5.64035C5.49696 11.1606 5.40137 11.2562 5.40137 11.3996V12.1644C5.40137 12.3078 5.49696 12.4034 5.64035 12.4034H6.429C6.57239 12.4034 6.66799 12.3078 6.66799 12.1644V11.3996C6.66799 11.2562 6.5485 11.1606 6.429 11.1606Z" />
+                        <path
+                          d="M8.93828 11.1606H8.14963C8.00624 11.1606 7.91064 11.2562 7.91064 11.3996V12.1644C7.91064 12.3078 8.00624 12.4034 8.14963 12.4034H8.93828C9.08167 12.4034 9.17727 12.3078 9.17727 12.1644V11.3996C9.17727 11.2562 9.08167 11.1606 8.93828 11.1606Z" />
+                        <path
+                          d="M11.4715 11.1606H10.6828C10.5394 11.1606 10.4438 11.2562 10.4438 11.3996V12.1644C10.4438 12.3078 10.5394 12.4034 10.6828 12.4034H11.4715C11.6149 12.4034 11.7105 12.3078 11.7105 12.1644V11.3996C11.7105 11.2562 11.591 11.1606 11.4715 11.1606Z" />
+                        <path
+                          d="M13.2637 3.3697H7.64754V2.58105C8.19721 2.43765 8.62738 1.91189 8.62738 1.31442C8.62738 0.597464 8.02992 0 7.28906 0C6.54821 0 5.95074 0.597464 5.95074 1.31442C5.95074 1.91189 6.35702 2.41376 6.93058 2.58105V3.3697H1.31442C0.597464 3.3697 0 3.96716 0 4.68412V13.2637C0 13.9807 0.597464 14.5781 1.31442 14.5781H13.2637C13.9807 14.5781 14.5781 13.9807 14.5781 13.2637V4.68412C14.5781 3.96716 13.9807 3.3697 13.2637 3.3697ZM6.6677 1.31442C6.6677 0.979841 6.93058 0.716957 7.28906 0.716957C7.62364 0.716957 7.91042 0.979841 7.91042 1.31442C7.91042 1.649 7.64754 1.91189 7.28906 1.91189C6.95448 1.91189 6.6677 1.6251 6.6677 1.31442ZM1.31442 4.08665H13.2637C13.5983 4.08665 13.8612 4.34954 13.8612 4.68412V6.45261H0.716957V4.68412C0.716957 4.34954 0.979841 4.08665 1.31442 4.08665ZM13.2637 13.8612H1.31442C0.979841 13.8612 0.716957 13.5983 0.716957 13.2637V7.16957H13.8612V13.2637C13.8612 13.5983 13.5983 13.8612 13.2637 13.8612Z" />
+                      </svg>
+                    </span>
+                    25 February 2024
+                  </p>
+
+                  <p class="flex items-center text-base text-body-color font-medium mr-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z" />
+                      <path
+                        d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z" />
+                    </svg>&nbsp;&nbsp;
+                    <span class="text-primary dark:text-white underline"><a href="https://tzion0.github.io/posts/bi0sctf2024-baebpf/">https://tzion0.github.io/posts/bi0sctf2024-baebpf/</a></span>
+                  </p>
+
+                </div>
+              </div>
+              <div class="mb-5">
+                <span
+                  class="bg-primary rounded-full inline-flex items-center justify-center py-2 px-4 font-semibold text-sm text-white">
+                  REV </span>
+              </div>
+            </div>
+            <div>
+              <div class="w-full rounded overflow-hidden mb-10">
+                <img src="../../images/blog/bi0sctf.png" alt="image"
+                  class="w-full h-[384px] object-center" />
+              </div>
+
+              <p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">This challenge only provided a instance deployment.</p>
+<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Please note that I did not solve this challenge during the competition, only solved it by gaining some extra details after the competition.</p>
+<h2 class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">Level 1</h2>
+<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Connecting to the challenge deployment, we get to choose the following options:</p>
+<pre><code class="language-C">1. Generate assembly dump
+2. cat any file</code></pre>
+<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">By dumping the assembly, we can see the follow:</p>
+<pre><code class="language-C">Assembly dump of the program
+========================================Asm dump=========================================
+ int syscall__trace_entry_openat(struct pt_regs * ctx):
+; struct pt_regs * __ctx = ctx-&gt;di
+0: (79) r6 = *(u64 *)(r1 +112)
+; int dfd; bpf_probe_read(&amp;dfd, sizeof(dfd), &amp;__ctx-&gt;di)
+1: (bf) r3 = r6
+2: (07) r3 += 112
+3: (bf) r1 = r10
+4: (07) r1 += -4
+; int dfd; bpf_probe_read(&amp;dfd, sizeof(dfd), &amp;__ctx-&gt;di)
+5: (b7) r2 = 4
+6: (85) call bpf_probe_read_compat#-115168
+; const char __user *filename; bpf_probe_read(&amp;filename, sizeof(filename), &amp;__ctx-&gt;si)
+7: (bf) r3 = r6
+8: (07) r3 += 104
+9: (bf) r1 = r10
+10: (07) r1 += -16
+; const char __user *filename; bpf_probe_read(&amp;filename, sizeof(filename), &amp;__ctx-&gt;si)
+11: (b7) r2 = 8
+12: (85) call bpf_probe_read_compat#-115168
+; int flags; bpf_probe_read(&amp;flags, sizeof(flags), &amp;__ctx-&gt;dx)
+13: (07) r6 += 96
+14: (bf) r1 = r10
+15: (07) r1 += -20
+; int flags; bpf_probe_read(&amp;flags, sizeof(flags), &amp;__ctx-&gt;dx)
+16: (b7) r2 = 4
+17: (bf) r3 = r6
+18: (85) call bpf_probe_read_compat#-115168
+19: (b7) r6 = 0
+20: (73) *(u8 *)(r10 -24) = r6
+21: (79) r3 = *(u64 *)(r10 -16)
+22: (bf) r1 = r10
+23: (07) r1 += -24
+24: (b7) r2 = 1
+25: (85) call bpf_probe_read_compat#-115168
+26: (71) r1 = *(u8 *)(r10 -24)
+27: (55) if r1 != 0x66 goto pc+368
+28: (73) *(u8 *)(r10 -24) = r6
+29: (79) r3 = *(u64 *)(r10 -16)
+30: (07) r3 += 1
+31: (bf) r1 = r10
+32: (07) r1 += -24
+33: (b7) r2 = 1
+34: (85) call bpf_probe_read_compat#-115168
+35: (71) r1 = *(u8 *)(r10 -24)
+36: (55) if r1 != 0x6c goto pc+359
+37: (b7) r6 = 0
+38: (73) *(u8 *)(r10 -24) = r6
+39: (79) r3 = *(u64 *)(r10 -16)
+40: (07) r3 += 2
+41: (bf) r1 = r10
+42: (07) r1 += -24
+43: (b7) r2 = 1
+44: (85) call bpf_probe_read_compat#-115168
+45: (71) r1 = *(u8 *)(r10 -24)
+46: (55) if r1 != 0x61 goto pc+349
+47: (73) *(u8 *)(r10 -24) = r6
+48: (79) r3 = *(u64 *)(r10 -16)
+49: (07) r3 +=3
+50: (bf) r1 = r10
+51: (07) r1 += -24
+52: (b7) r2 = 1
+53: (85) call bpf_probe_read_compat#-115168
+54: (71) r1 = *(u8 *)(r10 -24)
+55: (55) if r1 != 0x67 goto pc+340
+56: (b7) r6 = 0
+57: (73) *(u8 *)(r10 -24) = r6
+58: (79) r3 = *(u64 *)(r10 -16)
+59: (07) r3 += 4
+60: (bf) r1 = r10
+61: (07) r1 += -24
+62: (b7) r2 = 1
+63: (85) call bpf_probe_read_compat#-115168
+64: (71) r1 = *(u8 *)(r10 -24)
+65: (55) if r1 != 0x2e goto pc+330
+66: (73) *(u8 *)(r10 -24) = r6
+67: (79) r3 = *(u64 *)(r10 -16)
+68: (07) r3 += 5
+69: (bf) r1 = r10
+70: (07) r1 += -24
+71: (b7) r2 = 1
+72: (85) call bpf_probe_read_compat#-115168
+73: (71) r1 = *(u8 *)(r10 -24)
+74: (55) if r1 != 0x74 goto pc+321
+75: (b7) r6 = 0
+76: (73) *(u8 *)(r10 -24) = r6
+77: (79) r3 = *(u64 *)(r10 -16)
+78: (07) r3 += 6
+79: (bf) r1 = r10
+80: (07) r1 += -24
+81: (b7) r2 = 1
+82: (85) call bpf_probe_read_compat#-115168
+83: (71) r1 = *(u8 *)(r10 -24)
+84: (55) if r1 != 0x78 goto pc+311
+85: (73) *(u8 *)(r10 -24) = r6
+86: (79) r3 = *(u64 *)(r10 -16)
+87: (07) r3 += 7
+88: (bf) r1 = r10
+89: (07) r1 += -24
+90: (b7) r2 = 1
+91: (85) call bpf_probe_read_compat#-115168
+92: (71) r1 = *(u8 *)(r10 -24)
+93: (55) if r1 != 0x74 goto pc+302
+94: (b7) r8 = 0
+95: (63) *(u32 *)(r10 -24) = r8
+96: (18) r1 = map[id:4]
+98: (bf) r7 = r10
+99: (07) r7 += -24
+100: (bf) r2 = r7
+101: (07) r1 += 272
+102: (61) r0 = *(u32 *)(r2 +0)
+103: (35) if r0 &gt;= 0x8 goto pc+3
+104: (67) r0 &lt;&lt;=3
+105: (0f) r0 += r1
+106: (05) goto pc+1
+107: (b7) r0 = 0
+108: (bf) r6 = r0
+109: (18) r1 = map[id:3]
+111: (bf) r2 = r7
+112: (07) r1 += 272
+113: (61) r0 = *(u32 *)(r2 +0)
+114: (35) if r0 &gt;= 0x8 goto pc+3
+115: (67) r0 &lt;&lt;=3
+116: (0f) r0 += r1
+117: (05) goto pc+1
+118: (b7) r0 = 0
+119: (b7) r1 = 0
+120: (15) if r6 == 0x0 goto pc+2
+121: (61) r1 = *(u32 *)(r6 +0)
+122: (a7) r1 ^= 5
+123: (15) if r0 == 0x0 goto pc+6
+124: (61) r2 = *(u32 *)(r0 +0)
+125: (67) r1 &lt;&lt;=32
+126: (77) r1 &gt;&gt;=32
+127: (b7) r8 = 1
+128: (1d) if r1 == r2 goto pc+1
+129: (b7) r8 = 0
+130: (b7) r1 = 1
+131: (63) *(u32 *)(r10 -24) = r1
+132: (18) r1 = map[id:4]
+134: (bf) r7 = r10
+135: (07) r7 += -24
+136: (bf) r2 = r7
+137: (07) r1 += 272
+138: (61) r0 = *(u32 *)(r2 +0)
+139: (35) if r0 &gt;= 0x8 goto pc+3
+140: (67) r0 &lt;&lt;=3
+141: (0f) r0 += r1
+142: (05) goto pc+1
+143: (b7) r0 = 0
+144: (bf) r6 = r0
+145: (18) r1 = map[id:3]
+147: (bf) r2 = r7
+148: (07) r1 += 272
+149: (61) r0 = *(u32 *)(r2 +0)
+150: (35) if r0 &gt;= 0x8 goto pc+3
+151: (67) r0 &lt;&lt;=3
+152: (0f) r0 += r1
+153: (05) goto pc+1
+154: (b7) r0 = 0
+155: (b7) r1 = 0
+156: (15) if r6 == 0x0 goto pc+2
+157: (61) r1 = *(u32 *)(r6 +0)
+158: (a7) r1 ^= 5
+159: (15) if r0 == 0x0 goto pc+7
+160: (61) r3 = *(u32 *)(r0 +0)
+161: (67) r1 &lt;&lt;=32
+162: (77) r1 &gt;&gt;=32
+163: (b7) r2 = 1
+164: (1d) if r1 == r3 goto pc+1
+165: (b7) r2 = 0
+166: (0f) r8 += r2
+167: (b7) r1 = 2
+168: (63) *(u32 *)(r10 -24) = r1
+169: (18) r1 = map[id:4]
+171: (bf) r7 = r10
+172: (07) r7 += -24
+173: (bf) r2 = r7
+174: (07) r1 += 272
+175: (61) r0 = *(u32 *)(r2 +0)
+176: (35) if r0 &gt;= 0x8 goto pc+3
+177: (67) r0 &lt;&lt;=3
+178: (0f) r0 += r1
+179: (05) goto pc+1
+180: (b7) r0 = 0
+181: (bf) r6 = r0
+182: (18) r1 = map[id:3]
+184: (bf) r2 = r7
+185: (07) r1 += 272
+186: (61) r0 = *(u32 *)(r2 +0)
+187: (35) if r0 &gt;= 0x8 goto pc+3
+188: (67) r0 &lt;&lt;=3
+189: (0f) r0 += r1
+190: (05) goto pc+1
+191: (b7) r0 = 0
+192: (b7) r1 = 0
+193: (15) if r6 == 0x0 goto pc+2
+194: (61) r1 = *(u32 *)(r6 +0)
+195: (a7) r1 ^= 5
+196: (15) if r0 == 0x0 goto pc+7
+197: (61) r3 = *(u32 *)(r0 +0)
+198: (67) r1 &lt;&lt;=32
+199: (77) r1 &gt;&gt;=32
+200: (b7) r2 = 1
+201: (1d) if r1 == r3 goto pc+1
+202: (b7) r2 = 0
+203: (0f) r8 += r2
+204: (b7) r1 =3
+205: (63) *(u32 *)(r10 -24) = r1
+206: (18) r1 = map[id:4]
+208: (bf) r7 = r10
+209: (07) r7 += -24
+210: (bf) r2 = r7
+211: (07) r1 += 272
+212: (61) r0 = *(u32 *)(r2 +0)
+213: (35) if r0 &gt;= 0x8 goto pc+3
+214: (67) r0 &lt;&lt;=3
+215: (0f) r0 += r1
+216: (05) goto pc+1
+217: (b7) r0 = 0
+218: (bf) r6 = r0
+219: (18) r1 = map[id:3]
+221: (bf) r2 = r7
+222: (07) r1 += 272
+223: (61) r0 = *(u32 *)(r2 +0)
+224: (35) if r0 &gt;= 0x8 goto pc+3
+225: (67) r0 &lt;&lt;=3
+226: (0f) r0 += r1
+227: (05) goto pc+1
+228: (b7) r0 = 0
+229: (b7) r1 = 0
+230: (15) if r6 == 0x0 goto pc+2
+231: (61) r1 = *(u32 *)(r6 +0)
+232: (a7) r1 ^= 5
+233: (15) if r0 == 0x0 goto pc+7
+234: (61) r3 = *(u32 *)(r0 +0)
+235: (67) r1 &lt;&lt;=32
+236: (77) r1 &gt;&gt;=32
+237: (b7) r2 = 1
+238: (1d) if r1 == r3 goto pc+1
+239: (b7) r2 = 0
+240: (0f) r8 += r2
+241: (b7) r1 = 4
+242: (63) *(u32 *)(r10 -24) = r1
+243: (18) r1 = map[id:4]
+245: (bf) r7 = r10
+246: (07) r7 += -24
+247: (bf) r2 = r7
+248: (07) r1 += 272
+249: (61) r0 = *(u32 *)(r2 +0)
+250: (35) if r0 &gt;= 0x8 goto pc+3
+251: (67) r0 &lt;&lt;=3
+252: (0f) r0 += r1
+253: (05) goto pc+1
+254: (b7) r0 = 0
+255: (bf) r6 = r0
+256: (18) r1 = map[id:3]
+258: (bf) r2 = r7
+259: (07) r1 += 272
+260: (61) r0 = *(u32 *)(r2 +0)
+261: (35) if r0 &gt;= 0x8 goto pc+3
+262: (67) r0 &lt;&lt;=3
+263: (0f) r0 += r1
+264: (05) goto pc+1
+265: (b7) r0 = 0
+266: (b7) r1 = 0
+267: (15) if r6 == 0x0 goto pc+2
+268: (61) r1 = *(u32 *)(r6 +0)
+269: (a7) r1 ^= 5
+270: (15) if r0 == 0x0 goto pc+7
+271: (61) r3 = *(u32 *)(r0 +0)
+272: (67) r1 &lt;&lt;=32
+273: (77) r1 &gt;&gt;=32
+274: (b7) r2 = 1
+275: (1d) if r1 == r3 goto pc+1
+276: (b7) r2 = 0
+277: (0f) r8 += r2
+278: (b7) r1 = 5
+279: (63) *(u32 *)(r10 -24) = r1
+280: (18) r1 = map[id:4]
+282: (bf) r7 = r10
+283: (07) r7 += -24
+284: (bf) r2 = r7
+285: (07) r1 += 272
+286: (61) r0 = *(u32 *)(r2 +0)
+287: (35) if r0 &gt;= 0x8 goto pc+3
+288: (67) r0 &lt;&lt;=3
+289: (0f) r0 += r1
+290: (05) goto pc+1
+291: (b7) r0 = 0
+292: (bf) r6 = r0
+293: (18) r1 = map[id:3]
+295: (bf) r2 = r7
+296: (07) r1 += 272
+297: (61) r0 = *(u32 *)(r2 +0)
+298: (35) if r0 &gt;= 0x8 goto pc+3
+299: (67) r0 &lt;&lt;=3
+300: (0f) r0 += r1
+301: (05) goto pc+1
+302: (b7) r0 = 0
+303: (b7) r1 = 0
+304: (15) if r6 == 0x0 goto pc+2
+305: (61) r1 = *(u32 *)(r6 +0)
+306: (a7) r1 ^= 5
+307: (15) if r0 == 0x0 goto pc+7
+308: (61) r3 = *(u32 *)(r0 +0)
+309: (67) r1 &lt;&lt;=32
+310: (77) r1 &gt;&gt;=32
+311: (b7) r2 = 1
+312: (1d) if r1 == r3 goto pc+1
+313: (b7) r2 = 0
+314: (0f) r8 += r2
+315: (b7) r1 = 6
+316: (63) *(u32 *)(r10 -24) = r1
+317: (18) r1 = map[id:4]
+319: (bf) r7 = r10
+320: (07) r7 += -24
+321: (bf) r2 = r7
+322: (07) r1 += 272
+323: (61) r0 = *(u32 *)(r2 +0)
+324: (35) if r0 &gt;= 0x8 goto pc+3
+325: (67) r0 &lt;&lt;=3
+326: (0f) r0 += r1
+327: (05) goto pc+1
+328: (b7) r0 = 0
+329: (bf) r6 = r0
+330: (18) r1 = map[id:3]
+332: (bf) r2 = r7
+333: (07) r1 += 272
+334: (61) r0 = *(u32 *)(r2 +0)
+335: (35) if r0 &gt;= 0x8 goto pc+3
+336: (67) r0 &lt;&lt;=3
+337: (0f) r0 += r1
+338: (05) goto pc+1
+339: (b7) r0 = 0
+340: (b7) r1 = 0
+341: (15) if r6 == 0x0 goto pc+2
+342: (61) r1 = *(u32 *)(r6 +0)
+343: (a7) r1 ^= 5
+344: (15) if r0 == 0x0 goto pc+7
+345: (61) r3 = *(u32 *)(r0 +0)
+346: (67) r1 &lt;&lt;=32
+347: (77) r1 &gt;&gt;=32
+348: (b7) r2 = 1
+349: (1d) if r1 == r3 goto pc+1
+350: (b7) r2 = 0
+351: (0f) r8 += r2
+352: (b7) r1 = 7
+353: (63) *(u32 *)(r10 -24) = r1
+354: (18) r1 = map[id:4]
+356: (bf) r7 = r10
+357: (07) r7 += -24
+358: (bf) r2 = r7
+359: (07) r1 += 272
+360: (61) r0 = *(u32 *)(r2 +0)
+361: (35) if r0 &gt;= 0x8 goto pc+3
+362: (67) r0 &lt;&lt;=3
+363: (0f) r0 += r1
+364: (05) goto pc+1
+365: (b7) r0 = 0
+366: (bf) r6 = r0
+367: (18) r1 = map[id:3]
+369: (bf) r2 = r7
+370: (07) r1 += 272
+371: (61) r0 = *(u32 *)(r2 +0)
+372: (35) if r0 &gt;= 0x8 goto pc+3
+373: (67) r0 &lt;&lt;=3
+374: (0f) r0 += r1
+375: (05) goto pc+1
+376: (b7) r0 = 0
+377: (b7) r1 = 0
+378: (15) if r6 == 0x0 goto pc+2
+379: (61) r1 = *(u32 *)(r6 +0)
+380: (a7) r1 ^= 5
+381: (55) if r0 != 0x0 goto pc+1
+382: (05) goto pc+10
+383: (61) r3 = *(u32 *)(r0 +0)
+384: (67) r1 &lt;&lt;=32
+385: (77) r1 &gt;&gt;=32
+386: (b7) r2 = 1
+387: (1d) if r1 == r3 goto pc+1
+388: (b7) r2 = 0
+389: (0f) r8 += r2
+390: (67) r8 &lt;&lt;=32
+391: (77) r8 &gt;&gt;=32
+392: (15) if r8 == 0x8 goto pc+3
+393: (85) call bpf_get_current_pid_tgid#239984
+394: (b7) r1 = 9
+395: (85) call bpf_send_signal#-115264
+396: (b7) r0 = 0
+397: (95) exit
+
+========================================End of Assembly dump=============================
+
+
+Here is the map dump
+========================================MAP DUMP=========================================
+
+ [{
+        &quot;key&quot;: 0,
+        &quot;value&quot;: 83
+    },{
+        &quot;key&quot;: 1,
+        &quot;value&quot;: 108
+    },{
+        &quot;key&quot;: 2,
+        &quot;value&quot;: 119
+    },{
+        &quot;key&quot;: 3,
+        &quot;value&quot;: 100
+    },{
+        &quot;key&quot;: 4,
+        &quot;value&quot;: 105
+    },{
+        &quot;key&quot;: 5,
+        &quot;value&quot;: 108
+    },{
+        &quot;key&quot;: 6,
+        &quot;value&quot;: 113
+    },{
+        &quot;key&quot;: 7,
+        &quot;value&quot;: 124
+    }
+]
+========================================END OF MAP DUMP==================================
+</code></pre>
+<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">I&#39;m not an expert of this eBPF assembly therefore what I did was go through it and trying to have its control flow figured out in my mind. After spending several hours with the help of GPT, I concluded that:</p>
+<ul class="list-disc list-inside text-body-color mb-10">
+<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2"><p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Line 0 - 18: Read the dfd, filename, and flags arguments of the openat system call using bpf_probe_read_compat</p>
+</li>
+<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2"><p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Line 19 - 93: Check if the filename is &quot;flag.txt&quot;</p>
+</li>
+<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2"><p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Line 94 - 391: Perform some operations using the map given and etc, the operation code is like follow in Python:</p>
+<pre><code class="language-py">for i in range(8):
+    x = i
+    i &lt;&lt;= 3
+    i += (272 + map[4])
+    x &lt;&lt;= 3
+    x += (272 + map[3])
+    print(f&quot;*({str(i)} ^ 5) == *({str(x)})&quot;)
+</code></pre>
+</li>
+<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2"><p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Line 392 - 397: Check if R8 == 0x8, if it is equal then exit with 0. This R8 is increased by 1 per iteration of character checking in memory if it is correct, unsure if the character in memory is the password we entered.</p>
+</li>
+</ul>
+<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Now from the conclusion we know that we need to <code>cat</code> out the flag.txt, trying out in terminal tell us that we need a password:</p>
+<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><img src="../../images/blog/ctfs/bi0sctf2024-baeBPF/baebpf-img1.png" alt="IMG1"></p>
+<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">From the conclusion we also know that the password must be length of 8 and when analyzing how the password being process I&#39;m very confused why there are a few of <code>(272 + map[id:?])</code> occurs in the code, the only way to explain that is the code is accessing certain eBPF element of map, but why it accessing only map id of 4 and 3 in the code instead of other id provided in the dump? No idea. If we print out the map values, we will get <code>Slwdilq|</code>. Anyway, with the information I obtained, I sent it to our team discord group and have a break.</p>
+<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">When I returned from the break, my teammates
+          <a href="https://twitter.com/Hen123Step"><span class="text-primary dark:text-white underline">@Hen123Step</span>
+          </a> figured out that the key is <code>Virality</code>, by XOR the <code>Slwdilq|</code> with 5. This immediately make sense to me if we look at the Python code above and treat those <code>i</code> and <code>x</code> as memory address instead of concrete value, but I still couldn&#39;t wrap my head around it why it looks like that, but who knows, now we can proceed with next level.</p>
+<h2 class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">Level 2</h2>
+<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">After entering the correct password, we are being greet with this:</p>
+<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><img src="../../images/blog/ctfs/bi0sctf2024-baeBPF/baebpf-img2.png" alt="IMG2"></p>
+<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">By generate the assembly dump, we get the follow:</p>
+<pre><code class="language-C">Im not feeling generous, here&#39;s a part of the code
+========================================Asm dump========================================
+
+void encrypt_function():
+   0: (bf) r6 = r10
+   1: (07) r6 += -4
+   2: (18) r9 = 0xffffffe0
+   4: (b7) r8 = 0
+; uint32_t v[2] = {0,0};
+   5: (b7) r1 = 0
+   6: (7b) *(u64 *)(r10 -8) = r1
+   7: (63) *(u32 *)(r10 -12) = r8
+; uint32_t *temp = bpf_map_lookup_elem((void *)bpf_pseudo_fd(1, -1), &amp;index);
+   8: (18) r1 = map[id:14]
+  10: (bf) r2 = r10
+  11: (07) r2 += -12
+; uint32_t *temp = bpf_map_lookup_elem((void *)bpf_pseudo_fd(1, -1), &amp;index);
+  12: (07) r1 += 272
+  13: (61) r0 = *(u32 *)(r2 +0)
+  14: (35) if r0 &gt;= 0x400 goto pc+3
+  15: (67) r0 &lt;&lt;= 3
+  16: (0f) r0 += r1
+  17: (05) goto pc+1
+  18: (b7) r0 = 0
+  19: (bf) r7 = r0
+; if (temp != NULL &amp;&amp; *temp != 0)
+  20: (15) if r7 == 0x0 goto pc+78
+  21: (61) r1 = *(u32 *)(r7 +0)
+  22: (15) if r1 == 0x0 goto pc+76
+  23: (63) *(u32 *)(r10 -8) = r1
+; uint32_t *temp2 = bpf_map_lookup_elem((void *)bpf_pseudo_fd(1, -2), &amp;index);
+  24: (18) r1 = map[id:13]
+  26: (bf) r2 = r10
+  27: (07) r2 += -12
+; uint32_t *temp2 = bpf_map_lookup_elem((void *)bpf_pseudo_fd(1, -2), &amp;index);
+  28: (07) r1 += 272
+  29: (61) r0 = *(u32 *)(r2 +0)
+  30: (35) if r0 &gt;= 0x400 goto pc+3
+  31: (67) r0 &lt;&lt;= 3
+  32: (0f) r0 += r1
+  33: (05) goto pc+1
+  34: (b7) r0 = 0
+  35: (15) if r0 == 0x0 goto pc+63
+  36: (61) r1 = *(u32 *)(r7 +0)
+  37: (15) if r1 == 0x0 goto pc+61
+  38: (b7) r1 = 32
+  39: (18) r2 = 0x9e3779b9
+  41: (61) r7 = *(u32 *)(r10 -8)
+  42: (61) r4 = *(u32 *)(r0 +0)
+  43: (63) *(u32 *)(r10 -4) = r4
+  44: (bf) r3 = r4
+  45: (67) r3 &lt;&lt;= 4
+  46: (07) r3 += 305402420
+  47: (bf) r5 = r4
+  48: (0f) r5 += r2
+  49: (af) r3 ^= r5
+  50: (bf) r5 = r4
+  51: (5f) r5 &amp;= r9
+  52: (77) r5 &gt;&gt;= 5
+  53: (07) r5 += 305402420
+  54: (af) r3 ^= r5
+  55: (0f) r3 += r7
+  56: (bf) r5 = r3
+  57: (67) r5 &lt;&lt;= 4
+  58: (07) r5 += 305402420
+  59: (bf) r0 = r2
+  60: (0f) r0 += r3
+  61: (af) r5 ^= r0
+  62: (bf) r0 = r3
+  63: (5f) r0 &amp;= r9
+  64: (77) r0 &gt;&gt;= 5
+  65: (07) r0 += 305402420
+  66: (af) r5 ^= r0
+  67: (0f) r5 += r4
+  68: (07) r2 += -1640531527
+  69: (07) r1 += -1
+  70: (bf) r0 = r1
+  71: (67) r0 &lt;&lt;= 32
+  72: (77) r0 &gt;&gt;= 32
+  73: (bf) r4 = r5
+  74: (bf) r7 = r3
+  75: (15) if r0 == 0x0 goto pc+1
+  76: (05) goto pc-33
+  77: (63) *(u32 *)(r10 -4) = r5
+  78: (63) *(u32 *)(r10 -8) = r3
+; bpf_map_update_elem((void *)bpf_pseudo_fd(1, -3), &amp;index,&amp;v[0], BPF_ANY);
+  79: (18) r1 = map[id:12]
+  81: (bf) r7 = r10
+  82: (07) r7 += -12
+  83: (bf) r3 = r10
+  84: (07) r3 += -8
+; bpf_map_update_elem((void *)bpf_pseudo_fd(1, -3), &amp;index,&amp;v[0], BPF_ANY);
+  85: (bf) r2 = r7
+  86: (b7) r4 = 0
+  87: (85) call array_map_update_elem#296464
+; bpf_map_update_elem((void *)bpf_pseudo_fd(1, -4), &amp;index,&amp;v[1], BPF_ANY);
+  88: (18) r1 = map[id:11]
+; bpf_map_update_elem((void *)bpf_pseudo_fd(1, -4), &amp;index,&amp;v[1], BPF_ANY);
+  90: (bf) r2 = r7
+  91: (bf) r3 = r6
+  92: (b7) r4 = 0
+  93: (85) call array_map_update_elem#296464
+  94: (07) r8 += 1
+  95: (bf) r1 = r8
+  96: (67) r1 &lt;&lt;= 32
+  97: (77) r1 &gt;&gt;= 32
+  98: (55) if r1 != 0x80 goto pc-94
+  99: (95) exit
+</code></pre>
+<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">At this point, I&#39;m feeling quite confident in analyzing it since the code is smaller and I have general idea of what to expect after hours of analyzing level 1 assembly, but I&#39;m quickly getting punch in the face. At first I suspect it was a modified XTEA algorithm because of the constant <code>0x9e3779b9</code>, but turns out it was TEA algorithm, let&#39;s look at a generic TEA encode function:</p>
+<pre><code class="language-C">void code(uint32_t *v, uint32_t *k)
+{
+    uint32_t v0 = v[0],
+             v1 = v[1],
+             delta = 0x9e3779b9,
+             n = 32,    // Invariant: Number of bits remaining
+             sum = 0;
+
+    while(n--) {
+        sum += delta;
+        v0 += ((v1&lt;&lt;4) + k[0]) ^ (v1 + sum) ^ ((v1&gt;&gt;5) + k[1]);
+        v1 += ((v0&lt;&lt;4) + k[2]) ^ (v0 + sum) ^ ((v0&gt;&gt;5) + k[3]);
+    }
+    v[0] = v0;
+    v[1] = v1;
+}
+</code></pre>
+<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">We know the delta, v0, v1 (From the PROG_2_OUTPUT given in above picture, we determine that it comes with pair, as the last pair was 0, 0). But we don&#39;t know the key yet, turns out it was the <code>305402420</code> (0x12341234), which make sense since it used 4 times. With all the information, the decode function is as follow:</p>
+<pre><code class="language-c">void decode(uint32_t v[2], uint32_t const key[4])
+{
+    const unsigned int num_rounds = 32;
+    unsigned int i;
+    uint32_t v0=v[0], v1=v[1], delta=0x9E3779B9, sum=delta*num_rounds;
+    for (i=0; i &lt; num_rounds; i++)
+    {
+        v1 -= ((((v0 &lt;&lt; 4) + key[2]) ^ (v0 + sum)) ^ ((v0 &gt;&gt; 5) + key[3]));
+        v0 -= ((((v1 &lt;&lt; 4) + key[0]) ^ (v1 + sum)) ^ ((v1 &gt;&gt; 5) + key[1]));
+        sum -= delta;
+    }
+    v[0]=v0; v[1]=v1;
+}
+
+int main() {
+    long long int vals[] = {0x33ae2685,0x230bcdd5,0x4f5ac093,0x3dc3e00a,0xda19d0a1,0x32c52ad0,0xc904ffac,0x3037b842,0x9c7bf31e,0x4b8dfebc,0x33335ba7,0x4c4c9188,0xa555d9a9,0xaa069852,0xa177367f,0x79daa10f,0x29ca035c,0x319fbbc8,0xd51b4a1c,0x4a1b63b6,0x99f5d2f1,0xf35fdd82,0x7e70314f,0x42077d00,0x4f84cb2b,0x4a73846a,0xbbb0581e,0x8c33c34f,0x4eb73143,0xac45de0,0x82592087,0xc02544fa,0x56590be4,0xd2f78e08,0xb2c9d125,0x65e106d8,0x46711844,0xcf16ec7f,0xc85dde46,0x51d873d,0x50319f0f,0x8e5370bd,0x80145a76,0xbdbe90a6,0x3a10947e,0xfaf968c7,0xac700a03,0x47e061be,0xe9e65b90,0xe3c65a80,0xd707d969,0x40e93f77,0x447cf10e,0xbc69c7df,0xd8c669de,0x36c05ccf,0x876411ba,0xb37a6436,0xcdbeac33,0x7ba23db9,0xc18251bd,0x926d7a16,0x9ffb0134,0xc7f9ab96,0xc635711e,0x45b69a8,0x7b0fdd2e,0xf54849a7,0x61e5d839,0x1f12687d,0xb39a4ba1,0xd4fa2f5a,0xc308a7fd,0xcc0f199b,0x6b35768,0xecb39e48,0xb2c9d125,0x65e106d8,0x9e9a0f73,0xc58bdf39,0xa9bb76d1,0xc75ccd7,0x8473c66,0x8a4ed0e5,0xae1dcf9a,0x214f0ed5,0xfb6bf695,0x56e45cc6,0x47e4e2b9,0x8e2107d1,0x5a24b1dc,0x70599ee2,0x6cd313ec,0x4fa221e8,0x6696e856,0x62fde305,0x79958e01,0x1b99f294,0x876fd3a,0x59c1d749,0x0,0x0};
+    for(int i = 0; i &lt; sizeof(vals)/sizeof(vals[0]); i+=2) {
+        uint32_t v[2] = {vals[i], vals[i+1]};
+        uint32_t k[4] = {0x12341234, 0x12341234, 0x12341234, 0x12341234};
+        my_decrypt(v, k);
+
+        printf(&quot;%llx&quot;, v[0]);
+        printf(&quot;%llx&quot;, v[1]);
+    }
+    return 0;
+}
+</code></pre>
+<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">And we will get the following as output:</p>
+<pre><code class="language-C">646566207265636375722869293a200a20202020206966286e6f742069293a0a20202020202020202072657475726e20310a202020202069662869203d3d2031293a0a20202020202020202072657475726e2020330a202020202076616c5f32203d2032202a72656363757228692d31290a202020202072657475726e2076616c5f32202b20332a2072656363757228692d3229200a2020202020657869742829200a656e635f666c6167203d205b3130322c37352c3136332c3233392c3135362c3135382c372c3134332c39322c3132302c302c35342c3138332c36352c3139392c3235332c36302c3138322c3230345d200a666f72206920696e2072616e6765283230293a0a20202020666c61675f76616c203d20656e635f666c61675b695d0a202020206374725f76616c203d20726563637572282869202a2069292b312925203235360a2020202076616c203d20666c61675f76616c205e206374725f76616c200a202020207072696e742820290a202020207072696e74286368722876616c292c656e643d222229202020875a6ff8d42f51b0
+</code></pre>
+<h2 class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">Level 3</h2>
+<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Decode it using CyberChef&#39;s From Hex we will get the following:</p>
+<pre><code class="language-py">def reccur(i):
+     if(not i):
+         return 1
+     if(i == 1):
+         return  3
+     val_2 = 2 *reccur(i-1)
+     return val_2 + 3* reccur(i-2)
+     exit()
+enc_flag = [102,75,163,239,156,158,7,143,92,120,0,54,183,65,199,253,60,182,204]
+for i in range(20):
+    flag_val = enc_flag[i]
+    ctr_val = reccur((i * i)+1)% 256
+    val = flag_val ^ ctr_val
+    print( )
+    print(chr(val),end=&quot;&quot;)   ZoøÔ/Q°
+</code></pre>
+<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Cleaning up the code and execute we will only get <code>eBPF_w</code>, this is basically due the extensive recursive loops. Using GPT, we can implement Memoization to speed up the code:</p>
+<pre><code class="language-py">def reccur_memo(i, memo):
+    if i in memo:
+        return memo[i]
+
+    if not i:
+        return 1
+    if i == 1:
+        return 3
+
+    val_2 = 2 * reccur_memo(i - 1, memo)
+    result = val_2 + 3 * reccur_memo(i - 2, memo)
+    memo[i] = result
+    return result
+
+memo = {}
+enc_flag = [102,75,163,239,156,158,7,143,92,120,0,54,183,65,199,253,60,182,204]
+for i in range(len(enc_flag)):
+    flag_val = enc_flag[i]
+    ctr_val = reccur_memo((i * i) + 1, memo) % 256
+    val = (flag_val ^ ctr_val)
+    print(chr(val),end=&quot;&quot;)
+</code></pre>
+<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Running it we will get the flag:</p>
+<pre><code>bi0sctf{eBPF_wtF_1s_th4t???}
+</code></pre>
+
+
+              <div class="sm:flex items-center justify-between pt-4">
+                <div class="mb-5">
+                  <h5 class="font-medium text-body-color text-sm mb-3">Popular Tags :</h5>
+                  <div class="flex items-center">
+                    <a class="inline-flex items-center justify-center py-2 px-4 mr-4 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white">BI0SCTF</a><a class="inline-flex items-center justify-center py-2 px-4 mr-4 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white">REV</a><a class="inline-flex items-center justify-center py-2 px-4 mr-4 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white">2024</a>
+                  </div>
+                </div>
+                <!-- <div class="mb-5"> -->
+                  <!-- <h5 class="font-medium text-body-color text-sm sm:text-right mb-3">Share this post :</h5> -->
+                  <!-- <div class="flex items-center sm:justify-end"> -->
+                    <!-- <a href="javascript:void(0)" -->
+                      <!-- class="inline-flex items-center justify-center w-9 h-9 sm:ml-3 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white"> -->
+                      <!-- <svg width="16" height="16" viewBox="0 0 16 16" class="fill-current"> -->
+                        <!-- <path -->
+                          <!-- d="M14.3442 0H1.12455C0.499798 0 0 0.497491 0 1.11936V14.3029C0 14.8999 0.499798 15.4222 1.12455 15.4222H14.2942C14.919 15.4222 15.4188 14.9247 15.4188 14.3029V1.09448C15.4688 0.497491 14.969 0 14.3442 0ZM4.57316 13.1089H2.29907V5.7709H4.57316V13.1089ZM3.42362 4.75104C2.67392 4.75104 2.09915 4.15405 2.09915 3.43269C2.09915 2.71133 2.69891 2.11434 3.42362 2.11434C4.14833 2.11434 4.74809 2.71133 4.74809 3.43269C4.74809 4.15405 4.19831 4.75104 3.42362 4.75104ZM13.1947 13.1089H10.9206V9.55183C10.9206 8.7061 10.8956 7.58674 9.72108 7.58674C8.52156 7.58674 8.34663 8.53198 8.34663 9.47721V13.1089H6.07255V5.7709H8.29665V6.79076H8.32164C8.64651 6.19377 9.37122 5.59678 10.4958 5.59678C12.8198 5.59678 13.2447 7.08925 13.2447 9.12897V13.1089H13.1947Z" /> -->
+                      <!-- </svg> -->
+                    <!-- </a> -->
+                    <!-- <a href="javascript:void(0)" -->
+                      <!-- class="inline-flex items-center justify-center w-9 h-9 ml-3 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white"> -->
+                      <!-- <svg width="18" height="14" viewBox="0 0 18 14" class="fill-current"> -->
+                        <!-- <path -->
+                          <!-- d="M15.5524 2.26027L16.625 1.0274C16.9355 0.693493 17.0202 0.436644 17.0484 0.308219C16.2016 0.770548 15.4113 0.924658 14.9032 0.924658H14.7056L14.5927 0.821918C13.9153 0.282534 13.0685 0 12.1653 0C10.1895 0 8.6371 1.48973 8.6371 3.21062C8.6371 3.31336 8.6371 3.46747 8.66532 3.57021L8.75 4.0839L8.15726 4.05822C4.54435 3.95548 1.58065 1.13014 1.10081 0.642123C0.310484 1.92637 0.762097 3.15925 1.24194 3.92979L2.20161 5.36815L0.677419 4.5976C0.705645 5.67637 1.15726 6.52397 2.03226 7.14041L2.79435 7.65411L2.03226 7.93665C2.5121 9.24658 3.58468 9.78596 4.375 9.99144L5.41935 10.2483L4.43145 10.8647C2.85081 11.8921 0.875 11.8151 0 11.738C1.77823 12.8682 3.89516 13.125 5.3629 13.125C6.46371 13.125 7.28226 13.0223 7.47984 12.9452C15.3831 11.25 15.75 4.82877 15.75 3.54452V3.36473L15.9194 3.26199C16.879 2.44007 17.2742 2.00342 17.5 1.74658C17.4153 1.77226 17.3024 1.82363 17.1895 1.84932L15.5524 2.26027Z" /> -->
+                      <!-- </svg> -->
+                    <!-- </a> -->
+                    <!-- <a href="javascript:void(0)" -->
+                      <!-- class="inline-flex items-center justify-center w-9 h-9 ml-3 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white"> -->
+                      <!-- <svg width="9" height="18" viewBox="0 0 9 18" class="fill-current"> -->
+                        <!-- <path -->
+                          <!-- d="M8.13643 7H6.78036H6.29605V6.43548V4.68548V4.12097H6.78036H7.79741C8.06378 4.12097 8.28172 3.89516 8.28172 3.55645V0.564516C8.28172 0.254032 8.088 0 7.79741 0H6.02968C4.11665 0 2.78479 1.58064 2.78479 3.92339V6.37903V6.94355H2.30048H0.65382C0.314802 6.94355 0 7.25403 0 7.70564V9.7379C0 10.1331 0.266371 10.5 0.65382 10.5H2.25205H2.73636V11.0645V16.7379C2.73636 17.1331 3.00273 17.5 3.39018 17.5H5.66644C5.81174 17.5 5.93281 17.4153 6.02968 17.3024C6.12654 17.1895 6.19919 16.9919 6.19919 16.8226V11.0927V10.5282H6.70771H7.79741C8.11222 10.5282 8.35437 10.3024 8.4028 9.96371V9.93548V9.90726L8.74182 7.95968C8.76604 7.7621 8.74182 7.53629 8.59653 7.31048C8.54809 7.16935 8.33016 7.02823 8.13643 7Z" /> -->
+                      <!-- </svg> -->
+                    <!-- </a> -->
+                  <!-- </div> -->
+                <!-- </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ====== Blog Section End -->
+
+  <!-- ====== Footer Section Start -->
+  <footer class="relative z-10 bg-primary bg-opacity-5 pt-[100px] wow fadeInUp" data-wow-delay=".1s">
+    <div class="container">
+      <div class="flex flex-wrap mx-[-16px]">
+        <div class="w-full md:w-1/2 lg:w-4/12 xl:w-5/12 px-4">
+          <div class="mb-16 max-w-[360px]">
+            <a href="/index.html" class="inline-block mb-8">
+              <img src="../../images/logo/M53-logo-transparent.png" alt="logo" class="w-40 hidden dark:block" />
+            </a>
+            <p class="text-body-color text-base font-medium leading-relaxed mb-9">Yada Yada :3</p>
+            <div class="flex items-center">
+              <!-- <a href="javascript:void(0)" aria-label="social-link" class="text-[#CED3F6] hover:text-primary mr-6">
+                  <svg width="9" height="18" viewBox="0 0 9 18" class="fill-current">
+                    <path
+                      d="M8.13643 7H6.78036H6.29605V6.43548V4.68548V4.12097H6.78036H7.79741C8.06378 4.12097 8.28172 3.89516 8.28172 3.55645V0.564516C8.28172 0.254032 8.088 0 7.79741 0H6.02968C4.11665 0 2.78479 1.58064 2.78479 3.92339V6.37903V6.94355H2.30048H0.65382C0.314802 6.94355 0 7.25403 0 7.70564V9.7379C0 10.1331 0.266371 10.5 0.65382 10.5H2.25205H2.73636V11.0645V16.7379C2.73636 17.1331 3.00273 17.5 3.39018 17.5H5.66644C5.81174 17.5 5.93281 17.4153 6.02968 17.3024C6.12654 17.1895 6.19919 16.9919 6.19919 16.8226V11.0927V10.5282H6.70771H7.79741C8.11222 10.5282 8.35437 10.3024 8.4028 9.96371V9.93548V9.90726L8.74182 7.95968C8.76604 7.7621 8.74182 7.53629 8.59653 7.31048C8.54809 7.16935 8.33016 7.02823 8.13643 7Z" />
+                  </svg>
+                </a> -->
+              <a href="https://twitter.com/M53CTF" aria-label="social-link"
+                class="text-[#CED3F6] hover:text-primary mr-6">
+                <svg width="19" height="14" viewBox="0 0 19 14" class="fill-current">
+                  <path
+                    d="M16.3024 2.26027L17.375 1.0274C17.6855 0.693493 17.7702 0.436644 17.7984 0.308219C16.9516 0.770548 16.1613 0.924658 15.6532 0.924658H15.4556L15.3427 0.821918C14.6653 0.282534 13.8185 0 12.9153 0C10.9395 0 9.3871 1.48973 9.3871 3.21062C9.3871 3.31336 9.3871 3.46747 9.41532 3.57021L9.5 4.0839L8.90726 4.05822C5.29435 3.95548 2.33065 1.13014 1.85081 0.642123C1.06048 1.92637 1.5121 3.15925 1.99194 3.92979L2.95161 5.36815L1.42742 4.5976C1.45565 5.67637 1.90726 6.52397 2.78226 7.14041L3.54435 7.65411L2.78226 7.93665C3.2621 9.24658 4.33468 9.78596 5.125 9.99144L6.16935 10.2483L5.18145 10.8647C3.60081 11.8921 1.625 11.8151 0.75 11.738C2.52823 12.8682 4.64516 13.125 6.1129 13.125C7.21371 13.125 8.03226 13.0223 8.22984 12.9452C16.1331 11.25 16.5 4.82877 16.5 3.54452V3.36473L16.6694 3.26199C17.629 2.44007 18.0242 2.00342 18.25 1.74658C18.1653 1.77226 18.0524 1.82363 17.9395 1.84932L16.3024 2.26027Z" />
+                </svg>
+              </a>
+              <a href="https://www.youtube.com/@M53CTF" aria-label="social-link"
+                class="text-[#CED3F6] hover:text-primary mr-6">
+                <svg width="18" height="14" viewBox="0 0 18 14" class="fill-current">
+                  <path
+                    d="M17.5058 2.07119C17.3068 1.2488 16.7099 0.609173 15.9423 0.395963C14.5778 7.26191e-08 9.0627 0 9.0627 0C9.0627 0 3.54766 7.26191e-08 2.18311 0.395963C1.41555 0.609173 0.818561 1.2488 0.619565 2.07119C0.25 3.56366 0.25 6.60953 0.25 6.60953C0.25 6.60953 0.25 9.68585 0.619565 11.1479C0.818561 11.9703 1.41555 12.6099 2.18311 12.8231C3.54766 13.2191 9.0627 13.2191 9.0627 13.2191C9.0627 13.2191 14.5778 13.2191 15.9423 12.8231C16.7099 12.6099 17.3068 11.9703 17.5058 11.1479C17.8754 9.68585 17.8754 6.60953 17.8754 6.60953C17.8754 6.60953 17.8754 3.56366 17.5058 2.07119ZM7.30016 9.44218V3.77687L11.8771 6.60953L7.30016 9.44218Z" />
+                </svg>
+              </a>
+              <!-- <a href="javascript:void(0)" aria-label="social-link" class="text-[#CED3F6] hover:text-primary mr-6">
+                  <svg width="17" height="16" viewBox="0 0 17 16" class="fill-current">
+                    <path
+                      d="M15.2196 0H1.99991C1.37516 0 0.875366 0.497491 0.875366 1.11936V14.3029C0.875366 14.8999 1.37516 15.4222 1.99991 15.4222H15.1696C15.7943 15.4222 16.2941 14.9247 16.2941 14.3029V1.09448C16.3441 0.497491 15.8443 0 15.2196 0ZM5.44852 13.1089H3.17444V5.7709H5.44852V13.1089ZM4.29899 4.75104C3.54929 4.75104 2.97452 4.15405 2.97452 3.43269C2.97452 2.71133 3.57428 2.11434 4.29899 2.11434C5.02369 2.11434 5.62345 2.71133 5.62345 3.43269C5.62345 4.15405 5.07367 4.75104 4.29899 4.75104ZM14.07 13.1089H11.796V9.55183C11.796 8.7061 11.771 7.58674 10.5964 7.58674C9.39693 7.58674 9.222 8.53198 9.222 9.47721V13.1089H6.94792V5.7709H9.17202V6.79076H9.19701C9.52188 6.19377 10.2466 5.59678 11.3711 5.59678C13.6952 5.59678 14.12 7.08925 14.12 9.12897V13.1089H14.07Z" />
+                  </svg>
+                </a> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12 px-4">
+          <div class="mb-16">
+            <h2 class="font-bold text-black dark:text-white text-xl mb-10">Useful Links</h2>
+            <ul>
+              <li>
+                <a href="../../blog/blog-grids.html"
+                  class="text-base font-medium inline-block text-body-color mb-4 hover:text-primary"> Blog </a>
+              </li>
+              <li>
+                <a href="/#merch" class="text-base font-medium inline-block text-body-color mb-4 hover:text-primary">
+                  Merch </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="w-full md:w-1/2 lg:w-4/12 xl:w-3/12 px-4">
+          <div class="mb-16">
+            <h2 class="font-bold text-black dark:text-white text-xl mb-10">Support & Help</h2>
+            <ul>
+              <li>
+                <a href="/#contact" class="text-base font-medium inline-block text-body-color mb-4 hover:text-primary">
+                  Contact </a>
+              </li>
+              <li>
+                <a href="/#about" class="text-base font-medium inline-block text-body-color mb-4 hover:text-primary">
+                  About </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="py-8 bg-primary bg-opacity-10">
+      <div class="container">
+        <p class="text-body-color dark:text-white text-base text-center">&copy; Crafted by M53</p>
+      </div>
+    </div>
+    <div class="absolute right-0 top-14 z-[-1]">
+      <svg width="55" height="99" viewBox="0 0 55 99" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle opacity="0.8" cx="49.5" cy="49.5" r="49.5" fill="#959CB1" />
+        <mask id="mask0_94:899" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="99" height="99">
+          <circle opacity="0.8" cx="49.5" cy="49.5" r="49.5" fill="#4A6CF7" />
+        </mask>
+        <g mask="url(#mask0_94:899)">
+          <circle opacity="0.8" cx="49.5" cy="49.5" r="49.5" fill="url(#paint0_radial_94:899)" />
+          <g opacity="0.8" filter="url(#filter0_f_94:899)">
+            <circle cx="53.8676" cy="26.2061" r="20.3824" fill="white" />
+          </g>
+        </g>
+        <defs>
+          <filter id="filter0_f_94:899" x="12.4852" y="-15.1763" width="82.7646" height="82.7646"
+            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+            <feGaussianBlur stdDeviation="10.5" result="effect1_foregroundBlur_94:899" />
+          </filter>
+          <radialGradient id="paint0_radial_94:899" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(49.5 49.5) rotate(90) scale(53.1397)">
+            <stop stop-opacity="0.47" />
+            <stop offset="1" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+    <div class="absolute left-0 bottom-24 z-[-1]">
+      <svg width="79" height="94" viewBox="0 0 79 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect opacity="0.3" x="-41" y="26.9426" width="66.6675" height="66.6675" transform="rotate(-22.9007 -41 26.9426)"
+          fill="url(#paint0_linear_94:889)" />
+        <rect x="-41" y="26.9426" width="66.6675" height="66.6675" transform="rotate(-22.9007 -41 26.9426)"
+          stroke="url(#paint1_linear_94:889)" stroke-width="0.7" />
+        <path opacity="0.3" d="M50.5215 7.42229L20.325 1.14771L46.2077 62.3249L77.1885 68.2073L50.5215 7.42229Z"
+          fill="url(#paint2_linear_94:889)" />
+        <path d="M50.5215 7.42229L20.325 1.14771L46.2077 62.3249L76.7963 68.2073L50.5215 7.42229Z"
+          stroke="url(#paint3_linear_94:889)" stroke-width="0.7" />
+        <path opacity="0.3" d="M17.9721 93.3057L-14.9695 88.2076L46.2077 62.325L77.1885 68.2074L17.9721 93.3057Z"
+          fill="url(#paint4_linear_94:889)" />
+        <path d="M17.972 93.3057L-14.1852 88.2076L46.2077 62.325L77.1884 68.2074L17.972 93.3057Z"
+          stroke="url(#paint5_linear_94:889)" stroke-width="0.7" />
+        <defs>
+          <linearGradient id="paint0_linear_94:889" x1="-41" y1="21.8445" x2="36.9671" y2="59.8878"
+            gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4A6CF7" stop-opacity="0.62" />
+            <stop offset="1" stop-color="#4A6CF7" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="paint1_linear_94:889" x1="25.6675" y1="95.9631" x2="-42.9608" y2="20.668"
+            gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4A6CF7" stop-opacity="0" />
+            <stop offset="1" stop-color="#4A6CF7" stop-opacity="0.51" />
+          </linearGradient>
+          <linearGradient id="paint2_linear_94:889" x1="20.325" y1="-3.98039" x2="90.6248" y2="25.1062"
+            gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4A6CF7" stop-opacity="0.62" />
+            <stop offset="1" stop-color="#4A6CF7" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="paint3_linear_94:889" x1="18.3642" y1="-1.59742" x2="113.9" y2="80.6826"
+            gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4A6CF7" stop-opacity="0" />
+            <stop offset="1" stop-color="#4A6CF7" stop-opacity="0.51" />
+          </linearGradient>
+          <linearGradient id="paint4_linear_94:889" x1="61.1098" y1="62.3249" x2="-8.82468" y2="58.2156"
+            gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4A6CF7" stop-opacity="0.62" />
+            <stop offset="1" stop-color="#4A6CF7" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="paint5_linear_94:889" x1="65.4236" y1="65.0701" x2="24.0178" y2="41.6598"
+            gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4A6CF7" stop-opacity="0" />
+            <stop offset="1" stop-color="#4A6CF7" stop-opacity="0.51" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </footer>
+  <!-- ====== Footer Section End -->
+
+  <!-- ====== Back To Top Start -->
+  <a href="javascript:void(0)"
+    class="hidden items-center justify-center bg-primary text-white w-10 h-10 rounded-md fixed bottom-8 right-8 left-auto z-[999] hover:shadow-signUp hover:bg-opacity-80 transition duration-300 ease-in-out back-to-top shadow-md">
+    <span class="w-3 h-3 border-t border-l border-white rotate-45 mt-[6px]"></span>
+  </a>
+  <!-- ====== Back To Top End -->
+
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+# Things to do manually after running blog-grid.js and blog-post.js
+- Change grid-blog featured image
+- Change grid-blog description
+- Change grid-blog author position & avatar image
+- Setup all blog-post required images (path: ../../images/blog/ctfs/)
+- Setup blog-posts feature image

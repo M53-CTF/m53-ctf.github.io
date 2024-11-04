@@ -1,6 +1,9 @@
 import '../../node_modules/glightbox/dist/css/glightbox.min.css';
 import '../css/animate.css';
 import '../css/style.css';
+import '../css/prism.css';
+import './prism.js';
+import './prism-normalize-whitespace.js';
 
 import GLightbox from 'glightbox';
 import WOW from 'wowjs';
@@ -26,15 +29,15 @@ const lightbox = GLightbox({
   'use strict';
 
   // ==== darkToggler
-  const darkTogglerCheckbox = document.querySelector('#darkToggler');
-  const html = document.querySelector('html');
+  // const darkTogglerCheckbox = document.querySelector('#darkToggler');
+  // const html = document.querySelector('html');
 
-  const darkModeToggler = () => {
-    darkTogglerCheckbox.checked ? html.classList.remove('dark') : html.classList.add('dark');
-  };
-  darkModeToggler();
+  // const darkModeToggler = () => {
+  //   darkTogglerCheckbox.checked ? html.classList.remove('dark') : html.classList.add('dark');
+  // };
+  // darkModeToggler();
 
-  darkTogglerCheckbox.addEventListener('click', darkModeToggler);
+  // darkTogglerCheckbox.addEventListener('click', darkModeToggler);
 
   // ======= Sticky
   window.onscroll = function () {

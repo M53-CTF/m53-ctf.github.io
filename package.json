@@ -30,7 +30,12 @@
     "webpack-dev-server": "^4.7.3"
   },
   "dependencies": {
+    "csv-parser": "^3.0.0",
+    "front-matter": "^4.0.2",
     "glightbox": "^3.2.0",
+    "gray-matter": "^4.0.3",
+    "marked": "^13.0.0",
+    "prompt-sync": "^4.2.0",
     "wowjs": "^1.1.3"
   }
 }
