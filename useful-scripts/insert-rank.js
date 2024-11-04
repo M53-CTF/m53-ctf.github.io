@@ -25,28 +25,28 @@ var rankTemplate = `
         <div class="w-full px-4">
             <div class="relative bg-white dark:bg-dark shadow-one rounded-md overflow-hidden mb-10 wow fadeInUp"
             data-wow-delay=".1s">
-            <div class="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
-                <div class="flex items-center">
+            <div class="p-4 sm:p-6 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
+                <div class="flex flex-nowrap items-center justify-between">
+                <!-- Ranking Section -->
                 <div
-                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5 border-r border-body-color border-opacity-10 dark:border-white dark:border-opacity-10" style="min-width: 90px;">
+                  class="flex items-center pr-2 sm:pr-3 xl:pr-3 2xl:pr-5 border-r border-body-color border-opacity-10 dark:border-white dark:border-opacity-10 min-w-[50px] sm:min-w-[70px]">
                     <div class="flex-1 flex items-center">
                     <div class="flex-1">
-                        <h4 class="ranking RANK_CSS"># RANK_OBTAINED</h4>
+                        <h4 class="ranking RANK_CSS text-sm sm:text-base"># RANK_OBTAINED</h4>
                     </div>
                     </div>
                 </div>
-                <div
-                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5">
-                    <div class="flex-1 flex items-center">
+                <!-- Competition Name and Date Section -->
+                <div class="flex items-center flex-grow justify-between pr-2 sm:pr-3 xl:pr-3 2xl:pr-5">
                     <div class="flex-1">
-                        <h4 class="competition-name">CTF_NAME</h4>
-                        <p class="competition-date">CTF_DATE</p>
-                    </div>
+                        <h4 class="competition-name text-sm sm:text-base break-words">CTF_NAME</h4>
+                        <p class="competition-date text-xs sm:text-sm">CTF_DATE</p>
                     </div>
                 </div>
-                <div class="flex items-center justify-end flex-1 min-w-200px">
+                <!-- Points and Merger Section -->
+                <div class="flex items-center justify-between min-w-[120px] sm:min-w-[150px] gap-x-2 sm:gap-x-3">
                     <!-- MERGER_ICON -->
-                    <h4 class="earned-points">CTF_POINTS Points</h4>
+                    <h4 class="earned-points text-xs sm:text-sm">CTF_POINTS Points</h4>
                 </div>
                 </div>
             </div>
@@ -55,8 +55,8 @@ var rankTemplate = `
 `;
 
 var mergerTemplate = `
-                <div class="merger-oval">
-                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(-90deg);">
+                <div class="merger-oval flex items-center justify-center p-1 sm:p-2 text-xs sm:text-sm flex-shrink-0" aria-label="Merger Icon">
+                    <svg width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(-90deg);" aria-hidden="true">
                     <path
                         d="M7.586 8.00366L4 8.00366C3.44772 8.00366 3 7.55595 3 7.00366C3 6.45138 3.44772 6.00366 4 6.00366L8 6.00366C8.26509 6.00366 8.51933 6.10892 8.70685 6.2963L13.414 11H18.5845L15.2931 7.71103C14.9025 7.32065 14.9023 6.68748 15.2926 6.29681C15.683 5.90615 16.3162 5.90592 16.7068 6.2963L21.7068 11.2926C21.8945 11.4802 22 11.7346 22 11.9998C22 12.2651 21.8947 12.5195 21.7071 12.7071L16.7071 17.7071C16.3166 18.0976 15.6834 18.0976 15.2929 17.7071C14.9024 17.3166 14.9024 16.6834 15.2929 16.2929L18.5858 13H13.4142L8.70711 17.7071C8.51957 17.8947 8.26522 18 8 18H4C3.44772 18 3 17.5523 3 17C3 16.4477 3.44772 16 4 16H7.58579L11.5855 12.0003L7.586 8.00366Z"
                         fill="#212121" />
