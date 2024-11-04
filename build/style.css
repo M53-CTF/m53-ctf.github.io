@@ -1319,6 +1319,9 @@ input#checkboxLabel:checked ~ .box span{
 .p-4{
   padding: 1rem;
 }
+.p-2{
+  padding: 0.5rem;
+}
 .p-1{
   padding: 0.25rem;
 }
@@ -1937,8 +1940,8 @@ input#checkboxLabel:checked ~ .box span{
          column-gap: 0.75rem;
   }
 
-  .sm\:p-6{
-    padding: 1.5rem;
+  .sm\:p-4{
+    padding: 1rem;
   }
 
   .sm\:p-2{
@@ -2081,9 +2084,9 @@ input#checkboxLabel:checked ~ .box span{
     padding-right: 2.25rem;
   }
 
-  .md\:py-8{
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+  .md\:py-6{
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 
   .md\:px-6{
@@ -2099,6 +2102,11 @@ input#checkboxLabel:checked ~ .box span{
   .md\:px-\[50px\]{
     padding-left: 50px;
     padding-right: 50px;
+  }
+
+  .md\:py-8{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 
   .md\:pt-\[150px\]{

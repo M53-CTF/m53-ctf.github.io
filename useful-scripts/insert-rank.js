@@ -25,11 +25,11 @@ var rankTemplate = `
         <div class="w-full px-4">
             <div class="relative bg-white dark:bg-dark shadow-one rounded-md overflow-hidden mb-10 wow fadeInUp"
             data-wow-delay=".1s">
-            <div class="p-4 sm:p-6 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
+            <div class="p-2 sm:p-4 md:py-6 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
                 <div class="flex flex-nowrap items-center justify-between">
                 <!-- Ranking Section -->
                 <div
-                  class="flex items-center pr-2 sm:pr-3 xl:pr-3 2xl:pr-5 border-r border-body-color border-opacity-10 dark:border-white dark:border-opacity-10 min-w-[50px] sm:min-w-[70px]">
+                  class="flex items-center pr-2 sm:pr-3 xl:pr-3 2xl:pr-5 mr-2 border-r border-body-color border-opacity-10 dark:border-white dark:border-opacity-10 min-w-[50px] sm:min-w-[60px]">
                     <div class="flex-1 flex items-center">
                     <div class="flex-1">
                         <h4 class="ranking RANK_CSS text-sm sm:text-base"># RANK_OBTAINED</h4>
