@@ -98,7 +98,7 @@ fs.createReadStream(process.argv[2])
     })
     .on('end', () => {
         // Sort the results based on username A-Z
-        results.sort((a, b) => (a.username > b.username) ? 1 : -1);
+        results.sort((a, b) => (a.username < b.username) ? 1 : -1);
 
         var membersInformation = "";
 
@@ -109,7 +109,7 @@ fs.createReadStream(process.argv[2])
             temp = temp.replace("PERSONAL_USERNAME", result['Username / Nickname / Name (E.g. Choo)']);
             temp = temp.replace("PERSONAL_IMAGE_URL", result['Profile Picture / Avatar URL (See manual for instructions to obtain the URL)']);
             temp = temp.replace("PERSONAL_TITLE", result['Title / Job Title (E.g. Security Engineer / Working Professional / Undergraduate / Postgraduate)']);
-            temp = temp.replace("PERSONAL_QUOTE", result['Quote (E.g. I like Teh O limau Ais Ikat Tepi)']);
+          temp = temp.replace("PERSONAL_QUOTE", result['Quote (E.g. I like Teh O limau Ais Ikat Tepi) (*Note: It is advisable to be not too long)']);
             // Setup icons URLs
             var iconURLs = "";
             if (result['Linkedin URL'] != "") {
