@@ -886,6 +886,9 @@ input#checkboxLabel:checked ~ .box span{
 .mb-1{
   margin-bottom: 0.25rem;
 }
+.mr-2{
+  margin-right: 0.5rem;
+}
 .mr-10{
   margin-right: 1.0rem;
 }
@@ -1913,8 +1916,8 @@ input#checkboxLabel:checked ~ .box span{
     width: 50%;
   }
 
-  .sm\:min-w-\[70px\]{
-    min-width: 70px;
+  .sm\:min-w-\[60px\]{
+    min-width: 60px;
   }
 
   .sm\:min-w-\[150px\]{
