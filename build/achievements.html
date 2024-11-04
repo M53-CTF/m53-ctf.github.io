@@ -6,6 +6,83 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>M53</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+    .ranking {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.0rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      margin-bottom: 0.5rem;
+    }
+
+    .ranking-1 {
+      color: gold;
+    }
+
+    .ranking-2 {
+      color: #B0C4DE; /* Light Steel Blue */
+    }
+
+    .ranking-3 {
+      color: #cd7f32;
+      /* Bronze */
+    }
+
+    .ranking-other {
+      color: silver;
+    }
+
+    .competition-name {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #d3d3d3;
+    }
+
+    .competition-date {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      color: #718096;
+    }
+
+    .earned-points {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #d3d3d3;
+      text-align: right;
+      margin-left: 200px;
+      /* margin-right: 10px; */
+      padding-right: 10px;
+    }
+
+    .merger-oval {
+      display: flex;
+      padding: 10px 15px;
+      /* background-color: #f0f0f0; */
+      /* color: FF4F4F */
+      background-color: #2196F3;
+      /* Light grey background */
+      border-radius: 50px;
+      /* Creates the oval shape */
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .earned-points{
+        margin-left: 20px;
+      }
+    }
+  </style>
+
+
 <link rel="icon" href="favicon.ico"><link href="style.css" rel="stylesheet"></head>
 
 <body class="dark:bg-black">
@@ -117,9 +194,9 @@
       <div class="flex flex-wrap items-center mx-[-16px]">
         <div class="w-full md:w-8/12 lg:w-7/12 px-4">
           <div class="max-w-[570px] mb-12 md:mb-0">
-            <h1 class="font-bold text-black dark:text-white text-2xl sm:text-3xl mb-5">Recruitment</h1>
+            <h1 class="font-bold text-black dark:text-white text-2xl sm:text-3xl mb-5">Achivements</h1>
             <p class="font-medium text-base text-body-color leading-relaxed">
-              Recruitment / Application / Onboarding Information
+              Our team achievements in various competitions and events.
             </p>
           </div>
         </div>
@@ -130,7 +207,7 @@
                 <a href="index.html" class="font-medium text-base text-body-color pr-1 hover:text-primary"> Home </a>
                 <span class="block w-2 h-2 border-t-2 border-r-2 border-body-color rotate-45 mr-3"></span>
               </li>
-              <li class="font-medium text-base text-primary">Recruitment</li>
+              <li class="font-medium text-base text-primary">Achivements</li>
             </ul>
           </div>
         </div>
@@ -174,37 +251,437 @@
   </section>
   <!-- ====== Page Title Section End -->
 
-  <!-- ====== Contact Section Start -->
-  <section id="contact" class="pt-[120px] pb-20 overflow-hidden">
+  <!-- ====== Blog Section Start -->
+  <section class="pt-[120px] pb-[120px]">
     <div class="container">
-      <div class="flex flex-wrap mx-[-16px]">
-        <div class="w-full lg:w-8/12 px-4">
-          <div
-            class="bg-primary bg-opacity-[3%] dark:bg-dark rounded-md p-11 mb-12 lg:mb-5 sm:p-[55px] lg:p-11 xl:p-[55px] wow fadeInUp"
-            data-wow-delay=".15s
-              ">
-            <h2 class="font-bold text-black dark:text-white text-2xl sm:text-3xl lg:text-2xl xl:text-3xl mb-3">Application Information</h2>
-            <p class="text-body-color text-base font-medium mb-12">
-              Recruitment is currently open for Malaysian citizens or players based in Malaysia.</br></br>
+      <div class="flex flex-wrap mx-[-16px] justify-center">
 
-              If you're interested to join us, feel free to try out our recruitment challenges in Web, Pwn, Cryptography, Reversing,
-              Forensics, or Miscellaneous and submit a write-up.</br></br>
 
-              Your application and write-up will be reviewed and go through a one-day voting process.</br></br>
 
-              All the details mentioned above is in the link below, we're excited to see what you
-              can do!</br></br>
 
-              Link: <a href="https://forms.gle/mfQcNHh6o5JunXrVA" style="text-decoration: underline;">https://forms.gle/mfQcNHh6o5JunXrVA</a></br></br>
 
-              Note: we are also looking for moderator / graphic designer / web technician, if you're interested, please contact us at <b><a href="/#contact">here</a></b>
-            </p>
+
+
+
+
+        <!-- MARK FOR NEXT -->
+
+        <div class="w-full px-4">
+            <div class="relative bg-white dark:bg-dark shadow-one rounded-md overflow-hidden mb-10 wow fadeInUp"
+            data-wow-delay=".1s">
+            <div class="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
+                <div class="flex items-center">
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5 border-r border-body-color border-opacity-10 dark:border-white dark:border-opacity-10" style="min-width: 90px;">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="ranking ranking-other"># 17</h4>
+                    </div>
+                    </div>
+                </div>
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="competition-name">HITCON CTF 2024 Quals</h4>
+                        <p class="competition-date">12 Jul 2024</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end flex-1 min-w-200px">
+
+                    <div class="merger-oval">
+                        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(-90deg);">
+                        <path
+                            d="M7.586 8.00366L4 8.00366C3.44772 8.00366 3 7.55595 3 7.00366C3 6.45138 3.44772 6.00366 4 6.00366L8 6.00366C8.26509 6.00366 8.51933 6.10892 8.70685 6.2963L13.414 11H18.5845L15.2931 7.71103C14.9025 7.32065 14.9023 6.68748 15.2926 6.29681C15.683 5.90615 16.3162 5.90592 16.7068 6.2963L21.7068 11.2926C21.8945 11.4802 22 11.7346 22 11.9998C22 12.2651 21.8947 12.5195 21.7071 12.7071L16.7071 17.7071C16.3166 18.0976 15.6834 18.0976 15.2929 17.7071C14.9024 17.3166 14.9024 16.6834 15.2929 16.2929L18.5858 13H13.4142L8.70711 17.7071C8.51957 17.8947 8.26522 18 8 18H4C3.44772 18 3 17.5523 3 17C3 16.4477 3.44772 16 4 16H7.58579L11.5855 12.0003L7.586 8.00366Z"
+                            fill="#212121" />
+                        </svg>
+                        &nbsp;Merger
+                    </div>
+
+                    <h4 class="earned-points">2579 Points</h4>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="w-full px-4">
+            <div class="relative bg-white dark:bg-dark shadow-one rounded-md overflow-hidden mb-10 wow fadeInUp"
+            data-wow-delay=".1s">
+            <div class="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
+                <div class="flex items-center">
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5 border-r border-body-color border-opacity-10 dark:border-white dark:border-opacity-10" style="min-width: 90px;">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="ranking ranking-1"># 1</h4>
+                    </div>
+                    </div>
+                </div>
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="competition-name">Junior.Crypt.2024 CTF</h4>
+                        <p class="competition-date">03 Jul 2024</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end flex-1 min-w-200px">
+                  <h4 class="earned-points">5422 Points</h4>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="w-full px-4">
+            <div class="relative bg-white dark:bg-dark shadow-one rounded-md overflow-hidden mb-10 wow fadeInUp"
+            data-wow-delay=".1s">
+            <div class="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
+                <div class="flex items-center">
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5 border-r border-body-color border-opacity-10 dark:border-white dark:border-opacity-10" style="min-width: 90px;">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="ranking ranking-other"># 19</h4>
+                    </div>
+                    </div>
+                </div>
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="competition-name">HACK'OSINT - CTF</h4>
+                        <p class="competition-date">22 Jun 2024</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end flex-1 min-w-200px">
+                    <!-- MERGER_ICON -->
+                    <h4 class="earned-points">171 Points</h4>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="w-full px-4">
+            <div class="relative bg-white dark:bg-dark shadow-one rounded-md overflow-hidden mb-10 wow fadeInUp"
+            data-wow-delay=".1s">
+            <div class="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
+                <div class="flex items-center">
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5 border-r border-body-color border-opacity-10 dark:border-white dark:border-opacity-10" style="min-width: 90px;">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="ranking ranking-other"># 19</h4>
+                    </div>
+                    </div>
+                </div>
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="competition-name">L3akCTF 2024</h4>
+                        <p class="competition-date">24 May 2024</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end flex-1 min-w-200px">
+                    <!-- MERGER_ICON -->
+                    <h4 class="earned-points">6048 Points</h4>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="w-full px-4">
+            <div class="relative bg-white dark:bg-dark shadow-one rounded-md overflow-hidden mb-10 wow fadeInUp"
+            data-wow-delay=".1s">
+            <div class="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
+                <div class="flex items-center">
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5 border-r border-body-color border-opacity-10 dark:border-white dark:border-opacity-10" style="min-width: 90px;">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="ranking ranking-other"># 13</h4>
+                    </div>
+                    </div>
+                </div>
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="competition-name">NahamCon CTF 2024</h4>
+                        <p class="competition-date">24 May 2024</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end flex-1 min-w-200px">
+                    <!-- MERGER_ICON -->
+                    <h4 class="earned-points">14220 Points</h4>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="w-full px-4">
+            <div class="relative bg-white dark:bg-dark shadow-one rounded-md overflow-hidden mb-10 wow fadeInUp"
+            data-wow-delay=".1s">
+            <div class="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
+                <div class="flex items-center">
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5 border-r border-body-color border-opacity-10 dark:border-white dark:border-opacity-10" style="min-width: 90px;">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="ranking ranking-other"># 18</h4>
+                    </div>
+                    </div>
+                </div>
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="competition-name">SAS CTF 2024 Quals</h4>
+                        <p class="competition-date">18 May 2024</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end flex-1 min-w-200px">
+                    <h4 class="earned-points">1124 Points</h4>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="w-full px-4">
+            <div class="relative bg-white dark:bg-dark shadow-one rounded-md overflow-hidden mb-10 wow fadeInUp"
+            data-wow-delay=".1s">
+            <div class="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
+                <div class="flex items-center">
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5 border-r border-body-color border-opacity-10 dark:border-white dark:border-opacity-10" style="min-width: 90px;">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="ranking ranking-other"># 18</h4>
+                    </div>
+                    </div>
+                </div>
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="competition-name">Mapna CTF 2024</h4>
+                        <p class="competition-date">20 Jan 2024</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end flex-1 min-w-200px">
+                    <h4 class="earned-points">1028 Points</h4>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="w-full px-4">
+            <div class="relative bg-white dark:bg-dark shadow-one rounded-md overflow-hidden mb-10 wow fadeInUp"
+            data-wow-delay=".1s">
+            <div class="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
+                <div class="flex items-center">
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5 border-r border-body-color border-opacity-10 dark:border-white dark:border-opacity-10" style="min-width: 90px;">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="ranking ranking-other"># 9</h4>
+                    </div>
+                    </div>
+                </div>
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="competition-name">Wargames.MY CTF 2023</h4>
+                        <p class="competition-date">16 Dec 2023</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end flex-1 min-w-200px">
+                    <h4 class="earned-points">4503 Points</h4>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="w-full px-4">
+            <div class="relative bg-white dark:bg-dark shadow-one rounded-md overflow-hidden mb-10 wow fadeInUp"
+            data-wow-delay=".1s">
+            <div class="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
+                <div class="flex items-center">
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5 border-r border-body-color border-opacity-10 dark:border-white dark:border-opacity-10" style="min-width: 90px;">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="ranking ranking-other"># 13</h4>
+                    </div>
+                    </div>
+                </div>
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="competition-name">1337UP LIVE CTF</h4>
+                        <p class="competition-date">17 Nov 2023</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end flex-1 min-w-200px">
+                    <h4 class="earned-points">7055 Points</h4>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="w-full px-4">
+            <div class="relative bg-white dark:bg-dark shadow-one rounded-md overflow-hidden mb-10 wow fadeInUp"
+            data-wow-delay=".1s">
+            <div class="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
+                <div class="flex items-center">
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5 border-r border-body-color border-opacity-10 dark:border-white dark:border-opacity-10" style="min-width: 90px;">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="ranking ranking-other"># 6</h4>
+                    </div>
+                    </div>
+                </div>
+                <div class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5">
+                  <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="competition-name">TCP1P CTF 2023: First Step Beyond Nusantara</h4>
+                        <p class="competition-date">13 Oct 2023</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-end flex-1 min-w-200px">
+                  <h4 class="earned-points">8078 Points</h4>
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="w-full px-4">
+            <div class="relative bg-white dark:bg-dark shadow-one rounded-md overflow-hidden mb-10 wow fadeInUp"
+            data-wow-delay=".1s">
+            <div class="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
+                <div class="flex items-center">
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5 border-r border-body-color border-opacity-10 dark:border-white dark:border-opacity-10" style="min-width: 90px;">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="ranking ranking-other"># 15</h4>
+                    </div>
+                    </div>
+                </div>
+                <div
+                    class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5">
+                    <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                        <h4 class="competition-name">Hacker's Playground 2023</h4>
+                        <p class="competition-date">19 Aug 2023</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end flex-1 min-w-200px">
+                  <h4 class="earned-points">1349 Points</h4>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="w-full px-4">
+          <div class="relative bg-white dark:bg-dark shadow-one rounded-md overflow-hidden mb-10 wow fadeInUp"
+            data-wow-delay=".1s">
+            <div class="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
+              <div class="flex items-center">
+                <div
+                  class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5 border-r border-body-color border-opacity-10 dark:border-white dark:border-opacity-10" style="min-width: 90px;">
+                  <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                      <h4 class="ranking ranking-other"># 7</h4>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="flex items-center pr-5 mr-5 xl:pr-3 2xl:pr-5 xl:mr-3 2xl:mr-5">
+                  <div class="flex-1 flex items-center">
+                    <div class="flex-1">
+                      <h4 class="competition-name">CYBERGON CTF 2023</h4>
+                      <p class="competition-date">19 Aug 2023</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center justify-end flex-1 min-w-200px">
+                  <h4 class="earned-points">4035 Points</h4>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- <div class="flex flex-wrap mx-[-16px] wow fadeInUp" data-wow-delay=".15s">
+        <div class="w-full px-4">
+          <ul class="flex items-center pt-8 justify-center">
+            <li class="mx-1">
+              <a href="javascript:void(0)"
+                class="flex items-center justify-center rounded-md bg-body-color bg-opacity-[15%] hover:bg-primary hover:bg-opacity-100 transition hover:text-white text-body-color px-4 text-sm min-w-[36px] h-9">
+                Prev
+              </a>
+            </li>
+            <li class="mx-1">
+              <a href="javascript:void(0)"
+                class="flex items-center justify-center rounded-md bg-body-color bg-opacity-[15%] hover:bg-primary hover:bg-opacity-100 transition hover:text-white text-body-color px-4 text-sm min-w-[36px] h-9">
+                1
+              </a>
+            </li>
+            <li class="mx-1">
+              <a href="javascript:void(0)"
+                class="flex items-center justify-center rounded-md bg-body-color bg-opacity-[15%] hover:bg-primary hover:bg-opacity-100 transition hover:text-white text-body-color px-4 text-sm min-w-[36px] h-9">
+                2
+              </a>
+            </li>
+            <li class="mx-1">
+              <a href="javascript:void(0)"
+                class="flex items-center justify-center rounded-md bg-body-color bg-opacity-[15%] hover:bg-primary hover:bg-opacity-100 transition hover:text-white text-body-color px-4 text-sm min-w-[36px] h-9">
+                Next
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div> -->
     </div>
   </section>
-  <!-- ====== Contact Section End -->
+  <!-- ====== Blog Section End -->
 
   <!-- ====== Footer Section Start -->
   <footer class="relative z-10 bg-primary bg-opacity-5 pt-[100px] wow fadeInUp" data-wow-delay=".1s">
