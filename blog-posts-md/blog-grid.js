@@ -71,7 +71,7 @@ const customHtml = `
                         class="absolute top-6 right-6 bg-primary rounded-full inline-flex items-center justify-center py-2 px-4 font-semibold text-sm text-white">
                         CAT_TO_BE_REPLACED
                     </span>
-                    <img src="../images/blog/blog-01.jpg" alt="image" class="w-[408px] h-[242px]" />
+                    <img src="../images/blog/blog-01.jpg" alt="image" class="w-[408px] h-[242px] object-in" />
                 </a>
                 <div class="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
                     <h3>

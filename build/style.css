@@ -1060,6 +1060,9 @@ input#checkboxLabel:checked ~ .box span{
 .w-\[60px\]{
   width: 60px;
 }
+.w-\[408px\]{
+  width: 408px;
+}
 .min-w-\[50px\]{
   min-width: 50px;
 }
