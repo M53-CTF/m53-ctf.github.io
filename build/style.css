@@ -1161,6 +1161,9 @@ input#checkboxLabel:checked ~ .box span{
 .resize{
   resize: both;
 }
+.flex-col{
+  flex-direction: column;
+}
 .flex-wrap{
   flex-wrap: wrap;
 }
@@ -1415,9 +1418,6 @@ input#checkboxLabel:checked ~ .box span{
 .py-10{
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
-}
-.pr-16{
-  padding-right: 4rem;
 }
 .pt-\[180px\]{
   padding-top: 180px;
@@ -1931,6 +1931,10 @@ input#checkboxLabel:checked ~ .box span{
     max-width: 130px;
   }
 
+  .sm\:flex-row{
+    flex-direction: row;
+  }
+
   .sm\:justify-end{
     justify-content: flex-end;
   }
@@ -1967,6 +1971,10 @@ input#checkboxLabel:checked ~ .box span{
   .sm\:px-10{
     padding-left: 2.5rem;
     padding-right: 2.5rem;
+  }
+
+  .sm\:pr-16{
+    padding-right: 4rem;
   }
 
   .sm\:pr-3{
