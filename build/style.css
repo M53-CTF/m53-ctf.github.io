@@ -1012,6 +1012,9 @@ input#checkboxLabel:checked ~ .box span{
 .max-h-\[60px\]{
   max-height: 60px;
 }
+.max-h-\[40px\]{
+  max-height: 40px;
+}
 .w-full{
   width: 100%;
 }
@@ -1913,6 +1916,10 @@ input#checkboxLabel:checked ~ .box span{
 
   .sm\:max-h-\[80px\]{
     max-height: 80px;
+  }
+
+  .sm\:max-h-\[60px\]{
+    max-height: 60px;
   }
 
   .sm\:w-1\/2{
