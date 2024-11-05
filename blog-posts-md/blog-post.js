@@ -120,18 +120,31 @@ var bodyNavbarTemplate = `
                   Sponsors
                   </a>
                 </li>
-              <li class="relative group">
-                <a href="/achievements.html"
-                class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
-                Achievements
-              </a>
-            </li>
-            <li class="relative group">
-              <a href="/#contact"
-                class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
-                Contact
-              </a>
-            </li>
+                <li class="relative group">
+                  <a href="/achievements.html"
+                  class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
+                  Achievements
+                  </a>
+                </li>
+                <li class="relative group">
+                  <a href="/#contact"
+                    class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
+                    Contact
+                  </a>
+                </li>
+                <!-- Blog and Members inside the collapsible menu for mobile -->
+                <li class="relative group lg:hidden">
+                  <a href="blog/blog-grids.html"
+                    class="menu-scroll text-base font-bold text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
+                    Blog
+                  </a>
+                </li>
+                <li class="relative group lg:hidden">
+                  <a href="/members.html"
+                    class="menu-scroll text-base font-bold text-white py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12 rounded-md hover:shadow-signUp hover:bg-opacity-90">
+                    Members
+                  </a>
+                </li>
               </ul>
             </nav>
           </div>
@@ -484,15 +497,15 @@ const renderer = {
     return html.replace(/^<p/, '<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"');
   },
   strong(strong) {
-      return `<strong class="text-primary dark:text-white">${strong.text}</strong>`;
+    return `<strong class="text-primary dark:text-white">${strong.text}</strong>`;
   },
-  link(link){
-      return `
+  link(link) {
+    return `
           <a href="${link.href}"><span class="text-primary dark:text-white underline">${link.text}</span>
           </a>`;
   },
-  blockquote(quote){
-      return `
+  blockquote(quote) {
+    return `
           <div
               class="rounded-md overflow-hidden p-8 md:p-9 lg:p-8 xl:p-9 bg-primary bg-opacity-10 relative z-10 mb-10">
               <p class="text-center text-base text-body-color italic font-medium">
@@ -558,51 +571,51 @@ marked.use({ renderer, useNewRenderer: true });
 // Read the Markdown file
 // \blog-posts-md> node blog-post.js example.md
 fs.readFile(process.argv[2], 'utf8', (err, data) => {
-    if (err) {
-        console.error(err);
-        return;
-    }
+  if (err) {
+    console.error(err);
+    return;
+  }
 
-    // Parse the content attribute
-    const content = fm(data);
+  // Parse the content attribute
+  const content = fm(data);
 
-    // Replace the details in the templates
-    headerTemplate = headerTemplate.replace('TITLE_TO_BE_REPLACED', content.attributes.title);
-    blogSectionTemplate = blogSectionTemplate.replace('TITLE_TO_BE_REPLACED', content.attributes.title);
-    blogSectionTemplate = blogSectionTemplate.replace('AUTHOR_TO_BE_REPLACED', content.attributes.author);
-    blogSectionTemplate = blogSectionTemplate.replace('DATE_TO_BE_REPLACED', content.attributes.date);
-    blogSectionTemplate = blogSectionTemplate.replace('CAT_TO_BE_REPLACED', content.attributes.category);
+  // Replace the details in the templates
+  headerTemplate = headerTemplate.replace('TITLE_TO_BE_REPLACED', content.attributes.title);
+  blogSectionTemplate = blogSectionTemplate.replace('TITLE_TO_BE_REPLACED', content.attributes.title);
+  blogSectionTemplate = blogSectionTemplate.replace('AUTHOR_TO_BE_REPLACED', content.attributes.author);
+  blogSectionTemplate = blogSectionTemplate.replace('DATE_TO_BE_REPLACED', content.attributes.date);
+  blogSectionTemplate = blogSectionTemplate.replace('CAT_TO_BE_REPLACED', content.attributes.category);
 
-    if(content.attributes.origsrc.trim() != "" && content.attributes.origsrc.trim() != null) {
-      origSrcTemplate = origSrcTemplate.replace(/SRC_TO_BE_REPLACED/g, content.attributes.origsrc);
-      blogSectionTemplate = blogSectionTemplate.replace('<!-- ORIGINAL_SOURCE -->', origSrcTemplate);
-    }
-    // Setup tags
-    var tags = "";
-    var tagsTemplate = `<a class="inline-flex items-center justify-center py-2 px-4 mr-4 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white">TAG_TO_BE_REPLACED</a>`
+  if (content.attributes.origsrc.trim() != "" && content.attributes.origsrc.trim() != null) {
+    origSrcTemplate = origSrcTemplate.replace(/SRC_TO_BE_REPLACED/g, content.attributes.origsrc);
+    blogSectionTemplate = blogSectionTemplate.replace('<!-- ORIGINAL_SOURCE -->', origSrcTemplate);
+  }
+  // Setup tags
+  var tags = "";
+  var tagsTemplate = `<a class="inline-flex items-center justify-center py-2 px-4 mr-4 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white">TAG_TO_BE_REPLACED</a>`
 
-    content.attributes.tags.forEach(tag => {
-      tags += tagsTemplate.replace("TAG_TO_BE_REPLACED", tag);
-    });
+  content.attributes.tags.forEach(tag => {
+    tags += tagsTemplate.replace("TAG_TO_BE_REPLACED", tag);
+  });
 
-    // console.log(blogSectionTemplate);
-    blogSectionTemplate = blogSectionTemplate.replace('TAGS_TO_BE_REPLACED', tags);
+  // console.log(blogSectionTemplate);
+  blogSectionTemplate = blogSectionTemplate.replace('TAGS_TO_BE_REPLACED', tags);
 
-    // Replace these double casting markdown as it cannot be parse correctly for now
-    content.body = content.body.replace(/\*\*.*`.*?`.*\*\*/g, match => match.replace(/\*\*/g, ""));
-    content.body = content.body.replace(/\`.*\*\*.*?\*\*.*\`/g, match => match.replace(/\*\*/g, ""));
-    content.body = content.body.replace(/\*\*\*\*.*?\*\*\*\*/g, match => match.replace(/\*\*\*\*/g, "**"));
+  // Replace these double casting markdown as it cannot be parse correctly for now
+  content.body = content.body.replace(/\*\*.*`.*?`.*\*\*/g, match => match.replace(/\*\*/g, ""));
+  content.body = content.body.replace(/\`.*\*\*.*?\*\*.*\`/g, match => match.replace(/\*\*/g, ""));
+  content.body = content.body.replace(/\*\*\*\*.*?\*\*\*\*/g, match => match.replace(/\*\*\*\*/g, "**"));
 
-    // Parse the Markdown content
-    const body = marked.parse(content.body);
+  // Parse the Markdown content
+  const body = marked.parse(content.body);
 
-    blogSectionTemplate = blogSectionTemplate.replace('BLOG_CONTENT_TO_BE_REPLACED', body);
+  blogSectionTemplate = blogSectionTemplate.replace('BLOG_CONTENT_TO_BE_REPLACED', body);
 
-    // console.log(blogSectionTemplate);
+  // console.log(blogSectionTemplate);
 
-    const blog_post_html = headerTemplate + bodyNavbarTemplate + blogSectionTemplate + footerTemplate;
-    const blog_post_filename = content.attributes.title.replace(/ /g, '-').replace(']', '').replace('[', '').toLowerCase() + '.html';
+  const blog_post_html = headerTemplate + bodyNavbarTemplate + blogSectionTemplate + footerTemplate;
+  const blog_post_filename = content.attributes.title.replace(/ /g, '-').replace(']', '').replace('[', '').toLowerCase() + '.html';
 
-    // Copy the final HTML to the a file
-    fs.writeFileSync('../src/blog/posts/' + blog_post_filename, blog_post_html);
+  // Copy the final HTML to the a file
+  fs.writeFileSync('../src/blog/posts/' + blog_post_filename, blog_post_html);
 });

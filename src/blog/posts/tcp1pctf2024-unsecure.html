@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="dark">
 
@@ -13,6 +12,7 @@
     pre[class*="language-"]:after {
       display: none;
     }
+
     /** Adding !important because the style.css will be loaded below this style tag**/
     ul {
       list-style: circle !important;
@@ -30,7 +30,7 @@
 
     code {
       font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace !important;
-       color: rgba(251,250,245,.8);
+      color: rgba(251, 250, 245, .8);
       font-display: auto !important;
       font-feature-settings: normal !important;
       padding: 1px 6px !important;
@@ -42,13 +42,13 @@
   </style>
   <script type="text/javascript">
     // Remove the indentation whitespaces from <pre> tags
-      Prism.plugins.NormalizeWhitespace.setDefaults({
-        'remove-initial-line-feed': false,
-        'remove-trailing': false,
-        'remove-indent': true,
-        'left-trim': true,
-        'right-trim': true,
-      });
+    Prism.plugins.NormalizeWhitespace.setDefaults({
+      'remove-initial-line-feed': false,
+      'remove-trailing': false,
+      'remove-indent': true,
+      'left-trim': true,
+      'right-trim': true,
+    });
   </script>
   <!-- END OF SELF-ADDED SECTION -->
 </head>
@@ -95,28 +95,41 @@
                 </li>
                 <li class="relative group">
                   <a href="/recruitment.html"
-                  class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
+                    class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
                     Recruitment
                   </a>
                 </li>
                 <li class="relative group">
                   <a href="/sponsors.html"
-                  class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
-                  Sponsors
+                    class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
+                    Sponsors
                   </a>
                 </li>
-              <li class="relative group">
-                <a href="/achievements.html"
-                class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
-                Achievements
-              </a>
-            </li>
-            <li class="relative group">
-              <a href="/#contact"
-                class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
-                Contact
-              </a>
-            </li>
+                <li class="relative group">
+                  <a href="/achievements.html"
+                    class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
+                    Achievements
+                  </a>
+                </li>
+                <li class="relative group">
+                  <a href="/#contact"
+                    class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
+                    Contact
+                  </a>
+                </li>
+                <!-- Blog and Members inside the collapsible menu for mobile -->
+                <li class="relative group lg:hidden">
+                  <a href="blog/blog-grids.html"
+                    class="menu-scroll text-base font-bold text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
+                    Blog
+                  </a>
+                </li>
+                <li class="relative group lg:hidden">
+                  <a href="/members.html"
+                    class="menu-scroll text-base font-bold text-white py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12 rounded-md hover:shadow-signUp hover:bg-opacity-90">
+                    Members
+                  </a>
+                </li>
               </ul>
             </nav>
           </div>
@@ -156,7 +169,7 @@
   </header>
   <!-- ====== Navbar Section End -->
 
-<!-- ====== Blog Section Start -->
+  <!-- ====== Blog Section Start -->
   <section class="pt-[150px] pb-[120px]">
     <div class="container">
       <div class="flex flex-wrap justify-center mx-[-16px]">
@@ -220,16 +233,33 @@
                   class="w-full h-[242px] object-center" />
               </div> -->
 
-              <p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">This challenge was solved by one of our team member <strong class="text-primary dark:text-white">H0j3n.</strong> I only managed to solve half of it due to time constraints and stuck on chaining the gadgets.</p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">In this challenge, we were given a source code zipped in a file called <code>dist.zip</code></p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><strong class="text-primary dark:text-white">Unzipped we will have the following files:</strong></p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><img src="../../images/blog/ctfs/tcp1pctf2023-unsecure/unsecure-img.png" alt="Untitled"></p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><strong class="text-primary dark:text-white">Well, what is it? What kind of web is this?</strong></p>
-<hr>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">This seems like a simple PHP website with composer package manager installed. With bunch of PHP folders with the name <code>Gadgets</code></p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><strong class="text-primary dark:text-white">Let’s take a look at index.php first</strong></p>
-<hr>
-<pre><code class="language-php">&lt;?php
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                This challenge was solved by one of our team member <strong
+                  class="text-primary dark:text-white">H0j3n.</strong> I only managed to solve half of it due to time
+                constraints and stuck on chaining the gadgets.</p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                In this challenge, we were given a source code zipped in a file called <code>dist.zip</code></p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <strong class="text-primary dark:text-white">Unzipped we will have the following files:</strong></p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <img src="../../images/blog/ctfs/tcp1pctf2023-unsecure/unsecure-img.png" alt="Untitled"></p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <strong class="text-primary dark:text-white">Well, what is it? What kind of web is this?</strong></p>
+              <hr>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                This seems like a simple PHP website with composer package manager installed. With bunch of PHP folders
+                with the name <code>Gadgets</code></p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <strong class="text-primary dark:text-white">Let’s take a look at index.php first</strong></p>
+              <hr>
+              <pre><code class="language-php">&lt;?php
 require(&quot;vendor/autoload.php&quot;);
 
 if (isset($_COOKIE[&#39;cookie&#39;])) {
@@ -239,33 +269,69 @@ if (isset($_COOKIE[&#39;cookie&#39;])) {
 
 echo &quot;Welcome to my web app!&quot;;
 </code></pre>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><strong class="text-primary dark:text-white">Breakdown of what the code does:</strong></p>
-<ol class="list-disc list-inside text-body-color mb-10">
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2"><code>require(&quot;vendor/autoload.php&quot;);</code>:<ul class="list-disc list-inside text-body-color mb-10">
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">This line includes the PHP file <code>vendor/autoload.php</code> using the <code>require</code> statement. This typically suggests that the code is using Composer, a PHP package manager, and it&#39;s likely loading dependencies or classes defined in the <code>vendor</code> directory.</li>
-</ul>
-</li>
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2"><code>if (isset($_COOKIE[&#39;cookie&#39;]))</code>:<ul class="list-disc list-inside text-body-color mb-10">
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">This conditional statement checks whether a cookie named <code>&#39;cookie&#39;</code> is set in the user&#39;s browser.</li>
-</ul>
-</li>
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">Cookie Decoding:<ul class="list-disc list-inside text-body-color mb-10">
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">If the <code>&#39;cookie&#39;</code> cookie is set, the code proceeds to decode its value using <code>base64_decode</code>. The decoded value is stored in the <code>$cookie</code> variable.</li>
-</ul>
-</li>
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">Unserialization:<ul class="list-disc list-inside text-body-color mb-10">
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">The code then attempts to unserialize the value of the <code>$cookie</code> variable using the <code>unserialize()</code> function. This function is used to restore an object or data structure from its serialized (string) representation.</li>
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">When <code>unserialize()</code> is used with untrusted data, an attacker can craft malicious serialized data that contains PHP code. When this data is deserialized, the PHP code within it can be executed on the server, leading to remote code execution. This can allow attackers to take control of the server or perform malicious actions.</li>
-</ul>
-</li>
-</ol>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Ohoo now we know that <code>unserialize()</code> is  vulnerable to insecure deserialization attack…</p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><img src="https://media3.giphy.com/media/8fen5LSZcHQ5O/giphy.gif?cid=7941fdc67dc8qcix5mk94s5f2t3s52y427rf9hh99vrxih1e&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="https://media3.giphy.com/media/8fen5LSZcHQ5O/giphy.gif?cid=7941fdc67dc8qcix5mk94s5f2t3s52y427rf9hh99vrxih1e&amp;ep=v1_gifs_search&amp;rid=giphy.gif&amp;ct=g"></p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">But wait.. remember all the <code>Gadgets</code> files that we’ve seen in the picture before this? It might be useful.</p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Let’s take a look at them <code>(GadgetOne,GadgetTwo, GadgetThree)</code></p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><strong class="text-primary dark:text-white">GadgetOne (Adders.php)</strong></p>
-<hr>
-<pre><code class="language-php">&lt;?php
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <strong class="text-primary dark:text-white">Breakdown of what the code does:</strong></p>
+              <ol class="list-disc list-inside text-body-color mb-10">
+                <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">
+                  <code>require(&quot;vendor/autoload.php&quot;);</code>:<ul
+                    class="list-disc list-inside text-body-color mb-10">
+                    <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">This line
+                      includes the PHP file <code>vendor/autoload.php</code> using the <code>require</code> statement.
+                      This typically suggests that the code is using Composer, a PHP package manager, and it&#39;s
+                      likely loading dependencies or classes defined in the <code>vendor</code> directory.</li>
+                  </ul>
+                </li>
+                <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">
+                  <code>if (isset($_COOKIE[&#39;cookie&#39;]))</code>:<ul
+                    class="list-disc list-inside text-body-color mb-10">
+                    <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">This
+                      conditional statement checks whether a cookie named <code>&#39;cookie&#39;</code> is set in the
+                      user&#39;s browser.</li>
+                  </ul>
+                </li>
+                <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">Cookie
+                  Decoding:<ul class="list-disc list-inside text-body-color mb-10">
+                    <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">If the
+                      <code>&#39;cookie&#39;</code> cookie is set, the code proceeds to decode its value using
+                      <code>base64_decode</code>. The decoded value is stored in the <code>$cookie</code> variable.</li>
+                  </ul>
+                </li>
+                <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">
+                  Unserialization:<ul class="list-disc list-inside text-body-color mb-10">
+                    <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">The code
+                      then attempts to unserialize the value of the <code>$cookie</code> variable using the
+                      <code>unserialize()</code> function. This function is used to restore an object or data structure
+                      from its serialized (string) representation.</li>
+                    <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">When
+                      <code>unserialize()</code> is used with untrusted data, an attacker can craft malicious serialized
+                      data that contains PHP code. When this data is deserialized, the PHP code within it can be
+                      executed on the server, leading to remote code execution. This can allow attackers to take control
+                      of the server or perform malicious actions.</li>
+                  </ul>
+                </li>
+              </ol>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                Ohoo now we know that <code>unserialize()</code> is vulnerable to insecure deserialization attack…</p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <img
+                  src="https://media3.giphy.com/media/8fen5LSZcHQ5O/giphy.gif?cid=7941fdc67dc8qcix5mk94s5f2t3s52y427rf9hh99vrxih1e&ep=v1_gifs_search&rid=giphy.gif&ct=g"
+                  alt="https://media3.giphy.com/media/8fen5LSZcHQ5O/giphy.gif?cid=7941fdc67dc8qcix5mk94s5f2t3s52y427rf9hh99vrxih1e&amp;ep=v1_gifs_search&amp;rid=giphy.gif&amp;ct=g">
+              </p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                But wait.. remember all the <code>Gadgets</code> files that we’ve seen in the picture before this? It
+                might be useful.</p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                Let’s take a look at them <code>(GadgetOne,GadgetTwo, GadgetThree)</code></p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <strong class="text-primary dark:text-white">GadgetOne (Adders.php)</strong></p>
+              <hr>
+              <pre><code class="language-php">&lt;?php
 
 namespace GadgetOne {
     class Adders
@@ -282,10 +348,15 @@ namespace GadgetOne {
     }
 }
 </code></pre>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">This PHP code defines a class named <code>Adders</code> within the <code>GadgetOne</code> namespace, which has a private property <code>$x</code> and methods to set and retrieve its value.</p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><strong class="text-primary dark:text-white">GadgetTwo (Echoers.php)</strong></p>
-<hr>
-<pre><code class="language-php">&lt;?php
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                This PHP code defines a class named <code>Adders</code> within the <code>GadgetOne</code> namespace,
+                which has a private property <code>$x</code> and methods to set and retrieve its value.</p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <strong class="text-primary dark:text-white">GadgetTwo (Echoers.php)</strong></p>
+              <hr>
+              <pre><code class="language-php">&lt;?php
 
 namespace GadgetTwo {
     class Echoers
@@ -298,10 +369,17 @@ namespace GadgetTwo {
     }
 }
 </code></pre>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">This PHP code defines a class <code>Echoers</code> within the <code>GadgetTwo</code> namespace, and when an instance of this class is destroyed, it attempts to echo the value returned by the <code>get_x()</code> method of an object stored in its protected <code>$klass</code> property, assuming that such an object is present.</p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><strong class="text-primary dark:text-white">GadgetThree (Vuln.php)</strong></p>
-<hr>
-<pre><code class="language-php">&lt;?php
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                This PHP code defines a class <code>Echoers</code> within the <code>GadgetTwo</code> namespace, and when
+                an instance of this class is destroyed, it attempts to echo the value returned by the
+                <code>get_x()</code> method of an object stored in its protected <code>$klass</code> property, assuming
+                that such an object is present.</p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <strong class="text-primary dark:text-white">GadgetThree (Vuln.php)</strong></p>
+              <hr>
+              <pre><code class="language-php">&lt;?php
 
 namespace GadgetThree {
     class Vuln
@@ -326,50 +404,140 @@ namespace GadgetThree {
     }
 }
 </code></pre>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">This PHP code defines a class <code>Vuln</code> within the <code>GadgetThree</code> namespace, with public, protected, and private properties, and when the <code>__toString()</code> method is called, it checks some conditions and executes the code provided in the <code>cmd</code> property if those conditions are met, potentially allowing for arbitrary code execution.</p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Interesting <code>eval()</code> function here (RCE probably) 👀</p>
-<hr>
-<h2 class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">So.. what do we do now with all this stuff that we have found?</h2>
-<hr>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Well, I am guessing that we have to  <code>chain</code> all these <code>Gadgets</code> , serialize it using <code>serialize()</code> and pass it to the <code>unserialize()</code> function inside the website in order to get the flag through <code>RCE (Remote Code Execution)</code></p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><strong class="text-primary dark:text-white">To make it simple:</strong></p>
-<ol class="list-disc list-inside text-body-color mb-10">
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2"><strong class="text-primary dark:text-white">GadgetOne(Adders.php)</strong> stores value.</li>
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2"><strong class="text-primary dark:text-white">GadgetTwo(Echoers.php)</strong> echo the value given to it after the object is destroyed.</li>
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">GadgetThree(Vuln.php) runs code execution <code>eval()</code></li>
-</ol>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><strong class="text-primary dark:text-white">The flow of how it should be chained and how the payload can be generated:</strong></p>
-<ol class="list-disc list-inside text-body-color mb-10">
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">Initialize <strong class="text-primary dark:text-white">GadgetThree(Vuln.php),</strong> match all the checks, pass in <code>system()</code> command to achieve RCE.</li>
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">Initialize <strong class="text-primary dark:text-white">GadgetOne(Adders.php)</strong> and pass the previously initialized <strong class="text-primary dark:text-white">GadgetThree</strong> to <strong class="text-primary dark:text-white">GadgetOne</strong>. <strong class="text-primary dark:text-white">GadgetOne</strong> will now store our <strong class="text-primary dark:text-white">GadgetThree</strong> object.</li>
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">The last part is to, initialize <strong class="text-primary dark:text-white">GadgetTwo(Echoers.php)</strong> and pass the previously initialized <strong class="text-primary dark:text-white">GadgetOne. GadgetTwo</strong> will now echo the things that we’ve stored in <strong class="text-primary dark:text-white">GadgetOne</strong> just now.</li>
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">Serialize them. <strong class="text-primary dark:text-white">(GadgetTwo)</strong></li>
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">Pass it to the <code>cookie</code> on the website in base64 encoded form.</li>
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">Profit ?????</li>
-</ol>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><strong class="text-primary dark:text-white">GadgetThree(Vuln.php) → GadgetOne(Adders.php) → GadgetTwo(Echoers.php)</strong></p>
-<hr>
-<h2 class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">So, how can we craft our own deserialization payload?</h2>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">To craft our own <code>deserialization</code> payload, we need a PHP testbed to make it work and run it first. In the final step, we will serialize the working code using <code>serialize()</code> function.</p>
-<h3 class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">But wait.. <strong class="text-primary dark:text-white">there’s a problem.</strong></h3>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">As we can see in the <code>Gadgets</code> code previously, the code uses <code>protected</code> and <code>private</code> variables, which doesn’t allow direct tampering of variables from outside. By default, this prohibits us from passing in data and match all the checks inside the <code>Gadgets</code></p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><img src="https://media0.giphy.com/media/7bskJX6iodRno5mufQ/giphy.gif?cid=7941fdc6k8jy92ray65lzt82oa95a3pout46c8vcd3np0jpj&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="https://media0.giphy.com/media/7bskJX6iodRno5mufQ/giphy.gif?cid=7941fdc6k8jy92ray65lzt82oa95a3pout46c8vcd3np0jpj&amp;ep=v1_gifs_search&amp;rid=giphy.gif&amp;ct=g"></p>
-<hr>
-<h3 class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">ReflectionClass to the rescue!</h3>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">In PHP, the <code>ReflectionClass</code> class is part of the Reflection API, which allows you to inspect and manipulate information about classes and their properties, methods, and other class-related details at runtime. Specifically, <code>ReflectionClass</code> is used to obtain information about a particular class. (It’s useful for dirty debugging I guess)</p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><strong class="text-primary dark:text-white">Reference:</strong></p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
-          <a href="https://www.php.net/manual/en/class.reflectionclass.php"><span class="text-primary dark:text-white underline">PHP: ReflectionClass - Manual</span>
-          </a></p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">With <code>ReflectionClass</code>, we could manipulate the <code>protected</code> and <code>private</code> variables during runtime to make the code work/run as it should.</p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Now, we could easily match all the checks and pass in data to the <code>Gadgets</code> that we have just now.</p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><img src="https://media1.giphy.com/media/Vuw9m5wXviFIQ/giphy.gif?cid=7941fdc6z27eahiipohy8gcgw3092x6btqk27b8yrt0mmpfs&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Yay! // Pls dont be traumatised by this picture"></p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Yay! // Pls dont be traumatised by this picture</p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Author note: Tbh, I thought the payload generated from this  <code>ReflectionClass</code> method would only work locally. But after reading H0j3n’s brief writeup and understanding a ‘little bit’ about PHP deserialization, it actually works on the same environment (locally or remotely) if it were to be serialized.</p>
-<h1 class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">Solution</h1>
-<hr>
-<h2 class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">Approach 1 (Credit to H0j3n)</h2>
-<pre><code class="language-php">&lt;?php
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                This PHP code defines a class <code>Vuln</code> within the <code>GadgetThree</code> namespace, with
+                public, protected, and private properties, and when the <code>__toString()</code> method is called, it
+                checks some conditions and executes the code provided in the <code>cmd</code> property if those
+                conditions are met, potentially allowing for arbitrary code execution.</p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                Interesting <code>eval()</code> function here (RCE probably) 👀</p>
+              <hr>
+              <h2
+                class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">
+                So.. what do we do now with all this stuff that we have found?</h2>
+              <hr>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                Well, I am guessing that we have to <code>chain</code> all these <code>Gadgets</code> , serialize it
+                using <code>serialize()</code> and pass it to the <code>unserialize()</code> function inside the website
+                in order to get the flag through <code>RCE (Remote Code Execution)</code></p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <strong class="text-primary dark:text-white">To make it simple:</strong></p>
+              <ol class="list-disc list-inside text-body-color mb-10">
+                <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2"><strong
+                    class="text-primary dark:text-white">GadgetOne(Adders.php)</strong> stores value.</li>
+                <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2"><strong
+                    class="text-primary dark:text-white">GadgetTwo(Echoers.php)</strong> echo the value given to it
+                  after the object is destroyed.</li>
+                <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">
+                  GadgetThree(Vuln.php) runs code execution <code>eval()</code></li>
+              </ol>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <strong class="text-primary dark:text-white">The flow of how it should be chained and how the payload
+                  can be generated:</strong></p>
+              <ol class="list-disc list-inside text-body-color mb-10">
+                <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">Initialize
+                  <strong class="text-primary dark:text-white">GadgetThree(Vuln.php),</strong> match all the checks,
+                  pass in <code>system()</code> command to achieve RCE.</li>
+                <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">Initialize
+                  <strong class="text-primary dark:text-white">GadgetOne(Adders.php)</strong> and pass the previously
+                  initialized <strong class="text-primary dark:text-white">GadgetThree</strong> to <strong
+                    class="text-primary dark:text-white">GadgetOne</strong>. <strong
+                    class="text-primary dark:text-white">GadgetOne</strong> will now store our <strong
+                    class="text-primary dark:text-white">GadgetThree</strong> object.</li>
+                <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">The last part
+                  is to, initialize <strong class="text-primary dark:text-white">GadgetTwo(Echoers.php)</strong> and
+                  pass the previously initialized <strong class="text-primary dark:text-white">GadgetOne.
+                    GadgetTwo</strong> will now echo the things that we’ve stored in <strong
+                    class="text-primary dark:text-white">GadgetOne</strong> just now.</li>
+                <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">Serialize
+                  them. <strong class="text-primary dark:text-white">(GadgetTwo)</strong></li>
+                <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">Pass it to the
+                  <code>cookie</code> on the website in base64 encoded form.</li>
+                <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">Profit ?????
+                </li>
+              </ol>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <strong class="text-primary dark:text-white">GadgetThree(Vuln.php) → GadgetOne(Adders.php) →
+                  GadgetTwo(Echoers.php)</strong></p>
+              <hr>
+              <h2
+                class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">
+                So, how can we craft our own deserialization payload?</h2>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                To craft our own <code>deserialization</code> payload, we need a PHP testbed to make it work and run it
+                first. In the final step, we will serialize the working code using <code>serialize()</code> function.
+              </p>
+              <h3
+                class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">
+                But wait.. <strong class="text-primary dark:text-white">there’s a problem.</strong></h3>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                As we can see in the <code>Gadgets</code> code previously, the code uses <code>protected</code> and
+                <code>private</code> variables, which doesn’t allow direct tampering of variables from outside. By
+                default, this prohibits us from passing in data and match all the checks inside the <code>Gadgets</code>
+              </p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <img
+                  src="https://media0.giphy.com/media/7bskJX6iodRno5mufQ/giphy.gif?cid=7941fdc6k8jy92ray65lzt82oa95a3pout46c8vcd3np0jpj&ep=v1_gifs_search&rid=giphy.gif&ct=g"
+                  alt="https://media0.giphy.com/media/7bskJX6iodRno5mufQ/giphy.gif?cid=7941fdc6k8jy92ray65lzt82oa95a3pout46c8vcd3np0jpj&amp;ep=v1_gifs_search&amp;rid=giphy.gif&amp;ct=g">
+              </p>
+              <hr>
+              <h3
+                class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">
+                ReflectionClass to the rescue!</h3>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                In PHP, the <code>ReflectionClass</code> class is part of the Reflection API, which allows you to
+                inspect and manipulate information about classes and their properties, methods, and other class-related
+                details at runtime. Specifically, <code>ReflectionClass</code> is used to obtain information about a
+                particular class. (It’s useful for dirty debugging I guess)</p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <strong class="text-primary dark:text-white">Reference:</strong></p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <a href="https://www.php.net/manual/en/class.reflectionclass.php"><span
+                    class="text-primary dark:text-white underline">PHP: ReflectionClass - Manual</span>
+                </a>
+              </p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                With <code>ReflectionClass</code>, we could manipulate the <code>protected</code> and
+                <code>private</code> variables during runtime to make the code work/run as it should.</p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                Now, we could easily match all the checks and pass in data to the <code>Gadgets</code> that we have just
+                now.</p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <img
+                  src="https://media1.giphy.com/media/Vuw9m5wXviFIQ/giphy.gif?cid=7941fdc6z27eahiipohy8gcgw3092x6btqk27b8yrt0mmpfs&ep=v1_gifs_search&rid=giphy.gif&ct=g"
+                  alt="Yay! // Pls dont be traumatised by this picture"></p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                Yay! // Pls dont be traumatised by this picture</p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                Author note: Tbh, I thought the payload generated from this <code>ReflectionClass</code> method would
+                only work locally. But after reading H0j3n’s brief writeup and understanding a ‘little bit’ about PHP
+                deserialization, it actually works on the same environment (locally or remotely) if it were to be
+                serialized.</p>
+              <h1
+                class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">
+                Solution</h1>
+              <hr>
+              <h2
+                class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">
+                Approach 1 (Credit to H0j3n)</h2>
+              <pre><code class="language-php">&lt;?php
 require(&quot;vendor/autoload.php&quot;);
 
 $gadgetOne = new \GadgetOne\Adders(1);
@@ -421,20 +589,40 @@ echo &quot;\n&quot;;
 
 ?&gt;
 </code></pre>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><strong class="text-primary dark:text-white">Explanation from H0j3n:</strong></p>
-<ul class="list-disc list-inside text-body-color mb-10">
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2"><code>__construct()</code> in GadgetOne = Use this to set <code>$x</code> to <code>Vuln()</code> with RCE + bypass the <code>waf1,waf2,waf3</code></li>
-<li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2"><code>__destruct()</code> in GadgetTwo = Inside here got echo which will be use to trigger <code>__toString()</code>. But to trigger <code>__destruct()</code>, from what I know we need to make it exit/exception which we can set the <code>$klass</code> with the object of GadgetOne itself.</li>
-</ul>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Useful functions in <code>ReflectionClass</code> that make this method work:</p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><strong class="text-primary dark:text-white">setAccessible() →</strong> Make the property/variable accessible.</p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><strong class="text-primary dark:text-white">setValue() →</strong> Set the value for the property/variable.</p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><strong class="text-primary dark:text-white">Running the code above, will generate the payload in base64-encoded form:</strong></p>
-<pre><code class="language-php">TzoxNzoiR2FkZ2V0VHdvXEVjaG9lcnMiOjE6e3M6ODoiACoAa2xhc3MiO086MTY6IkdhZGdldE9uZVxBZGRlcnMiOjE6e3M6MTk6IgBHYWRnZXRPbmVcQWRkZXJzAHgiO086MTY6IkdhZGdldFRocmVlXFZ1bG4iOjQ6e3M6NDoid2FmMSI7aToxO3M6NzoiACoAd2FmMiI7czo0OiLerb7vIjtzOjIyOiIAR2FkZ2V0VGhyZWVcVnVsbgB3YWYzIjtiOjA7czozOiJjbWQiO3M6MjA6InN5c3RlbSgnY2F0ICoudHh0Jyk7Ijt9fX0=
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <strong class="text-primary dark:text-white">Explanation from H0j3n:</strong></p>
+              <ul class="list-disc list-inside text-body-color mb-10">
+                <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">
+                  <code>__construct()</code> in GadgetOne = Use this to set <code>$x</code> to <code>Vuln()</code> with
+                  RCE + bypass the <code>waf1,waf2,waf3</code></li>
+                <li class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg mb-2">
+                  <code>__destruct()</code> in GadgetTwo = Inside here got echo which will be use to trigger
+                  <code>__toString()</code>. But to trigger <code>__destruct()</code>, from what I know we need to make
+                  it exit/exception which we can set the <code>$klass</code> with the object of GadgetOne itself.</li>
+              </ul>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                Useful functions in <code>ReflectionClass</code> that make this method work:</p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <strong class="text-primary dark:text-white">setAccessible() →</strong> Make the property/variable
+                accessible.</p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <strong class="text-primary dark:text-white">setValue() →</strong> Set the value for the
+                property/variable.</p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <strong class="text-primary dark:text-white">Running the code above, will generate the payload in
+                  base64-encoded form:</strong></p>
+              <pre><code class="language-php">TzoxNzoiR2FkZ2V0VHdvXEVjaG9lcnMiOjE6e3M6ODoiACoAa2xhc3MiO086MTY6IkdhZGdldE9uZVxBZGRlcnMiOjE6e3M6MTk6IgBHYWRnZXRPbmVcQWRkZXJzAHgiO086MTY6IkdhZGdldFRocmVlXFZ1bG4iOjQ6e3M6NDoid2FmMSI7aToxO3M6NzoiACoAd2FmMiI7czo0OiLerb7vIjtzOjIyOiIAR2FkZ2V0VGhyZWVcVnVsbgB3YWYzIjtiOjA7czozOiJjbWQiO3M6MjA6InN5c3RlbSgnY2F0ICoudHh0Jyk7Ijt9fX0=
 </code></pre>
-<hr>
-<h2 class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">Approach 2 (credit to HeapCreate)</h2>
-<pre><code class="language-php">&lt;?php
+              <hr>
+              <h2
+                class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">
+                Approach 2 (credit to HeapCreate)</h2>
+              <pre><code class="language-php">&lt;?php
 
 namespace GadgetOne {
     class Adders {
@@ -473,47 +661,66 @@ namespace {
     echo $serialized.&quot;\n&quot;;
 }
 </code></pre>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">This is another approach by our new member <strong class="text-primary dark:text-white">HeapCreate</strong>. Works the same as above, but requires less usage of <code>ReflectionClass</code> and much more neater (imo).</p>
-<h2 class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">Final steps</h2>
-<hr>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Pass the generated payload to <code>cookie</code> and you will get the flag!</p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><img src="../../images/blog/ctfs/tcp1pctf2023-unsecure/unsecure-img1.png" alt="Untitled"></p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><strong class="text-primary dark:text-white">Flag:</strong> <code>TCP1P{unserialize in php go brrrrrrrr ouch}</code></p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><strong class="text-primary dark:text-white">Thanks for reading my write-up and have a nice day!</strong></p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                This is another approach by our new member <strong
+                  class="text-primary dark:text-white">HeapCreate</strong>. Works the same as above, but requires less
+                usage of <code>ReflectionClass</code> and much more neater (imo).</p>
+              <h2
+                class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">
+                Final steps</h2>
+              <hr>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                Pass the generated payload to <code>cookie</code> and you will get the flag!</p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <img src="../../images/blog/ctfs/tcp1pctf2023-unsecure/unsecure-img1.png" alt="Untitled"></p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <strong class="text-primary dark:text-white">Flag:</strong>
+                <code>TCP1P{unserialize in php go brrrrrrrr ouch}</code></p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <strong class="text-primary dark:text-white">Thanks for reading my write-up and have a nice
+                  day!</strong></p>
 
 
               <div class="sm:flex items-center justify-between pt-4">
                 <div class="mb-5">
                   <h5 class="font-medium text-body-color text-sm mb-3">Popular Tags :</h5>
                   <div class="flex items-center">
-                    <a class="inline-flex items-center justify-center py-2 px-4 mr-4 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white">WEB</a><a class="inline-flex items-center justify-center py-2 px-4 mr-4 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white">TCP1PCTF</a><a class="inline-flex items-center justify-center py-2 px-4 mr-4 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white">2023</a>
+                    <a
+                      class="inline-flex items-center justify-center py-2 px-4 mr-4 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white">WEB</a><a
+                      class="inline-flex items-center justify-center py-2 px-4 mr-4 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white">TCP1PCTF</a><a
+                      class="inline-flex items-center justify-center py-2 px-4 mr-4 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white">2023</a>
                   </div>
                 </div>
                 <!-- <div class="mb-5"> -->
-                  <!-- <h5 class="font-medium text-body-color text-sm sm:text-right mb-3">Share this post :</h5> -->
-                  <!-- <div class="flex items-center sm:justify-end"> -->
-                    <!-- <a href="javascript:void(0)" -->
-                      <!-- class="inline-flex items-center justify-center w-9 h-9 sm:ml-3 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white"> -->
-                      <!-- <svg width="16" height="16" viewBox="0 0 16 16" class="fill-current"> -->
-                        <!-- <path -->
-                          <!-- d="M14.3442 0H1.12455C0.499798 0 0 0.497491 0 1.11936V14.3029C0 14.8999 0.499798 15.4222 1.12455 15.4222H14.2942C14.919 15.4222 15.4188 14.9247 15.4188 14.3029V1.09448C15.4688 0.497491 14.969 0 14.3442 0ZM4.57316 13.1089H2.29907V5.7709H4.57316V13.1089ZM3.42362 4.75104C2.67392 4.75104 2.09915 4.15405 2.09915 3.43269C2.09915 2.71133 2.69891 2.11434 3.42362 2.11434C4.14833 2.11434 4.74809 2.71133 4.74809 3.43269C4.74809 4.15405 4.19831 4.75104 3.42362 4.75104ZM13.1947 13.1089H10.9206V9.55183C10.9206 8.7061 10.8956 7.58674 9.72108 7.58674C8.52156 7.58674 8.34663 8.53198 8.34663 9.47721V13.1089H6.07255V5.7709H8.29665V6.79076H8.32164C8.64651 6.19377 9.37122 5.59678 10.4958 5.59678C12.8198 5.59678 13.2447 7.08925 13.2447 9.12897V13.1089H13.1947Z" /> -->
-                      <!-- </svg> -->
-                    <!-- </a> -->
-                    <!-- <a href="javascript:void(0)" -->
-                      <!-- class="inline-flex items-center justify-center w-9 h-9 ml-3 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white"> -->
-                      <!-- <svg width="18" height="14" viewBox="0 0 18 14" class="fill-current"> -->
-                        <!-- <path -->
-                          <!-- d="M15.5524 2.26027L16.625 1.0274C16.9355 0.693493 17.0202 0.436644 17.0484 0.308219C16.2016 0.770548 15.4113 0.924658 14.9032 0.924658H14.7056L14.5927 0.821918C13.9153 0.282534 13.0685 0 12.1653 0C10.1895 0 8.6371 1.48973 8.6371 3.21062C8.6371 3.31336 8.6371 3.46747 8.66532 3.57021L8.75 4.0839L8.15726 4.05822C4.54435 3.95548 1.58065 1.13014 1.10081 0.642123C0.310484 1.92637 0.762097 3.15925 1.24194 3.92979L2.20161 5.36815L0.677419 4.5976C0.705645 5.67637 1.15726 6.52397 2.03226 7.14041L2.79435 7.65411L2.03226 7.93665C2.5121 9.24658 3.58468 9.78596 4.375 9.99144L5.41935 10.2483L4.43145 10.8647C2.85081 11.8921 0.875 11.8151 0 11.738C1.77823 12.8682 3.89516 13.125 5.3629 13.125C6.46371 13.125 7.28226 13.0223 7.47984 12.9452C15.3831 11.25 15.75 4.82877 15.75 3.54452V3.36473L15.9194 3.26199C16.879 2.44007 17.2742 2.00342 17.5 1.74658C17.4153 1.77226 17.3024 1.82363 17.1895 1.84932L15.5524 2.26027Z" /> -->
-                      <!-- </svg> -->
-                    <!-- </a> -->
-                    <!-- <a href="javascript:void(0)" -->
-                      <!-- class="inline-flex items-center justify-center w-9 h-9 ml-3 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white"> -->
-                      <!-- <svg width="9" height="18" viewBox="0 0 9 18" class="fill-current"> -->
-                        <!-- <path -->
-                          <!-- d="M8.13643 7H6.78036H6.29605V6.43548V4.68548V4.12097H6.78036H7.79741C8.06378 4.12097 8.28172 3.89516 8.28172 3.55645V0.564516C8.28172 0.254032 8.088 0 7.79741 0H6.02968C4.11665 0 2.78479 1.58064 2.78479 3.92339V6.37903V6.94355H2.30048H0.65382C0.314802 6.94355 0 7.25403 0 7.70564V9.7379C0 10.1331 0.266371 10.5 0.65382 10.5H2.25205H2.73636V11.0645V16.7379C2.73636 17.1331 3.00273 17.5 3.39018 17.5H5.66644C5.81174 17.5 5.93281 17.4153 6.02968 17.3024C6.12654 17.1895 6.19919 16.9919 6.19919 16.8226V11.0927V10.5282H6.70771H7.79741C8.11222 10.5282 8.35437 10.3024 8.4028 9.96371V9.93548V9.90726L8.74182 7.95968C8.76604 7.7621 8.74182 7.53629 8.59653 7.31048C8.54809 7.16935 8.33016 7.02823 8.13643 7Z" /> -->
-                      <!-- </svg> -->
-                    <!-- </a> -->
-                  <!-- </div> -->
+                <!-- <h5 class="font-medium text-body-color text-sm sm:text-right mb-3">Share this post :</h5> -->
+                <!-- <div class="flex items-center sm:justify-end"> -->
+                <!-- <a href="javascript:void(0)" -->
+                <!-- class="inline-flex items-center justify-center w-9 h-9 sm:ml-3 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white"> -->
+                <!-- <svg width="16" height="16" viewBox="0 0 16 16" class="fill-current"> -->
+                <!-- <path -->
+                <!-- d="M14.3442 0H1.12455C0.499798 0 0 0.497491 0 1.11936V14.3029C0 14.8999 0.499798 15.4222 1.12455 15.4222H14.2942C14.919 15.4222 15.4188 14.9247 15.4188 14.3029V1.09448C15.4688 0.497491 14.969 0 14.3442 0ZM4.57316 13.1089H2.29907V5.7709H4.57316V13.1089ZM3.42362 4.75104C2.67392 4.75104 2.09915 4.15405 2.09915 3.43269C2.09915 2.71133 2.69891 2.11434 3.42362 2.11434C4.14833 2.11434 4.74809 2.71133 4.74809 3.43269C4.74809 4.15405 4.19831 4.75104 3.42362 4.75104ZM13.1947 13.1089H10.9206V9.55183C10.9206 8.7061 10.8956 7.58674 9.72108 7.58674C8.52156 7.58674 8.34663 8.53198 8.34663 9.47721V13.1089H6.07255V5.7709H8.29665V6.79076H8.32164C8.64651 6.19377 9.37122 5.59678 10.4958 5.59678C12.8198 5.59678 13.2447 7.08925 13.2447 9.12897V13.1089H13.1947Z" /> -->
+                <!-- </svg> -->
+                <!-- </a> -->
+                <!-- <a href="javascript:void(0)" -->
+                <!-- class="inline-flex items-center justify-center w-9 h-9 ml-3 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white"> -->
+                <!-- <svg width="18" height="14" viewBox="0 0 18 14" class="fill-current"> -->
+                <!-- <path -->
+                <!-- d="M15.5524 2.26027L16.625 1.0274C16.9355 0.693493 17.0202 0.436644 17.0484 0.308219C16.2016 0.770548 15.4113 0.924658 14.9032 0.924658H14.7056L14.5927 0.821918C13.9153 0.282534 13.0685 0 12.1653 0C10.1895 0 8.6371 1.48973 8.6371 3.21062C8.6371 3.31336 8.6371 3.46747 8.66532 3.57021L8.75 4.0839L8.15726 4.05822C4.54435 3.95548 1.58065 1.13014 1.10081 0.642123C0.310484 1.92637 0.762097 3.15925 1.24194 3.92979L2.20161 5.36815L0.677419 4.5976C0.705645 5.67637 1.15726 6.52397 2.03226 7.14041L2.79435 7.65411L2.03226 7.93665C2.5121 9.24658 3.58468 9.78596 4.375 9.99144L5.41935 10.2483L4.43145 10.8647C2.85081 11.8921 0.875 11.8151 0 11.738C1.77823 12.8682 3.89516 13.125 5.3629 13.125C6.46371 13.125 7.28226 13.0223 7.47984 12.9452C15.3831 11.25 15.75 4.82877 15.75 3.54452V3.36473L15.9194 3.26199C16.879 2.44007 17.2742 2.00342 17.5 1.74658C17.4153 1.77226 17.3024 1.82363 17.1895 1.84932L15.5524 2.26027Z" /> -->
+                <!-- </svg> -->
+                <!-- </a> -->
+                <!-- <a href="javascript:void(0)" -->
+                <!-- class="inline-flex items-center justify-center w-9 h-9 ml-3 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white"> -->
+                <!-- <svg width="9" height="18" viewBox="0 0 9 18" class="fill-current"> -->
+                <!-- <path -->
+                <!-- d="M8.13643 7H6.78036H6.29605V6.43548V4.68548V4.12097H6.78036H7.79741C8.06378 4.12097 8.28172 3.89516 8.28172 3.55645V0.564516C8.28172 0.254032 8.088 0 7.79741 0H6.02968C4.11665 0 2.78479 1.58064 2.78479 3.92339V6.37903V6.94355H2.30048H0.65382C0.314802 6.94355 0 7.25403 0 7.70564V9.7379C0 10.1331 0.266371 10.5 0.65382 10.5H2.25205H2.73636V11.0645V16.7379C2.73636 17.1331 3.00273 17.5 3.39018 17.5H5.66644C5.81174 17.5 5.93281 17.4153 6.02968 17.3024C6.12654 17.1895 6.19919 16.9919 6.19919 16.8226V11.0927V10.5282H6.70771H7.79741C8.11222 10.5282 8.35437 10.3024 8.4028 9.96371V9.93548V9.90726L8.74182 7.95968C8.76604 7.7621 8.74182 7.53629 8.59653 7.31048C8.54809 7.16935 8.33016 7.02823 8.13643 7Z" /> -->
+                <!-- </svg> -->
+                <!-- </a> -->
+                <!-- </div> -->
                 <!-- </div> -->
               </div>
             </div>
@@ -632,8 +839,8 @@ namespace {
     </div>
     <div class="absolute left-0 bottom-24 z-[-1]">
       <svg width="79" height="94" viewBox="0 0 79 94" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect opacity="0.3" x="-41" y="26.9426" width="66.6675" height="66.6675" transform="rotate(-22.9007 -41 26.9426)"
-          fill="url(#paint0_linear_94:889)" />
+        <rect opacity="0.3" x="-41" y="26.9426" width="66.6675" height="66.6675"
+          transform="rotate(-22.9007 -41 26.9426)" fill="url(#paint0_linear_94:889)" />
         <rect x="-41" y="26.9426" width="66.6675" height="66.6675" transform="rotate(-22.9007 -41 26.9426)"
           stroke="url(#paint1_linear_94:889)" stroke-width="0.7" />
         <path opacity="0.3" d="M50.5215 7.42229L20.325 1.14771L46.2077 62.3249L77.1885 68.2073L50.5215 7.42229Z"

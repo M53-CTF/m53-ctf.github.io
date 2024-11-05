@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="dark">
 
@@ -13,6 +12,7 @@
     pre[class*="language-"]:after {
       display: none;
     }
+
     /** Adding !important because the style.css will be loaded below this style tag**/
     ul {
       list-style: circle !important;
@@ -30,7 +30,7 @@
 
     code {
       font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace !important;
-       color: rgba(251,250,245,.8);
+      color: rgba(251, 250, 245, .8);
       font-display: auto !important;
       font-feature-settings: normal !important;
       padding: 1px 6px !important;
@@ -42,13 +42,13 @@
   </style>
   <script type="text/javascript">
     // Remove the indentation whitespaces from <pre> tags
-      Prism.plugins.NormalizeWhitespace.setDefaults({
-        'remove-initial-line-feed': false,
-        'remove-trailing': false,
-        'remove-indent': true,
-        'left-trim': true,
-        'right-trim': true,
-      });
+    Prism.plugins.NormalizeWhitespace.setDefaults({
+      'remove-initial-line-feed': false,
+      'remove-trailing': false,
+      'remove-indent': true,
+      'left-trim': true,
+      'right-trim': true,
+    });
   </script>
   <!-- END OF SELF-ADDED SECTION -->
 </head>
@@ -95,28 +95,41 @@
                 </li>
                 <li class="relative group">
                   <a href="/recruitment.html"
-                  class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
+                    class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
                     Recruitment
                   </a>
                 </li>
                 <li class="relative group">
                   <a href="/sponsors.html"
-                  class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
-                  Sponsors
+                    class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
+                    Sponsors
                   </a>
                 </li>
-              <li class="relative group">
-                <a href="/achievements.html"
-                class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
-                Achievements
-              </a>
-            </li>
-            <li class="relative group">
-              <a href="/#contact"
-                class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
-                Contact
-              </a>
-            </li>
+                <li class="relative group">
+                  <a href="/achievements.html"
+                    class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
+                    Achievements
+                  </a>
+                </li>
+                <li class="relative group">
+                  <a href="/#contact"
+                    class="menu-scroll text-base text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
+                    Contact
+                  </a>
+                </li>
+                <!-- Blog and Members inside the collapsible menu for mobile -->
+                <li class="relative group lg:hidden">
+                  <a href="blog/blog-grids.html"
+                    class="menu-scroll text-base font-bold text-dark dark:text-white group-hover:opacity-70 py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12">
+                    Blog
+                  </a>
+                </li>
+                <li class="relative group lg:hidden">
+                  <a href="/members.html"
+                    class="menu-scroll text-base font-bold text-white py-2 lg:py-6 lg:inline-flex lg:px-0 flex mx-8 lg:mr-0 lg:ml-8 xl:ml-12 rounded-md hover:shadow-signUp hover:bg-opacity-90">
+                    Members
+                  </a>
+                </li>
               </ul>
             </nav>
           </div>
@@ -156,7 +169,7 @@
   </header>
   <!-- ====== Navbar Section End -->
 
-<!-- ====== Blog Section Start -->
+  <!-- ====== Blog Section Start -->
   <section class="pt-[150px] pb-[120px]">
     <div class="container">
       <div class="flex flex-wrap justify-center mx-[-16px]">
@@ -170,7 +183,8 @@
               <div class="flex flex-wrap items-center">
                 <div class="flex items-center mr-10 mb-5">
                   <div class="max-w-[40px] w-full h-[40px] rounded-full overflow-hidden mr-4">
-                    <img src="https://gravatar.com/userimage/233842558/05c4f8f0f13b8e42004d090a6d714c22.jpeg?size=200" alt="author" class="w-full" />
+                    <img src="https://gravatar.com/userimage/233842558/05c4f8f0f13b8e42004d090a6d714c22.jpeg?size=200"
+                      alt="author" class="w-full" />
                   </div>
                   <div class="w-full">
                     <h4 class="text-base font-medium text-body-color mb-1">
@@ -207,14 +221,15 @@
                   </p>
 
                   <p class="flex items-center text-base text-body-color font-medium mr-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg"
-                      viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-link-45deg" viewBox="0 0 16 16">
                       <path
                         d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z" />
                       <path
                         d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z" />
                     </svg>&nbsp;&nbsp;
-                    <span class="text-primary dark:text-white underline break-words"><a href="https://tzion0.github.io/posts/vishwactf2023-etherealcrackme/">https://tzion0.github.io/posts/vishwactf2023-etherealcrackme/</a></span>
+                    <span class="text-primary dark:text-white underline break-words"><a
+                        href="https://tzion0.github.io/posts/vishwactf2023-etherealcrackme/">https://tzion0.github.io/posts/vishwactf2023-etherealcrackme/</a></span>
                   </p>
 
                 </div>
@@ -231,16 +246,48 @@
                   class="w-full h-[242px] object-center" />
               </div> -->
 
-              <p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">This challenge provided a two windows executable files called <code>HauntedImage.exe</code> and <code>HauntedCursor.exe</code>.</p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Please note that I did not solve this challenge during the competition, only solved it after the competition without completely understanding the challenge.</p>
-<h2 class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">HauntedImage.exe Analysis</h2>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Looking at the binary we noticed that it was huge and looks unlikely to be reverse within 1-2 days (atleast for me). Therefore we chose to execute the binary directly, and it will generate a corrupted image called <code>result.jpg</code>. Looking at <code>result.jpg</code> in Hex Editor tell us that it was not related to a valid image at all. One hint provided by organizer: &quot;The image is not corrupted&quot; indirectly tell us that we should try out few things. What we did is we simply execute the <code>HauntedImage.exe</code> again, but this time specifying the <code>result.jpg</code> as argument. And the <code>result.jpg</code> will changed to a valid picture with an URL in it like following:</p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><img src="../../images/blog/ctfs/vishwactf2023-etherealcrackme/etherealcrackme-img1.png" alt="IMG"></p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">The URL will lead us to download a Cursor Image file. And that&#39;s the information I managed to get during the CTF for this binary. Only after the CTF I found out that running the binary again with the cursor image file will generate the Ouija Board image, which will be useful but not necessary for us.</p>
-<h2 class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">HauntedCursor.exe Analysis</h2>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">TLDR: This binary is in charge for pointing our cursor to the correct position based on the Ouija Board.</p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">The first part of the binary is basically finding for a window called <code>MSPaintApp</code>. That means that in order to exit out of this loop, we have to open MSPaintApp.</p>
-<pre><code class="language-C">do
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                This challenge provided a two windows executable files called <code>HauntedImage.exe</code> and
+                <code>HauntedCursor.exe</code>.</p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                Please note that I did not solve this challenge during the competition, only solved it after the
+                competition without completely understanding the challenge.</p>
+              <h2
+                class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">
+                HauntedImage.exe Analysis</h2>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                Looking at the binary we noticed that it was huge and looks unlikely to be reverse within 1-2 days
+                (atleast for me). Therefore we chose to execute the binary directly, and it will generate a corrupted
+                image called <code>result.jpg</code>. Looking at <code>result.jpg</code> in Hex Editor tell us that it
+                was not related to a valid image at all. One hint provided by organizer: &quot;The image is not
+                corrupted&quot; indirectly tell us that we should try out few things. What we did is we simply execute
+                the <code>HauntedImage.exe</code> again, but this time specifying the <code>result.jpg</code> as
+                argument. And the <code>result.jpg</code> will changed to a valid picture with an URL in it like
+                following:</p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <img src="../../images/blog/ctfs/vishwactf2023-etherealcrackme/etherealcrackme-img1.png" alt="IMG"></p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                The URL will lead us to download a Cursor Image file. And that&#39;s the information I managed to get
+                during the CTF for this binary. Only after the CTF I found out that running the binary again with the
+                cursor image file will generate the Ouija Board image, which will be useful but not necessary for us.
+              </p>
+              <h2
+                class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">
+                HauntedCursor.exe Analysis</h2>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                TLDR: This binary is in charge for pointing our cursor to the correct position based on the Ouija Board.
+              </p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                The first part of the binary is basically finding for a window called <code>MSPaintApp</code>. That
+                means that in order to exit out of this loop, we have to open MSPaintApp.</p>
+              <pre><code class="language-C">do
 {
     lpWideCharStr = L&quot;MSPaintApp&quot;;
     cbMultiByte = WideCharToMultiByte(0xFDE9u, 0, L&quot;MSPaintApp&quot;, -1, 0i64, 0, 0i64, 0i64);
@@ -249,8 +296,14 @@
 }
 while ( !FindWindowA(lpMultiByteStr, 0i64) );
 </code></pre>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">The following part of the binary in main function will render the string <code>&quot;I NEED TO TALK TO YOU BUT I CAN DO IT ONLY THROUGH THE OUIJA BOARD.....\nPress enter to go to the next step..&quot;</code> on the screen and wait for our Enter key input to proceed. After that, the program will check for number of arguments we provided, convert the argument to integer and pass to function <code>checkSecondStep(v18);</code>:</p>
-<pre><code class="language-C">Gdiplus::GdiplusStartupInput::GdiplusStartupInput((Gdiplus::GdiplusStartupInput *)v15, 0i64, 0, 0);
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                The following part of the binary in main function will render the string
+                <code>&quot;I NEED TO TALK TO YOU BUT I CAN DO IT ONLY THROUGH THE OUIJA BOARD.....\nPress enter to go to the next step..&quot;</code>
+                on the screen and wait for our Enter key input to proceed. After that, the program will check for number
+                of arguments we provided, convert the argument to integer and pass to function
+                <code>checkSecondStep(v18);</code>:</p>
+              <pre><code class="language-C">Gdiplus::GdiplusStartupInput::GdiplusStartupInput((Gdiplus::GdiplusStartupInput *)v15, 0i64, 0, 0);
 GdiplusStartup(v14, v15, 0i64);
 DC = GetDC(0i64);
 Gdiplus::Graphics::Graphics((Gdiplus::Graphics *)v13, DC);
@@ -291,15 +344,22 @@ else
     v6 = 1;
 }
 </code></pre>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Looking into <code>checkSecondStep</code> function, it basically executing the <code>movePointer</code> function in while loop:</p>
-<pre><code class="language-C">__int64 __fastcall checkSecondStep(int a1)
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                Looking into <code>checkSecondStep</code> function, it basically executing the <code>movePointer</code>
+                function in while loop:</p>
+              <pre><code class="language-C">__int64 __fastcall checkSecondStep(int a1)
 {
   while ( !(unsigned int)movePointer(a1) );
   return 0i64;
 }
 </code></pre>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Looking into <code>movePointer</code> function, it basically go through some Desktop Window checking, extract pixel from it, do some comparison and lastly set the cursor pointer position to the flag characters:</p>
-<pre><code class="language-C">__int64 __fastcall movePointer(int a1)
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                Looking into <code>movePointer</code> function, it basically go through some Desktop Window checking,
+                extract pixel from it, do some comparison and lastly set the cursor pointer position to the flag
+                characters:</p>
+              <pre><code class="language-C">__int64 __fastcall movePointer(int a1)
 {
   struct tagPOINT Point; // [rsp+24h] [rbp-4Ch] BYREF
   LONG y; // [rsp+2Ch] [rbp-44h]
@@ -395,19 +455,40 @@ else
   }
 }
 </code></pre>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Honestly, I wasn&#39;t able to fulfill the conditions of Desktop Window it required to pass the check, therefore we will use debugger to bypass it by setting the RIP to the location where it start moving cursor. Moreover, the <code>a1</code>, which is the argument we have to provide will be use for a check eventually:</p>
-<pre><code class="language-C">v5 = 645;
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                Honestly, I wasn&#39;t able to fulfill the conditions of Desktop Window it required to pass the check,
+                therefore we will use debugger to bypass it by setting the RIP to the location where it start moving
+                cursor. Moreover, the <code>a1</code>, which is the argument we have to provide will be use for a check
+                eventually:</p>
+              <pre><code class="language-C">v5 = 645;
 if ( a1 % 645 )
 {
     while ( 1 ) SetCursorPos(9999, 200);
 }
 </code></pre>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">With all the informations we obtained, we can start solving the challenge. First, open MSPaintApp and leave it aside. Next, open <code>HauntedCursor.exe</code> in your favourite debugger, set argument as <code>645</code> and set a breakpoint at <code>40155B</code> and run the program. Once you reached the breakpoint, change the RIP to <code>401673</code>:</p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8"><img src="../../images/blog/ctfs/vishwactf2023-etherealcrackme/etherealcrackme-img2.png" alt="IMG"></p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">Before we run the program, we have to change our desktop wallpaper to the Ouija Board image we obtained earlier. imagine that if we wasn&#39;t able to obtain the Ouija Board earlier, we can simply download one from internet, it will work as well. Also, if you want to have more clearer cursor, you can change your cursor with the cursor image you obtained earlier.</p>
-<p class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">With everything set, run the program and the cursor will point to the flag character by character!</p>
-<h3 class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">Flag:</h3>
-<pre><code class="language-md">VishwaCTF{P0LT3RG3I5TP0INT3R}
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                With all the informations we obtained, we can start solving the challenge. First, open MSPaintApp and
+                leave it aside. Next, open <code>HauntedCursor.exe</code> in your favourite debugger, set argument as
+                <code>645</code> and set a breakpoint at <code>40155B</code> and run the program. Once you reached the
+                breakpoint, change the RIP to <code>401673</code>:</p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                <img src="../../images/blog/ctfs/vishwactf2023-etherealcrackme/etherealcrackme-img2.png" alt="IMG"></p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                Before we run the program, we have to change our desktop wallpaper to the Ouija Board image we obtained
+                earlier. imagine that if we wasn&#39;t able to obtain the Ouija Board earlier, we can simply download
+                one from internet, it will work as well. Also, if you want to have more clearer cursor, you can change
+                your cursor with the cursor image you obtained earlier.</p>
+              <p
+                class="font-medium text-body-color text-base sm:text-lg lg:text-base xl:text-lg sm:leading-relaxed lg:leading-relaxed xl:leading-relaxed leading-relaxed mb-8">
+                With everything set, run the program and the cursor will point to the flag character by character!</p>
+              <h3
+                class="font-bold text-black dark:text-white font-xl sm:text-2xl lg:text-xl xl:text-2xl leading-tight sm:leading-tight lg:leading-tight xl:leading-tight mb-10">
+                Flag:</h3>
+              <pre><code class="language-md">VishwaCTF{P0LT3RG3I5TP0INT3R}
 </code></pre>
 
 
@@ -415,34 +496,37 @@ if ( a1 % 645 )
                 <div class="mb-5">
                   <h5 class="font-medium text-body-color text-sm mb-3">Popular Tags :</h5>
                   <div class="flex items-center">
-                    <a class="inline-flex items-center justify-center py-2 px-4 mr-4 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white">VISHWACTF</a><a class="inline-flex items-center justify-center py-2 px-4 mr-4 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white">REV</a><a class="inline-flex items-center justify-center py-2 px-4 mr-4 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white">2023</a>
+                    <a
+                      class="inline-flex items-center justify-center py-2 px-4 mr-4 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white">VISHWACTF</a><a
+                      class="inline-flex items-center justify-center py-2 px-4 mr-4 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white">REV</a><a
+                      class="inline-flex items-center justify-center py-2 px-4 mr-4 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white">2023</a>
                   </div>
                 </div>
                 <!-- <div class="mb-5"> -->
-                  <!-- <h5 class="font-medium text-body-color text-sm sm:text-right mb-3">Share this post :</h5> -->
-                  <!-- <div class="flex items-center sm:justify-end"> -->
-                    <!-- <a href="javascript:void(0)" -->
-                      <!-- class="inline-flex items-center justify-center w-9 h-9 sm:ml-3 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white"> -->
-                      <!-- <svg width="16" height="16" viewBox="0 0 16 16" class="fill-current"> -->
-                        <!-- <path -->
-                          <!-- d="M14.3442 0H1.12455C0.499798 0 0 0.497491 0 1.11936V14.3029C0 14.8999 0.499798 15.4222 1.12455 15.4222H14.2942C14.919 15.4222 15.4188 14.9247 15.4188 14.3029V1.09448C15.4688 0.497491 14.969 0 14.3442 0ZM4.57316 13.1089H2.29907V5.7709H4.57316V13.1089ZM3.42362 4.75104C2.67392 4.75104 2.09915 4.15405 2.09915 3.43269C2.09915 2.71133 2.69891 2.11434 3.42362 2.11434C4.14833 2.11434 4.74809 2.71133 4.74809 3.43269C4.74809 4.15405 4.19831 4.75104 3.42362 4.75104ZM13.1947 13.1089H10.9206V9.55183C10.9206 8.7061 10.8956 7.58674 9.72108 7.58674C8.52156 7.58674 8.34663 8.53198 8.34663 9.47721V13.1089H6.07255V5.7709H8.29665V6.79076H8.32164C8.64651 6.19377 9.37122 5.59678 10.4958 5.59678C12.8198 5.59678 13.2447 7.08925 13.2447 9.12897V13.1089H13.1947Z" /> -->
-                      <!-- </svg> -->
-                    <!-- </a> -->
-                    <!-- <a href="javascript:void(0)" -->
-                      <!-- class="inline-flex items-center justify-center w-9 h-9 ml-3 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white"> -->
-                      <!-- <svg width="18" height="14" viewBox="0 0 18 14" class="fill-current"> -->
-                        <!-- <path -->
-                          <!-- d="M15.5524 2.26027L16.625 1.0274C16.9355 0.693493 17.0202 0.436644 17.0484 0.308219C16.2016 0.770548 15.4113 0.924658 14.9032 0.924658H14.7056L14.5927 0.821918C13.9153 0.282534 13.0685 0 12.1653 0C10.1895 0 8.6371 1.48973 8.6371 3.21062C8.6371 3.31336 8.6371 3.46747 8.66532 3.57021L8.75 4.0839L8.15726 4.05822C4.54435 3.95548 1.58065 1.13014 1.10081 0.642123C0.310484 1.92637 0.762097 3.15925 1.24194 3.92979L2.20161 5.36815L0.677419 4.5976C0.705645 5.67637 1.15726 6.52397 2.03226 7.14041L2.79435 7.65411L2.03226 7.93665C2.5121 9.24658 3.58468 9.78596 4.375 9.99144L5.41935 10.2483L4.43145 10.8647C2.85081 11.8921 0.875 11.8151 0 11.738C1.77823 12.8682 3.89516 13.125 5.3629 13.125C6.46371 13.125 7.28226 13.0223 7.47984 12.9452C15.3831 11.25 15.75 4.82877 15.75 3.54452V3.36473L15.9194 3.26199C16.879 2.44007 17.2742 2.00342 17.5 1.74658C17.4153 1.77226 17.3024 1.82363 17.1895 1.84932L15.5524 2.26027Z" /> -->
-                      <!-- </svg> -->
-                    <!-- </a> -->
-                    <!-- <a href="javascript:void(0)" -->
-                      <!-- class="inline-flex items-center justify-center w-9 h-9 ml-3 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white"> -->
-                      <!-- <svg width="9" height="18" viewBox="0 0 9 18" class="fill-current"> -->
-                        <!-- <path -->
-                          <!-- d="M8.13643 7H6.78036H6.29605V6.43548V4.68548V4.12097H6.78036H7.79741C8.06378 4.12097 8.28172 3.89516 8.28172 3.55645V0.564516C8.28172 0.254032 8.088 0 7.79741 0H6.02968C4.11665 0 2.78479 1.58064 2.78479 3.92339V6.37903V6.94355H2.30048H0.65382C0.314802 6.94355 0 7.25403 0 7.70564V9.7379C0 10.1331 0.266371 10.5 0.65382 10.5H2.25205H2.73636V11.0645V16.7379C2.73636 17.1331 3.00273 17.5 3.39018 17.5H5.66644C5.81174 17.5 5.93281 17.4153 6.02968 17.3024C6.12654 17.1895 6.19919 16.9919 6.19919 16.8226V11.0927V10.5282H6.70771H7.79741C8.11222 10.5282 8.35437 10.3024 8.4028 9.96371V9.93548V9.90726L8.74182 7.95968C8.76604 7.7621 8.74182 7.53629 8.59653 7.31048C8.54809 7.16935 8.33016 7.02823 8.13643 7Z" /> -->
-                      <!-- </svg> -->
-                    <!-- </a> -->
-                  <!-- </div> -->
+                <!-- <h5 class="font-medium text-body-color text-sm sm:text-right mb-3">Share this post :</h5> -->
+                <!-- <div class="flex items-center sm:justify-end"> -->
+                <!-- <a href="javascript:void(0)" -->
+                <!-- class="inline-flex items-center justify-center w-9 h-9 sm:ml-3 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white"> -->
+                <!-- <svg width="16" height="16" viewBox="0 0 16 16" class="fill-current"> -->
+                <!-- <path -->
+                <!-- d="M14.3442 0H1.12455C0.499798 0 0 0.497491 0 1.11936V14.3029C0 14.8999 0.499798 15.4222 1.12455 15.4222H14.2942C14.919 15.4222 15.4188 14.9247 15.4188 14.3029V1.09448C15.4688 0.497491 14.969 0 14.3442 0ZM4.57316 13.1089H2.29907V5.7709H4.57316V13.1089ZM3.42362 4.75104C2.67392 4.75104 2.09915 4.15405 2.09915 3.43269C2.09915 2.71133 2.69891 2.11434 3.42362 2.11434C4.14833 2.11434 4.74809 2.71133 4.74809 3.43269C4.74809 4.15405 4.19831 4.75104 3.42362 4.75104ZM13.1947 13.1089H10.9206V9.55183C10.9206 8.7061 10.8956 7.58674 9.72108 7.58674C8.52156 7.58674 8.34663 8.53198 8.34663 9.47721V13.1089H6.07255V5.7709H8.29665V6.79076H8.32164C8.64651 6.19377 9.37122 5.59678 10.4958 5.59678C12.8198 5.59678 13.2447 7.08925 13.2447 9.12897V13.1089H13.1947Z" /> -->
+                <!-- </svg> -->
+                <!-- </a> -->
+                <!-- <a href="javascript:void(0)" -->
+                <!-- class="inline-flex items-center justify-center w-9 h-9 ml-3 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white"> -->
+                <!-- <svg width="18" height="14" viewBox="0 0 18 14" class="fill-current"> -->
+                <!-- <path -->
+                <!-- d="M15.5524 2.26027L16.625 1.0274C16.9355 0.693493 17.0202 0.436644 17.0484 0.308219C16.2016 0.770548 15.4113 0.924658 14.9032 0.924658H14.7056L14.5927 0.821918C13.9153 0.282534 13.0685 0 12.1653 0C10.1895 0 8.6371 1.48973 8.6371 3.21062C8.6371 3.31336 8.6371 3.46747 8.66532 3.57021L8.75 4.0839L8.15726 4.05822C4.54435 3.95548 1.58065 1.13014 1.10081 0.642123C0.310484 1.92637 0.762097 3.15925 1.24194 3.92979L2.20161 5.36815L0.677419 4.5976C0.705645 5.67637 1.15726 6.52397 2.03226 7.14041L2.79435 7.65411L2.03226 7.93665C2.5121 9.24658 3.58468 9.78596 4.375 9.99144L5.41935 10.2483L4.43145 10.8647C2.85081 11.8921 0.875 11.8151 0 11.738C1.77823 12.8682 3.89516 13.125 5.3629 13.125C6.46371 13.125 7.28226 13.0223 7.47984 12.9452C15.3831 11.25 15.75 4.82877 15.75 3.54452V3.36473L15.9194 3.26199C16.879 2.44007 17.2742 2.00342 17.5 1.74658C17.4153 1.77226 17.3024 1.82363 17.1895 1.84932L15.5524 2.26027Z" /> -->
+                <!-- </svg> -->
+                <!-- </a> -->
+                <!-- <a href="javascript:void(0)" -->
+                <!-- class="inline-flex items-center justify-center w-9 h-9 ml-3 rounded-md bg-primary bg-opacity-10 text-body-color hover:bg-opacity-100 hover:text-white"> -->
+                <!-- <svg width="9" height="18" viewBox="0 0 9 18" class="fill-current"> -->
+                <!-- <path -->
+                <!-- d="M8.13643 7H6.78036H6.29605V6.43548V4.68548V4.12097H6.78036H7.79741C8.06378 4.12097 8.28172 3.89516 8.28172 3.55645V0.564516C8.28172 0.254032 8.088 0 7.79741 0H6.02968C4.11665 0 2.78479 1.58064 2.78479 3.92339V6.37903V6.94355H2.30048H0.65382C0.314802 6.94355 0 7.25403 0 7.70564V9.7379C0 10.1331 0.266371 10.5 0.65382 10.5H2.25205H2.73636V11.0645V16.7379C2.73636 17.1331 3.00273 17.5 3.39018 17.5H5.66644C5.81174 17.5 5.93281 17.4153 6.02968 17.3024C6.12654 17.1895 6.19919 16.9919 6.19919 16.8226V11.0927V10.5282H6.70771H7.79741C8.11222 10.5282 8.35437 10.3024 8.4028 9.96371V9.93548V9.90726L8.74182 7.95968C8.76604 7.7621 8.74182 7.53629 8.59653 7.31048C8.54809 7.16935 8.33016 7.02823 8.13643 7Z" /> -->
+                <!-- </svg> -->
+                <!-- </a> -->
+                <!-- </div> -->
                 <!-- </div> -->
               </div>
             </div>
@@ -561,8 +645,8 @@ if ( a1 % 645 )
     </div>
     <div class="absolute left-0 bottom-24 z-[-1]">
       <svg width="79" height="94" viewBox="0 0 79 94" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect opacity="0.3" x="-41" y="26.9426" width="66.6675" height="66.6675" transform="rotate(-22.9007 -41 26.9426)"
-          fill="url(#paint0_linear_94:889)" />
+        <rect opacity="0.3" x="-41" y="26.9426" width="66.6675" height="66.6675"
+          transform="rotate(-22.9007 -41 26.9426)" fill="url(#paint0_linear_94:889)" />
         <rect x="-41" y="26.9426" width="66.6675" height="66.6675" transform="rotate(-22.9007 -41 26.9426)"
           stroke="url(#paint1_linear_94:889)" stroke-width="0.7" />
         <path opacity="0.3" d="M50.5215 7.42229L20.325 1.14771L46.2077 62.3249L77.1885 68.2073L50.5215 7.42229Z"
